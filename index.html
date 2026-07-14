@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ready to Sail v1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=20260713-v1">
+  <link rel="stylesheet" href="assets/css/app.css?v=20260713-v1">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <h1 class="brand-title">Ready to Sail</h1>
+        <div class="brand-subtitle">Operational Readiness</div>
+        <div class="brand-meta">Powered by NPR</div>
+      </div>
+
+      <nav class="navlist">
+        <button class="navitem active" data-view="command-center">
+          <span class="material-symbols-outlined ic">grid_view</span>
+          <span>Command Center</span>
+        </button>
+        <button class="navitem" data-view="crew-changes">
+          <span class="material-symbols-outlined ic">event_repeat</span>
+          <span>Crew Changes</span>
+        </button>
+        <button class="navitem" data-view="crew">
+          <span class="material-symbols-outlined ic">groups</span>
+          <span>Crew</span>
+        </button>
+        <button class="navitem" data-view="documents">
+          <span class="material-symbols-outlined ic">description</span>
+          <span>Documents</span>
+        </button>
+        <button class="navitem" data-view="fleet">
+          <span class="material-symbols-outlined ic">directions_boat</span>
+          <span>Fleet</span>
+        </button>
+        <button class="navitem" data-view="routes-ports">
+          <span class="material-symbols-outlined ic">route</span>
+          <span>Routes &amp; Ports</span>
+        </button>
+        <button class="navitem" data-view="ready-ai">
+          <span class="material-symbols-outlined ic">psychology</span>
+          <span>Ready AI</span>
+        </button>
+        <button class="navitem" data-view="reports">
+          <span class="material-symbols-outlined ic">assessment</span>
+          <span>Reports</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="profile-card">
+          <div class="avatar">MK</div>
+          <div>
+            <div class="profile-name">Marina Keskin</div>
+            <div class="profile-role">Ops Manager</div>
+          </div>
+        </div>
+        <div class="status-row">
+          <div class="status-live">Connected</div>
+          <button class="sidebar-gear" data-toast="Settings are not interactive in this prototype." aria-label="Settings">
+            <span class="material-symbols-outlined">settings</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <h2 class="topbar-title" id="topbar-title">Command Center</h2>
+          <div class="search-shell">
+            <span class="material-symbols-outlined ic">search</span>
+            <input id="topbar-search" class="search-box" type="text" placeholder="Search fleet or crew...">
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn" data-toast="Notifications are static in this demo." aria-label="Notifications">
+            <span class="material-symbols-outlined">notifications</span>
+          </button>
+          <button class="icon-btn" data-toast="Help is not wired in this prototype." aria-label="Help">
+            <span class="material-symbols-outlined">help_outline</span>
+          </button>
+          <button class="icon-btn" data-toast="Profile actions are not interactive in this prototype." aria-label="Profile">
+            <span class="material-symbols-outlined">account_circle</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="view active" id="view-command-center">
+          <div class="page page-grid">
+            <div class="card hero pad-xl">
+              <div class="hero-grid">
+                <div>
+                  <div class="eyebrow">Live Operational Pulse • 09:12 UTC</div>
+                  <h3 class="headline" style="margin-top:10px;">Fleet readiness is stable</h3>
+                  <div class="kpi-grid hero-kpis">
+                    <div class="kpi-card">
+                      <span class="kpi-label">Ready</span>
+                      <div class="kpi-value">162</div>
+                      <div class="kpi-meta text-ready">+8%</div>
+                    </div>
+                    <div class="kpi-card">
+                      <span class="kpi-label">At Risk</span>
+                      <div class="kpi-value text-risk">18</div>
+                      <div class="kpi-meta text-blocked">+2</div>
+                    </div>
+                    <div class="kpi-card">
+                      <span class="kpi-label">Blocked</span>
+                      <div class="kpi-value text-blocked">6</div>
+                      <div class="kpi-meta text-ready">-1</div>
+                    </div>
+                    <div class="kpi-card">
+                      <span class="kpi-label">Actions</span>
+                      <div class="kpi-value text-primary">2</div>
+                      <div class="kpi-meta">No change</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hero-divider">
+                  <div class="gauge" aria-hidden="true">
+                    <svg viewBox="0 0 176 176">
+                      <circle cx="88" cy="88" r="80" fill="none" stroke="#f1f5f9" stroke-width="10"></circle>
+                      <circle cx="88" cy="88" r="80" fill="none" stroke="#006591" stroke-width="10" stroke-linecap="round" stroke-dasharray="502.65" stroke-dashoffset="65.34"></circle>
+                    </svg>
+                    <div class="gauge-copy">
+                      <div class="kpi-value display">87%</div>
+                      <div class="eyebrow" style="letter-spacing:0.2em;">Total Readiness</div>
+                    </div>
+                  </div>
+                  <div class="badge live" style="margin-top:20px;">
+                    <span class="material-symbols-outlined" style="font-size:14px;">location_on</span>
+                    Operational Hub: Rotterdam
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-grid twelve">
+              <div class="card pad-lg span-4">
+                <div class="card-header">
+                  <div>
+                    <div class="eyebrow">Critical Alerts</div>
+                  </div>
+                  <div class="kpi-value text-blocked">4</div>
+                </div>
+                <div class="list-stack">
+                  <div class="list-item">
+                    <div>
+                      <div class="list-title">Certificates expiring</div>
+                      <div class="list-meta">2 vessels affected</div>
+                    </div>
+                    <span class="badge blocked">High</span>
+                  </div>
+                  <div class="list-item">
+                    <div>
+                      <div class="list-title">Crew non-compliant</div>
+                      <div class="list-meta">MT Northern Star</div>
+                    </div>
+                    <span class="badge blocked">High</span>
+                  </div>
+                  <div class="list-item">
+                    <div>
+                      <div class="list-title">Port-call deadline</div>
+                      <div class="list-meta">Rotterdam • 03 Aug</div>
+                    </div>
+                    <span class="badge blocked">High</span>
+                  </div>
+                </div>
+                <div style="margin-top:18px;">
+                  <button class="btn btn-dark" data-nav="documents">Review all alerts</button>
+                </div>
+              </div>
+
+              <div class="card pad-lg span-4">
+                <div class="card-header">
+                  <div class="eyebrow">Decisions Required</div>
+                  <div class="kpi-value text-primary">2</div>
+                </div>
+                <div class="list-stack">
+                  <div class="card kpi-card--soft" style="padding:16px;">
+                    <div class="list-title">MT Scot Bremen</div>
+                    <div class="list-meta">Chief Officer replacement</div>
+                    <div style="margin:12px 0 16px;"><span class="badge risk">3 days</span></div>
+                    <button class="btn btn-primary" data-nav="crew-changes">Resolve now</button>
+                  </div>
+                  <div class="card kpi-card--soft" style="padding:16px;">
+                    <div class="list-title">MT Northern Star</div>
+                    <div class="list-meta">2nd Engineer Approval</div>
+                    <div style="margin:12px 0 16px;"><span class="badge blocked">Urgent</span></div>
+                    <button class="btn" data-nav="crew">Review application</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card pad-lg span-4">
+                <div class="card-header">
+                  <div class="eyebrow">Fleet Readiness</div>
+                </div>
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Vessel</th>
+                        <th style="text-align:right;">Readiness</th>
+                        <th style="text-align:right;">Trend</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>MT Scot Bremen</strong><div class="muted" style="font-size:10px;">Tanker</div></td>
+                        <td style="text-align:right;"><strong>92%</strong></td>
+                        <td style="text-align:right;" class="text-ready">4%</td>
+                      </tr>
+                      <tr>
+                        <td><strong>MT Alaska Voyager</strong><div class="muted" style="font-size:10px;">LNG Carrier</div></td>
+                        <td style="text-align:right;"><strong>71%</strong></td>
+                        <td style="text-align:right;" class="text-blocked">3%</td>
+                      </tr>
+                      <tr>
+                        <td><strong>MT Northern Star</strong><div class="muted" style="font-size:10px;">Aframax</div></td>
+                        <td style="text-align:right;"><strong>64%</strong></td>
+                        <td style="text-align:right;" class="text-blocked">5%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-foot">
+                  <button class="btn" data-nav="fleet">View fleet details</button>
+                </div>
+              </div>
+
+              <div class="card pad-lg span-4">
+                <div class="card-header">
+                  <div class="eyebrow">Distribution</div>
+                </div>
+                <div class="distribution" aria-hidden="true">
+                  <span style="width:71%; background:#22c55e;"></span>
+                  <span style="width:10%; background:#fbbf24;"></span>
+                  <span style="width:5%; background:#ba1a1a;"></span>
+                  <span style="width:14%; background:rgba(0,101,145,0.18);"></span>
+                </div>
+                <div class="distribution-legend" style="margin-top:22px;">
+                  <div class="distribution-stat"><span class="status-dot" style="background:#22c55e;"></span><div><div class="eyebrow" style="letter-spacing:0.12em;">Ready</div><strong>132</strong></div></div>
+                  <div class="distribution-stat"><span class="status-dot" style="background:#fbbf24;"></span><div><div class="eyebrow" style="letter-spacing:0.12em;">At Risk</div><strong>18</strong></div></div>
+                  <div class="distribution-stat"><span class="status-dot" style="background:#ba1a1a;"></span><div><div class="eyebrow" style="letter-spacing:0.12em;">Blocked</div><strong>6</strong></div></div>
+                  <div class="distribution-stat"><span class="status-dot" style="background:rgba(0,101,145,0.25);"></span><div><div class="eyebrow" style="letter-spacing:0.12em;">Unassigned</div><strong>26</strong></div></div>
+                </div>
+              </div>
+
+              <div class="card pad-lg span-4">
+                <div class="card-header">
+                  <div class="eyebrow">Timeline</div>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-line"></div>
+                  <div class="timeline-row">
+                    <div class="timeline-stop"><span class="timeline-dot" style="background:#006591;"></span><div class="eyebrow" style="letter-spacing:0.08em;">14 Jul<br>RTD</div></div>
+                    <div class="timeline-stop"><span class="timeline-dot" style="background:#c0c7cf;"></span><div class="eyebrow" style="letter-spacing:0.08em;">15 Jul</div></div>
+                    <div class="timeline-stop"><span class="timeline-dot" style="background:#fbbf24;"></span><div class="eyebrow" style="letter-spacing:0.08em;">16 Jul<br>GIB</div></div>
+                    <div class="timeline-stop"><span class="timeline-dot" style="background:#c0c7cf;"></span><div class="eyebrow" style="letter-spacing:0.08em;">17 Jul</div></div>
+                    <div class="timeline-stop"><span class="timeline-dot" style="background:#006591;"></span><div class="eyebrow" style="letter-spacing:0.08em;">20 Jul<br>SIN</div></div>
+                  </div>
+                </div>
+                <div style="margin-top:24px;">
+                  <button class="btn" data-nav="routes-ports">Full operations schedule</button>
+                </div>
+              </div>
+
+              <div class="card pad-lg span-4">
+                <div class="card-header">
+                  <div class="eyebrow">Compliance Risks</div>
+                </div>
+                <div class="metric-row">
+                  <div class="metric-row-item">
+                    <div class="metric-row-head"><span>STCW Certificates</span><span>33%</span></div>
+                    <div class="metric-bar"><span style="width:70%; background:#ba1a1a;"></span></div>
+                  </div>
+                  <div class="metric-row-item">
+                    <div class="metric-row-head"><span>Medical Clearance</span><span>28%</span></div>
+                    <div class="metric-bar"><span style="width:55%; background:#fbbf24;"></span></div>
+                  </div>
+                  <div class="metric-row-item">
+                    <div class="metric-row-head"><span>Flag Endorsements</span><span>11%</span></div>
+                    <div class="metric-bar"><span style="width:25%; background:rgba(0,101,145,0.4);"></span></div>
+                  </div>
+                </div>
+                <div style="margin-top:24px;">
+                  <button class="btn" data-nav="documents">Detailed risk analysis</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-crew-changes">
+          <div class="page page-grid">
+            <div class="kpi-grid">
+              <div class="kpi-card"><span class="kpi-label">Embarking</span><div class="kpi-value">162</div><div class="kpi-meta text-ready">+8</div></div>
+              <div class="kpi-card"><span class="kpi-label">At Risk</span><div class="kpi-value text-risk">18</div><div class="kpi-meta text-risk">+2</div></div>
+              <div class="kpi-card"><span class="kpi-label">Blocked</span><div class="kpi-value text-blocked">6</div><div class="kpi-meta text-ready">-1</div></div>
+              <div class="kpi-card"><span class="kpi-label">Actions Today</span><div class="kpi-value">2</div><div class="kpi-meta">Required decisions</div></div>
+            </div>
+
+            <div class="card table-card">
+              <div class="table-toolbar">
+                <div>
+                  <div class="eyebrow">Crew Rotation Manifest</div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn" data-toast="Filter is not interactive in this prototype.">Filter</button>
+                  <button class="btn" data-toast="Export is not interactive in this prototype.">Export</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" style="min-width:1080px;">
+                  <thead>
+                    <tr>
+                      <th>Vessel</th>
+                      <th>Crew Member</th>
+                      <th>Role</th>
+                      <th>Port</th>
+                      <th>Rotation Window</th>
+                      <th>Ready %</th>
+                      <th>Status</th>
+                      <th>Urgency</th>
+                      <th style="text-align:right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>MT Scot Bremen</strong></td>
+                      <td>Artyom Volkov<div class="muted" style="font-size:10px;">ID: #88291</div></td>
+                      <td class="muted">Chief Engineer</td>
+                      <td class="muted">Rotterdam</td>
+                      <td><strong>Oct 24 - 26</strong></td>
+                      <td><strong class="text-ready">92%</strong></td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td><span class="badge live">Low</span></td>
+                      <td style="text-align:right;"><button class="btn" data-toast="Rotation already cleared in the prototype.">Clear</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>LPG Navigator</strong></td>
+                      <td>Elena Rossi<div class="muted" style="font-size:10px;">ID: #88245</div></td>
+                      <td class="muted">Second Officer</td>
+                      <td class="muted">Singapore</td>
+                      <td><strong>Oct 26 - 28</strong></td>
+                      <td><strong class="text-risk">64%</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td><span class="badge risk">Medium</span></td>
+                      <td style="text-align:right;"><button class="btn btn-primary" data-nav="crew">View details</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>MT Northern Star</strong></td>
+                      <td>Jameson Cook<div class="muted" style="font-size:10px;">ID: #88102</div></td>
+                      <td class="muted">Deck Cadet</td>
+                      <td class="muted">Rotterdam</td>
+                      <td><strong>Oct 24 - 25</strong></td>
+                      <td><strong class="text-blocked">48%</strong></td>
+                      <td><span class="badge blocked">Blocked</span></td>
+                      <td><span class="badge blocked">High</span></td>
+                      <td style="text-align:right;"><button class="btn btn-primary" data-nav="documents">Resolve</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Baltic Horizon</strong></td>
+                      <td>Li Wei<div class="muted" style="font-size:10px;">ID: #88331</div></td>
+                      <td class="muted">Cook</td>
+                      <td class="muted">Hamburg</td>
+                      <td><strong>Oct 29 - 31</strong></td>
+                      <td><strong>72%</strong></td>
+                      <td><span class="badge live">Pending</span></td>
+                      <td><span class="badge live">Low</span></td>
+                      <td style="text-align:right;"><button class="btn" data-toast="Rotation review is not interactive in this prototype.">Clear</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-foot">
+                <button class="btn" data-toast="Showing a static sample of active rotations.">View all 162 rotations</button>
+              </div>
+            </div>
+
+            <div class="split-grid">
+              <div class="card pad-lg">
+                <div class="card-header"><div class="eyebrow">Flight Logistics</div></div>
+                <div class="list-stack">
+                  <div class="list-item" style="background:rgba(235,245,255,0.28); border-color:rgba(192,199,207,0.4);">
+                    <div><div class="list-title">KLM 803</div><div class="list-meta">AMS → SIN • Volkov, A.</div></div>
+                    <div style="text-align:right;"><div class="badge ready">On Time</div><div class="list-meta">Arrival: 06:45</div></div>
+                  </div>
+                  <div class="list-item">
+                    <div><div class="list-title">LH 456</div><div class="list-meta">FRA → RTD • Rossi, E.</div></div>
+                    <div style="text-align:right;"><div class="badge blocked">Delayed (+4h)</div><div class="list-meta">Arrival: 14:20</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card pad-lg">
+                <div class="card-header"><div class="eyebrow">Visa Readiness</div></div>
+                <div class="metric-row">
+                  <div class="metric-row-item">
+                    <div class="metric-row-head"><span>Singapore Business</span><span>75%</span></div>
+                    <div class="metric-bar"><span style="width:75%; background:#006591;"></span></div>
+                  </div>
+                  <div class="metric-row-item">
+                    <div class="metric-row-head"><span>USA C1/D</span><span>30%</span></div>
+                    <div class="metric-bar"><span style="width:30%; background:#fbbf24;"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-crew">
+          <div class="page page-grid">
+            <div class="kpi-grid">
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">Ready to Embark</span><div class="kpi-value">162</div><div class="kpi-meta text-ready">+8 vs yesterday</div></div>
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">At Risk</span><div class="kpi-value text-risk">18</div><div class="kpi-meta text-risk">+2 vs yesterday</div></div>
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">Blocked</span><div class="kpi-value text-blocked">6</div><div class="kpi-meta text-blocked">Requires action</div></div>
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">Available Now</span><div class="kpi-value">42</div><div class="kpi-meta">Ready for assignment</div></div>
+            </div>
+
+            <div class="card table-card">
+              <div class="table-toolbar">
+                <div class="eyebrow">Crew Readiness Manifest</div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn" data-toast="Filter is not interactive in this prototype.">Filter</button>
+                  <button class="btn" data-toast="Export is not interactive in this prototype.">Export</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" style="min-width:1180px;">
+                  <thead>
+                    <tr>
+                      <th>Crew Member</th>
+                      <th>Rank / Role</th>
+                      <th>Current Vessel</th>
+                      <th>Location</th>
+                      <th>ReadyScore</th>
+                      <th>Certifications</th>
+                      <th>Medical</th>
+                      <th>Travel</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Hakan Çalhanoğlu</strong><div class="muted" style="font-size:10px;">ID: #88401</div></td>
+                      <td class="muted">Chief Officer</td>
+                      <td>MT Scot Bremen</td>
+                      <td>Istanbul</td>
+                      <td><strong class="text-ready">99%</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td><button class="btn btn-primary" data-nav="crew-changes">Assign</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Nihat Kahveci</strong><div class="muted" style="font-size:10px;">ID: #88402</div></td>
+                      <td class="muted">Chief Officer</td>
+                      <td>MT Scot Bremen</td>
+                      <td>Gibraltar</td>
+                      <td><strong class="text-ready">95%</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td class="text-risk"><strong>60d</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td><button class="btn" data-toast="Crew review is not interactive in this prototype.">Review</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Elena Rossi</strong><div class="muted" style="font-size:10px;">ID: #88345</div></td>
+                      <td class="muted">Second Engineer</td>
+                      <td>LPG Navigator</td>
+                      <td>Singapore</td>
+                      <td><strong>82%</strong></td>
+                      <td class="text-ready"><strong>STCW Ready</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td class="text-risk"><strong>Visa Pending</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td><button class="btn" data-nav="documents">Resolve</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Jameson Cook</strong><div class="muted" style="font-size:10px;">ID: #88102</div></td>
+                      <td class="muted">Deck Cadet</td>
+                      <td>Nordic Star</td>
+                      <td>Rotterdam</td>
+                      <td><strong class="text-blocked">48%</strong></td>
+                      <td class="text-blocked"><strong>Missing STCW</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td class="text-risk"><strong>Pending</strong></td>
+                      <td><span class="badge blocked">Blocked</span></td>
+                      <td><button class="btn" data-nav="documents">Fix</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Li Wei</strong><div class="muted" style="font-size:10px;">ID: #88405</div></td>
+                      <td class="muted">Cook</td>
+                      <td>Baltic Horizon</td>
+                      <td>Hamburg</td>
+                      <td><strong class="text-risk">74%</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td class="text-risk"><strong>Expiring</strong></td>
+                      <td class="text-ready"><strong>Ready</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td><button class="btn" data-toast="Crew review is not interactive in this prototype.">Review</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-foot">
+                <button class="btn" data-toast="Showing a static sample of 162 crew members.">View all 162 crew members</button>
+              </div>
+            </div>
+
+            <div class="page-grid three">
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Certification Watch</div>
+                <div class="list-stack">
+                  <div class="list-item"><div><div class="list-title">Seafarer's Medical</div><div class="list-meta">Artyom Volkov • Exp: 12 days</div></div><span class="badge blocked">Critical</span></div>
+                  <div class="list-item"><div><div class="list-title">STCW Advanced FF</div><div class="list-meta">Li Wei • Exp: 24 days</div></div><span class="badge risk">Expiring</span></div>
+                  <div class="list-item"><div><div class="list-title">Flag State Endorsement</div><div class="list-meta">Elena Rossi • Exp: 41 days</div></div><span class="badge live">Due Soon</span></div>
+                </div>
+              </div>
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Availability by Rank</div>
+                <div class="metric-row">
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Master / Captain</span><span>12 Available</span></div><div class="metric-bar"><span style="width:75%; background:#22c55e;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Chief Engineer</span><span>8 Available</span></div><div class="metric-bar"><span style="width:45%; background:#22c55e;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Deck Officers</span><span>22 Available</span></div><div class="metric-bar"><span style="width:90%; background:#22c55e;"></span></div></div>
+                </div>
+              </div>
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Status Distribution</div>
+                <div class="distribution tall" aria-hidden="true">
+                  <span style="width:70%; background:#22c55e;"></span>
+                  <span style="width:20%; background:#fbbf24;"></span>
+                  <span style="width:10%; background:#ba1a1a;"></span>
+                </div>
+                <div class="distribution-legend" style="margin-top:18px;">
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Ready</div><strong>70%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">At Risk</div><strong>20%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Blocked</div><strong>10%</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-documents">
+          <div class="page page-grid">
+            <div class="kpi-grid">
+              <div class="kpi-card"><span class="kpi-label">Verified Documents</span><div class="kpi-value">418</div><div class="kpi-meta text-ready">+12</div></div>
+              <div class="kpi-card"><span class="kpi-label text-risk">Expiring Soon</span><div class="kpi-value text-risk">24</div><div class="kpi-meta text-blocked">+5</div></div>
+              <div class="kpi-card"><span class="kpi-label text-blocked">Missing</span><div class="kpi-value text-blocked">9</div><div class="kpi-meta text-blocked">+2</div></div>
+              <div class="kpi-card"><span class="kpi-label text-primary">Pending Review</span><div class="kpi-value text-primary">16</div><div class="kpi-meta">Requires action</div></div>
+            </div>
+
+            <div class="card table-card">
+              <div class="table-toolbar">
+                <div class="eyebrow">Document Readiness Manifest</div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn" data-toast="Export is not interactive in this prototype.">Export</button>
+                  <button class="btn btn-primary" data-toast="Bulk validation is not interactive in this prototype.">Bulk Validate</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" style="min-width:1120px;">
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>Owner</th>
+                      <th>Type</th>
+                      <th>Vessel</th>
+                      <th>Expiry</th>
+                      <th>Verification</th>
+                      <th>Risk</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Medical Certificate</strong></td>
+                      <td class="muted">Hakan Çalhanoğlu</td>
+                      <td class="muted">Medical</td>
+                      <td class="muted">MT Scot Bremen</td>
+                      <td class="muted">12 Aug 2026</td>
+                      <td><span class="badge ready">Verified</span></td>
+                      <td><span class="badge ready">Low</span></td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td><button class="btn" data-toast="Document viewer is not interactive in this prototype.">View</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>STCW Advanced Fire Fighting</strong></td>
+                      <td class="muted">Li Wei</td>
+                      <td class="muted">Certification</td>
+                      <td class="muted">Baltic Horizon</td>
+                      <td class="text-risk"><strong>24 days</strong></td>
+                      <td><span class="badge ready">Verified</span></td>
+                      <td><span class="badge risk">Medium</span></td>
+                      <td><span class="badge risk">Expiring</span></td>
+                      <td><button class="btn" data-toast="Renewal flow is not interactive in this prototype.">Renew</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Seaman Book</strong></td>
+                      <td class="muted">Jameson Cook</td>
+                      <td class="muted">Identity</td>
+                      <td class="muted">Nordic Star</td>
+                      <td class="text-blocked"><strong>Missing</strong></td>
+                      <td class="muted"><em>Not verified</em></td>
+                      <td><span class="badge blocked">High</span></td>
+                      <td><span class="badge blocked">Blocked</span></td>
+                      <td><button class="btn" data-toast="Request workflow is not interactive in this prototype.">Request</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>USA C1/D Visa</strong></td>
+                      <td class="muted">Elena Rossi</td>
+                      <td class="muted">Visa</td>
+                      <td class="muted">LPG Navigator</td>
+                      <td class="text-primary"><strong><em>Pending</em></strong></td>
+                      <td class="muted"><em>In progress</em></td>
+                      <td><span class="badge live">Medium</span></td>
+                      <td><span class="badge live">Pending</span></td>
+                      <td><button class="btn" data-nav="crew-changes">Resolve</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Flag State Endorsement</strong></td>
+                      <td class="muted">Nihat Kahveci</td>
+                      <td class="muted">Endorsement</td>
+                      <td class="muted">MT Scot Bremen</td>
+                      <td class="muted">41 days</td>
+                      <td><span class="badge ready">Verified</span></td>
+                      <td><span class="badge risk">Medium</span></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td><button class="btn" data-toast="Document review is not interactive in this prototype.">Review</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-foot">
+                <button class="btn" data-toast="Showing a static sample of operational documents.">View all operational documents</button>
+              </div>
+            </div>
+
+            <div class="page-grid three">
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Certification Watch</div>
+                <div class="list-stack">
+                  <div class="list-item"><div><div class="list-title">Medical Certificates</div><div class="list-meta">8 pending review</div></div><span class="badge blocked">Critical</span></div>
+                  <div class="list-item"><div><div class="list-title">STCW Certificates</div><div class="list-meta">6 due this month</div></div><span class="badge risk">Warning</span></div>
+                  <div class="list-item"><div><div class="list-title">Visas</div><div class="list-meta">5 renewal alerts</div></div><span class="badge risk">Warning</span></div>
+                </div>
+              </div>
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Missing Impact</div>
+                <div class="metric-row">
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Seaman Book</span><span>3 crew affected</span></div><div class="metric-bar"><span style="width:30%; background:#ba1a1a;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Medical Certificate</span><span>2 crew affected</span></div><div class="metric-bar"><span style="width:20%; background:#ba1a1a;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Flag Endorsement</span><span>2 crew affected</span></div><div class="metric-bar"><span style="width:20%; background:#ba1a1a;"></span></div></div>
+                </div>
+              </div>
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Verification Distribution</div>
+                <div class="distribution" aria-hidden="true">
+                  <span style="width:78%; background:#22c55e;"></span>
+                  <span style="width:14%; background:rgba(0,101,145,0.25);"></span>
+                  <span style="width:5%; background:#fbbf24;"></span>
+                  <span style="width:3%; background:#ba1a1a;"></span>
+                </div>
+                <div class="distribution-legend" style="margin-top:18px;">
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Verified</div><strong>78%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Pending</div><strong>14%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Missing</div><strong>5%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Rejected</div><strong>3%</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-fleet">
+          <div class="page page-grid">
+            <div class="kpi-grid">
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">Total Vessels</span><div class="kpi-value">12</div><div class="kpi-meta">Fleet Active</div></div>
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">Operational Ready</span><div class="kpi-value text-ready">9</div><div class="kpi-meta text-ready">+1 vs yesterday</div></div>
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">At Risk</span><div class="kpi-value text-risk">3</div><div class="kpi-meta text-risk">+1 vs yesterday</div></div>
+              <div class="kpi-card kpi-card--soft"><span class="kpi-label">Blocked</span><div class="kpi-value text-blocked">1</div><div class="kpi-meta text-blocked">Requires action</div></div>
+            </div>
+
+            <div class="card table-card">
+              <div class="table-toolbar">
+                <div class="eyebrow">Fleet Readiness Manifest</div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn" data-toast="Filter is not interactive in this prototype.">Filter</button>
+                  <button class="btn" data-toast="Export is not interactive in this prototype.">Export</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" style="min-width:1260px;">
+                  <thead>
+                    <tr>
+                      <th>Vessel</th>
+                      <th>Type</th>
+                      <th>Current Port / Route</th>
+                      <th>Next Port / ETA</th>
+                      <th>Crew Readiness</th>
+                      <th>Compliance</th>
+                      <th style="text-align:center;">ReadyScore</th>
+                      <th>Status</th>
+                      <th style="text-align:right; min-width:100px;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong class="text-primary">MT Scot Bremen</strong></td>
+                      <td class="muted">Tanker</td>
+                      <td class="muted">Rotterdam</td>
+                      <td class="muted">Gibraltar · 14 Jul</td>
+                      <td>Crew Ready</td>
+                      <td class="muted">Compliance Ready</td>
+                      <td style="text-align:center;"><strong class="text-ready">92%</strong></td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="routes-ports">View</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong class="text-primary">LPG Navigator</strong></td>
+                      <td class="muted">LPG Carrier</td>
+                      <td class="muted">Singapore</td>
+                      <td class="muted">Fujairah · 20 Jul</td>
+                      <td>Crew At Risk</td>
+                      <td class="muted">Visa Pending</td>
+                      <td style="text-align:center;"><strong class="text-risk">71%</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="documents">Review</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong class="text-primary">MT Northern Star</strong></td>
+                      <td class="muted">Tanker</td>
+                      <td class="muted">Gibraltar</td>
+                      <td class="muted">Rotterdam · 24 Jul</td>
+                      <td>Crew Gap</td>
+                      <td class="muted">Medical Block</td>
+                      <td style="text-align:center;"><strong class="text-risk">64%</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td style="text-align:right;"><button class="btn btn-primary" data-nav="crew-changes">Intervene</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong class="text-primary">Baltic Horizon</strong></td>
+                      <td class="muted">Container</td>
+                      <td class="muted">Hamburg</td>
+                      <td class="muted">Singapore · 03 Aug</td>
+                      <td>Crew Ready</td>
+                      <td class="muted">STCW Ready</td>
+                      <td style="text-align:center;"><strong class="text-ready">85%</strong></td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td style="text-align:right;"><button class="btn" data-toast="Vessel detail is not interactive in this prototype.">View</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong class="text-primary">Polar Sirius</strong></td>
+                      <td class="muted">Offshore Support</td>
+                      <td class="muted">Piraeus</td>
+                      <td class="muted">Santos · 08 Aug</td>
+                      <td>Crew Blocked</td>
+                      <td class="muted">Missing STCW</td>
+                      <td style="text-align:center;"><strong class="text-blocked">48%</strong></td>
+                      <td><span class="badge blocked">Blocked</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="documents">Fix</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="page-grid twelve">
+              <div class="card pad-lg span-4">
+                <div class="eyebrow" style="margin-bottom:18px;">Vessel Risk Watch</div>
+                <div class="list-stack">
+                  <div class="list-item"><div><div class="list-title">MT Northern Star</div><div class="list-meta">Medical block identified</div></div><span class="badge risk">Priority: High</span></div>
+                  <div class="list-item"><div><div class="list-title">Polar Sirius</div><div class="list-meta">Missing STCW certifications</div></div><span class="badge blocked">Critical</span></div>
+                  <div class="list-item"><div><div class="list-title">LPG Navigator</div><div class="list-meta">Visa processing pending</div></div><span class="badge live">Medium</span></div>
+                </div>
+              </div>
+              <div class="card pad-lg span-4">
+                <div class="eyebrow" style="margin-bottom:18px;">Readiness by Type</div>
+                <div class="metric-row">
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Tankers</span><span>84%</span></div><div class="metric-bar"><span style="width:84%; background:#006591;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>LPG Carriers</span><span>71%</span></div><div class="metric-bar"><span style="width:71%; background:#fbbf24;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Container Ships</span><span>88%</span></div><div class="metric-bar"><span style="width:88%; background:#22c55e;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Offshore Support</span><span>48%</span></div><div class="metric-bar"><span style="width:48%; background:#ba1a1a;"></span></div></div>
+                </div>
+              </div>
+              <div class="card pad-lg span-4">
+                <div class="eyebrow" style="margin-bottom:18px;">Status Distribution</div>
+                <div class="distribution tall" aria-hidden="true">
+                  <span style="width:75%; background:#22c55e;"></span>
+                  <span style="width:17%; background:#fbbf24;"></span>
+                  <span style="width:8%; background:#ba1a1a;"></span>
+                </div>
+                <div class="distribution-legend" style="margin-top:18px;">
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Ready</div><strong>75%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">At Risk</div><strong>17%</strong></div>
+                  <div><div class="eyebrow" style="letter-spacing:0.12em;">Blocked</div><strong>8%</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card activity-strip">
+              <div class="eyebrow">Live Insights</div>
+              <div class="activity-list">
+                <div class="muted">Rotterdam Port: <strong style="color:var(--color-text);">High Activity</strong></div>
+                <div class="muted">Gibraltar Route: <strong style="color:var(--color-text);">Severe Weather Warning</strong></div>
+                <div class="muted">Fleet Sync: <strong style="color:var(--color-text);">Just now</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-routes-ports">
+          <div class="page page-grid">
+            <div class="kpi-grid">
+              <div class="kpi-card"><span class="kpi-label">Active Routes</span><div class="kpi-value">8</div><div class="kpi-meta text-primary">Fleet Moving</div></div>
+              <div class="kpi-card"><span class="kpi-label">Port Calls This Week</span><div class="kpi-value">14</div><div class="kpi-meta text-primary">+3 vs yesterday</div></div>
+              <div class="kpi-card"><span class="kpi-label">At Risk Windows</span><div class="kpi-value text-risk">3</div><div class="kpi-meta text-risk">Action Required</div></div>
+              <div class="kpi-card"><span class="kpi-label">Delayed Events</span><div class="kpi-value text-blocked">2</div><div class="kpi-meta text-blocked">Intervention</div></div>
+            </div>
+
+            <div class="card route-strip pad-xl">
+              <div class="route-track">
+                <div class="route-node active">
+                  <span class="dot"></span>
+                  <div class="eyebrow" style="letter-spacing:0.08em;">Rotterdam</div>
+                  <div class="muted" style="font-size:9px;">NODE_01</div>
+                </div>
+                <div class="route-line"><div class="route-vessel" style="left:28%;">MT SCOT BREMEN</div></div>
+                <div class="route-node">
+                  <span class="dot"></span>
+                  <div class="eyebrow" style="letter-spacing:0.08em;">Gibraltar</div>
+                  <div class="muted" style="font-size:9px;">NODE_02</div>
+                </div>
+                <div class="route-line"><div class="route-vessel" style="right:18%; color:var(--color-text-muted);">LPG NAVIGATOR</div></div>
+                <div class="route-node">
+                  <span class="dot"></span>
+                  <div class="eyebrow" style="letter-spacing:0.08em;">Singapore</div>
+                  <div class="muted" style="font-size:9px;">NODE_03</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card table-card">
+              <div class="table-toolbar">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <div class="headline" style="font-size:20px;">Route &amp; Port Manifest</div>
+                  <span class="badge live">Active Ops</span>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn" data-toast="Filter is not interactive in this prototype.">Filter</button>
+                  <button class="btn" data-toast="Export is not interactive in this prototype.">Export</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table" style="min-width:1160px;">
+                  <thead>
+                    <tr>
+                      <th>Vessel</th>
+                      <th>Current Port / Position</th>
+                      <th>Next Port / ETA</th>
+                      <th>Embarkation Window</th>
+                      <th>Crew Readiness</th>
+                      <th>Port Risk</th>
+                      <th>Status</th>
+                      <th style="text-align:right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>MT Scot Bremen</strong><div class="muted" style="font-size:11px;">IMO 9234857</div></td>
+                      <td><strong>Rotterdam</strong><div class="muted" style="font-size:11px;">At Berth</div></td>
+                      <td><strong>Gibraltar</strong><div class="text-primary" style="font-size:11px; font-weight:700;">14 Jul · 09:30</div></td>
+                      <td><strong>03–05 Aug</strong><div class="muted" style="font-size:11px;"><em>Rotterdam</em></div></td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td class="muted">Low</td>
+                      <td><span class="badge live">Ready</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="fleet">View</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>LPG Navigator</strong><div class="muted" style="font-size:11px;">IMO 9876543</div></td>
+                      <td><strong>Singapore</strong><div class="muted" style="font-size:11px;">En Route</div></td>
+                      <td><strong>Fujairah</strong><div class="text-primary" style="font-size:11px; font-weight:700;">20 Jul · 18:00</div></td>
+                      <td><strong>20–22 Jul</strong><div class="muted" style="font-size:11px;"><em>Singapore</em></div></td>
+                      <td><span class="badge risk">Visa Pending</span></td>
+                      <td class="text-risk"><strong>Medium</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="documents">Review</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>MT Northern Star</strong><div class="muted" style="font-size:11px;">IMO 9552210</div></td>
+                      <td><strong>Gibraltar</strong><div class="muted" style="font-size:11px;">Drifting</div></td>
+                      <td><strong>Rotterdam</strong><div class="text-primary" style="font-size:11px; font-weight:700;">24 Jul · 07:45</div></td>
+                      <td><strong>24–26 Jul</strong><div class="muted" style="font-size:11px;"><em>Rotterdam</em></div></td>
+                      <td><span class="badge blocked">Medical Block</span></td>
+                      <td class="text-blocked"><strong>High</strong></td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td style="text-align:right;"><button class="btn btn-primary" data-nav="crew-changes">Intervene</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Polar Sirius</strong><div class="muted" style="font-size:11px;">IMO 9667788</div></td>
+                      <td><strong>Piraeus</strong><div class="muted" style="font-size:11px;">At Berth</div></td>
+                      <td><strong>Santos</strong><div class="text-primary" style="font-size:11px; font-weight:700;">08 Aug · 16:20</div></td>
+                      <td><strong>08–10 Aug</strong><div class="muted" style="font-size:11px;"><em>Piraeus</em></div></td>
+                      <td><span class="badge blocked">Missing STCW</span></td>
+                      <td class="text-blocked"><strong>Critical</strong></td>
+                      <td><span class="badge blocked">Blocked</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="documents">Fix</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="page-grid three">
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Port Risk Watch</div>
+                <div class="list-stack">
+                  <div class="list-item"><div class="list-title">Rotterdam</div><span class="badge risk">Medium</span></div>
+                  <div class="list-item"><div><div class="list-title">Gibraltar</div><div class="list-meta">Weather Delay</div></div><span class="badge blocked">High</span></div>
+                  <div class="list-item"><div><div class="list-title">Singapore</div><div class="list-meta">Visa Backlog</div></div><span class="badge risk">Medium</span></div>
+                </div>
+              </div>
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Upcoming Windows (7d)</div>
+                <div class="list-stack">
+                  <div class="list-item"><div><div class="list-title">MT Scot Bremen</div><div class="list-meta">Rotterdam | 03 Aug</div></div></div>
+                  <div class="list-item"><div><div class="list-title">MT Northern Star</div><div class="list-meta">Rotterdam | 24 Jul</div></div></div>
+                  <div class="list-item"><div><div class="list-title">Baltic Horizon</div><div class="list-meta">Hamburg | 03 Aug</div></div></div>
+                </div>
+              </div>
+              <div class="card pad-lg">
+                <div class="eyebrow" style="margin-bottom:18px;">Logistics Readiness</div>
+                <div class="metric-row">
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Flights</span><span>84%</span></div><div class="metric-bar"><span style="width:84%; background:#22c55e;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Visas</span><span>71%</span></div><div class="metric-bar"><span style="width:71%; background:#fbbf24;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Port Access</span><span>88%</span></div><div class="metric-bar"><span style="width:88%; background:#22c55e;"></span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-reports">
+          <div class="page page-grid">
+            <div class="kpi-grid">
+              <div class="kpi-card"><span class="kpi-label">Fleet Readiness</span><div class="kpi-value">87%</div><div class="kpi-meta text-ready">+3% wk</div></div>
+              <div class="kpi-card"><span class="kpi-label">Crew Readiness</span><div class="kpi-value">162</div><div class="kpi-meta">Personnel ready to embark</div></div>
+              <div class="kpi-card"><span class="kpi-label">Active Blockers</span><div class="kpi-value text-blocked">6</div><div class="kpi-meta text-blocked">High priority</div></div>
+              <div class="kpi-card"><span class="kpi-label">Reports Generated</span><div class="kpi-value">24</div><div class="kpi-meta text-primary">MTD</div></div>
+            </div>
+
+            <div class="card table-card">
+              <div class="table-toolbar">
+                <div class="headline" style="font-size:20px;">Main Operational Reports</div>
+                <div style="display:flex; gap:8px;">
+                  <button class="btn" data-toast="Filter is not interactive in this prototype.">Filter</button>
+                  <button class="btn btn-primary" data-toast="Report creation is not interactive in this prototype.">New Report</button>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table compact">
+                  <thead>
+                    <tr>
+                      <th>Report Name</th>
+                      <th style="text-align:center;">Frequency</th>
+                      <th>Last Run</th>
+                      <th>Status</th>
+                      <th style="text-align:right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Weekly Readiness Report</strong><div class="muted" style="font-size:11px;">Scope: Fleet + Crew + Documents</div></td>
+                      <td style="text-align:center;"><span class="badge live">Weekly</span></td>
+                      <td class="muted">Today 09:12</td>
+                      <td><span class="badge ready">Ready</span></td>
+                      <td style="text-align:right;"><button class="btn" data-toast="Report viewer is not interactive in this prototype.">Open</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Compliance Exceptions Report</strong><div class="muted" style="font-size:11px;">Scope: Certs + Medical + STCW</div></td>
+                      <td style="text-align:center;"><span class="badge live">Daily</span></td>
+                      <td class="muted">Today 08:40</td>
+                      <td><span class="badge blocked">Requires Review</span></td>
+                      <td style="text-align:right;"><button class="btn btn-primary" data-nav="documents">Review</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Crew Change Risk Report</strong><div class="muted" style="font-size:11px;">Scope: Active crew changes</div></td>
+                      <td style="text-align:center;"><span class="badge live">Daily</span></td>
+                      <td class="muted">Yesterday 18:00</td>
+                      <td><span class="badge risk">At Risk</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="crew-changes">Generate</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Vessel Readiness Matrix</strong><div class="muted" style="font-size:11px;">Scope: Fleet readiness</div></td>
+                      <td style="text-align:center;"><span class="badge live">Live</span></td>
+                      <td class="muted"><em>Live stream</em></td>
+                      <td><span class="badge live">Ready</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="fleet">View</button></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Expiring Documents Report</strong><div class="muted" style="font-size:11px;">Scope: Documents</div></td>
+                      <td style="text-align:center;"><span class="badge live">Daily</span></td>
+                      <td class="muted">Today 07:30</td>
+                      <td><span class="badge risk">Warning</span></td>
+                      <td style="text-align:right;"><button class="btn" data-nav="documents">Open</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="page-grid twelve">
+              <div class="card pad-lg span-7">
+                <div class="card-header">
+                  <div class="headline" style="font-size:16px;">Readiness Trend (Last 7 Days)</div>
+                  <div class="badge ready">+6.1% Overall</div>
+                </div>
+                <div class="chart-bars" aria-hidden="true">
+                  <div class="chart-bar" style="height:82%;"></div>
+                  <div class="chart-bar" style="height:83%;"></div>
+                  <div class="chart-bar" style="height:83.5%;"></div>
+                  <div class="chart-bar" style="height:85%;"></div>
+                  <div class="chart-bar" style="height:84%;"></div>
+                  <div class="chart-bar" style="height:86%;"></div>
+                  <div class="chart-bar active" style="height:87%;"></div>
+                </div>
+                <div class="chart-labels">
+                  <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+              </div>
+              <div class="card pad-lg span-5">
+                <div class="headline" style="font-size:16px; margin-bottom:20px;">Blocked Reasons</div>
+                <div class="metric-row">
+                  <div class="metric-row-item"><div class="metric-row-head"><span>STCW Certifications</span><span>6</span></div><div class="metric-bar"><span style="width:80%; background:#ba1a1a;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Medical Clearances</span><span>5</span></div><div class="metric-bar"><span style="width:65%; background:rgba(186,26,26,0.85);"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Visa Approval</span><span>3</span></div><div class="metric-bar"><span style="width:40%; background:#fbbf24;"></span></div></div>
+                  <div class="metric-row-item"><div class="metric-row-head"><span>Contracting</span><span>2</span></div><div class="metric-bar"><span style="width:25%; background:rgba(251,191,36,0.7);"></span></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="headline" style="font-size:16px; margin-bottom:16px;">Quick Export Library</div>
+              <div class="export-grid">
+                <button class="export-card" data-toast="Export is not interactive in this prototype."><span class="material-symbols-outlined">today</span><strong>Daily Brief</strong></button>
+                <button class="export-card" data-toast="Export is not interactive in this prototype."><span class="material-symbols-outlined">date_range</span><strong>Weekly Summary</strong></button>
+                <button class="export-card" data-toast="Export is not interactive in this prototype."><span class="material-symbols-outlined">verified</span><strong>Compliance</strong></button>
+                <button class="export-card" data-toast="Export is not interactive in this prototype."><span class="material-symbols-outlined">assignment_ind</span><strong>Crew Plan</strong></button>
+                <button class="export-card" data-toast="Export is not interactive in this prototype."><span class="material-symbols-outlined">pending_actions</span><strong>Doc Forecast</strong></button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-ready-ai">
+          <div class="page page-grid">
+            <div class="ready-ai-chat-shell">
+              <div class="card pad-xl ready-ai-chat-main">
+                <div class="card-header">
+                  <div>
+                    <div class="eyebrow">Operational Copilot</div>
+                    <h3 class="headline" style="margin-top:8px;">Ready AI Workspace</h3>
+                    <p class="subcopy">Ask about crew readiness, crew changes, documents, fleet, routes, ports or reports. Responses use the current prototype data and module context.</p>
+                  </div>
+                </div>
+                <div class="thread thread-card" id="ready-ai-thread"></div>
+                <div class="ready-ai-composer">
+                  <div class="copilot-input-shell">
+                    <input id="ready-ai-main-input" type="text" placeholder="Ask Ready AI about any system data...">
+                    <div class="copilot-actions">
+                      <button class="icon-btn" data-toast="Voice input is not interactive in this prototype."><span class="material-symbols-outlined">mic</span></button>
+                      <button class="icon-btn" data-send="ready-ai-main-input"><span class="material-symbols-outlined">send</span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ready-ai-side">
+                <div class="card pad-lg">
+                  <div class="eyebrow" style="margin-bottom:16px;">Suggested Questions</div>
+                  <div class="list-stack">
+                    <button class="copilot-prompt" data-prompt="Which crew change needs action first?">Which crew change needs action first?</button>
+                    <button class="copilot-prompt" data-prompt="What are the highest-impact document blockers?">What are the highest-impact document blockers?</button>
+                    <button class="copilot-prompt" data-prompt="Show fleet risk in one paragraph">Show fleet risk in one paragraph</button>
+                    <button class="copilot-prompt" data-prompt="Prepare a short executive readiness brief">Prepare a short executive readiness brief</button>
+                  </div>
+                </div>
+                <div class="card pad-lg">
+                  <div class="eyebrow" style="margin-bottom:16px;">Current System Snapshot</div>
+                  <div class="list-stack">
+                    <div class="list-item"><div><div class="list-title">Ready to Embark</div><div class="list-meta">162 personnel cleared</div></div><span class="badge ready">Ready</span></div>
+                    <div class="list-item"><div><div class="list-title">At-Risk Rotations</div><div class="list-meta">18 cases under review</div></div><span class="badge risk">Watch</span></div>
+                    <div class="list-item"><div><div class="list-title">Blocked Cases</div><div class="list-meta">6 blockers across 3 windows</div></div><span class="badge blocked">Urgent</span></div>
+                  </div>
+                </div>
+                <div class="card pad-lg">
+                  <div class="eyebrow" style="margin-bottom:16px;">Quick Actions</div>
+                  <div class="list-stack">
+                    <button class="btn btn-primary" data-nav="crew-changes">Open Crew Changes</button>
+                    <button class="btn" data-nav="documents">Review Documents</button>
+                    <button class="btn" data-nav="reports">Generate Brief</button>
+                    <button class="btn" data-nav="fleet">Inspect Fleet Risk</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="status-strip">
+        <div class="status-left" id="status-left"></div>
+        <div class="status-right" id="status-right"></div>
+      </footer>
+    </div>
+
+    <aside class="copilot" aria-label="Ready AI side panel">
+      <div class="copilot-header">
+        <div class="copilot-headline">
+          <div class="copilot-mark">
+            <span class="material-symbols-outlined">psychology</span>
+          </div>
+          <div>
+            <h3 class="copilot-title">Ready AI</h3>
+            <div class="copilot-status">Active Assistant / Online</div>
+          </div>
+        </div>
+        <button class="icon-btn" data-toast="Ready AI settings are not interactive in this prototype." aria-label="Ready AI options">
+          <span class="material-symbols-outlined">more_vert</span>
+        </button>
+      </div>
+
+      <div class="copilot-body">
+        <div class="copilot-context-card copilot-card">
+          <span class="copilot-label" id="copilot-context-label">Module Context</span>
+          <h4 class="copilot-card-title" id="copilot-context-title">Operational Copilot</h4>
+          <p class="copilot-card-copy" id="copilot-context-copy">Ask about the current module, the fleet, crew readiness, document blockers, routes or reports.</p>
+        </div>
+        <div class="copilot-label">Conversation</div>
+        <div class="thread thread-card thread-card--aside" id="copilot-thread"></div>
+        <div class="copilot-label">Suggested Questions</div>
+        <div class="copilot-list" id="copilot-prompts"></div>
+        <div class="copilot-input">
+          <div class="copilot-input-shell">
+            <input id="copilot-chat-input" type="text" placeholder="Ask Ready AI about the system...">
+            <div class="copilot-actions">
+              <button class="icon-btn" data-toast="Voice input is not interactive in this prototype."><span class="material-symbols-outlined">mic</span></button>
+              <button class="icon-btn" data-send="copilot-chat-input"><span class="material-symbols-outlined">send</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="assets/js/app.js?v=20260713-v1"></script>
+</body>
+</html>
