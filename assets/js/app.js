@@ -956,16 +956,95 @@ const matchingMissions = {
     positionTag: "Chief Officer Position",
     summary: "Zero document overlap risks. Shell vetting confirmed for upcoming Gibraltar inspection. Preferred by Master on previous contract.",
     alertNote: "Low operational risk. All mandatory certificates remain valid throughout the assignment.",
+    selectedCandidateKey: "hakan",
+    draftSaved: true,
     rotations: [
-      { key: "bremen-chief", title: "Chief Officer Relief", current: "Current onboard officer signs off 14 Jul", eta: "Gibraltar • 09:30", readiness: "99%", status: "ready" },
-      { key: "bremen-second", title: "Second Officer Coverage", current: "Secondary relief opens 03 Aug", eta: "Rotterdam • 11:00", readiness: "91%", status: "live" },
+      {
+        key: "bremen-chief",
+        title: "Chief Officer Relief",
+        current: "Current onboard officer signs off 14 Jul",
+        eta: "Gibraltar • 09:30",
+        readiness: "99%",
+        status: "ready",
+        statusLabel: "Confirmed",
+        signOff: "Cem Demir",
+        signOn: "Hakan Çalhanoğlu",
+        detailMode: "matching",
+        selectedFilter: "Best Match",
+        requirements: [
+          "Passport",
+          "Valid Medical Certificate",
+          "Valid Seaman Book",
+          "Chief Officer CoC",
+          "Advanced Oil Tanker",
+          "Basic Safety Training",
+          "Advanced Fire Fighting",
+          "Bridge Resource Management",
+          "ECDIS",
+          "Liberian Endorsement",
+          "ILO108 Eligibility",
+          "Shell Vetting",
+          "Ready Index > 90",
+        ],
+        filters: ["Best Match", "Highest Ready Index", "Nearest Availability", "Most Experience", "Lowest Operational Risk"],
+        comparison: {
+          headers: ["Hakan", "Nihat", "Emre"],
+          rows: [
+            { label: "Passport", cells: [{ value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }] },
+            { label: "Medical", cells: [{ value: "✓", tone: "ready" }, { value: "⚠", tone: "risk" }, { value: "✗", tone: "blocked" }] },
+            { label: "Oil Tanker", cells: [{ value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }] },
+            { label: "US Visa", cells: [{ value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }, { value: "⚠", tone: "risk" }] },
+            { label: "Schengen", cells: [{ value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }, { value: "✓", tone: "ready" }] },
+            { label: "Ready Index", cells: [{ value: "99", tone: "ready" }, { value: "95", tone: "risk" }, { value: "82", tone: "blocked" }] },
+          ],
+        },
+      },
+      {
+        key: "bremen-second",
+        title: "Second Officer Relief",
+        current: "Secondary relief already coordinated",
+        eta: "Gibraltar • 09:30",
+        readiness: "94%",
+        status: "ready",
+        statusLabel: "Confirmed",
+        signOff: "Onur Aydın",
+        signOn: "Doğukan Sinik",
+        detailMode: "summary",
+        expandedDetail: false,
+        requirements: [
+          "Passport",
+          "Valid Medical Certificate",
+          "Valid Seaman Book",
+          "Second Officer CoC",
+          "Bridge Watchkeeping",
+          "ECDIS",
+          "Shell Vetting",
+          "Ready Index > 85",
+        ],
+        confirmedCandidate: {
+          name: "Doğukan Sinik",
+          rank: "Second Officer",
+          readiness: 94,
+          tone: "ready",
+          tags: ["Shell Vetting", "Bridge Watch", "Relief Confirmed"],
+          note:
+            "Matched and confirmed for this relief after clearing Shell requirements, valid travel pack and vessel readiness checks for Gibraltar.",
+          checks: ["Passport verified", "Medical valid through Jan 2027", "Seaman Book verified", "Previous tanker service confirmed"],
+        },
+        callout:
+          "Doğukan Sinik was matched and confirmed for this rotation by Crew Matching. Ready Index remains 94% and all Shell vetting requirements are marked complete in the original MVP flow.",
+        action: "open-secondary-rotation",
+        actionLabel: "Open Full Matching Detail",
+      },
     ],
     candidates: [
       {
         key: "hakan",
+        profileKey: "hakan",
         name: "Hakan Çalhanoğlu",
         rank: "Chief Officer",
         readiness: 99,
+        experienceScore: 18,
         tone: "ready",
         tags: ["12Y Sea Exp", "VLCC Specialist"],
         note: "Zero document overlap risks. Shell vetting confirmed for upcoming Gibraltar inspection. Preferred by Master on previous contract.",
@@ -976,9 +1055,11 @@ const matchingMissions = {
       },
       {
         key: "nihat",
+        profileKey: "nihat",
         name: "Nihat Kahveci",
         rank: "Chief Officer (Alt)",
         readiness: 95,
+        experienceScore: 15,
         tone: "risk",
         tags: ["15Y Sea Exp", "LPG/VLCC"],
         note: "Valid backup candidate. Minimal risk identified in medical expiry, but vessel-specific familiarization should be refreshed before assignment.",
@@ -989,9 +1070,11 @@ const matchingMissions = {
       },
       {
         key: "emre-promo",
+        profileKey: "emre",
         name: "Emre Belözoğlu",
         rank: "Second Officer",
         readiness: 82,
+        experienceScore: 12,
         tone: "blocked",
         tags: ["Promotion Review", "Medical Watch"],
         note: "Promotion path possible, but current medical non-compliance and passport horizon make this a higher-risk alternative.",
@@ -1029,16 +1112,81 @@ const matchingMissions = {
     positionTag: "Second Engineer Position",
     summary: "No medical-compliant candidate is fully locked. Assignment remains exposed until promotion or alternate relief is approved.",
     alertNote: "Medium to high operational risk due to pending compliant candidate and document dependencies.",
+    draftSaved: false,
     rotations: [
-      { key: "stuttgart-second", title: "Second Engineer Relief", current: "Current engineer signs off 22 Jul", eta: "Rotterdam • 18:00", readiness: "70%", status: "risk" },
-      { key: "stuttgart-deck", title: "Deck Support Review", current: "Support role opens 05 Aug", eta: "Hamburg • 12:00", readiness: "88%", status: "live" },
+      {
+        key: "stuttgart-second",
+        title: "Second Engineer Relief",
+        current: "Current engineer signs off 22 Jul",
+        eta: "Rotterdam • 18:00",
+        readiness: "70%",
+        status: "risk",
+        statusLabel: "Pending action",
+        signOff: "İlkay Gündoğan",
+        signOn: "No candidate confirmed",
+        detailMode: "matching",
+        selectedFilter: "Best Match",
+        requirements: [
+          "Passport",
+          "Valid Medical Certificate",
+          "Valid Seaman Book",
+          "Second Engineer CoC",
+          "Basic Oil Tanker",
+          "Basic Safety Training",
+          "Advanced Fire Fighting",
+          "Marshall Islands Endorsement",
+          "Schengen Eligibility",
+          "Ready Index > 90",
+        ],
+        filters: ["Best Match", "Highest Ready Index", "Nearest Availability", "Lowest Operational Risk"],
+        callout:
+          "No candidate currently exceeds the Ready Index 90 threshold with full certainty. This remains the kind of borderline case that should stay connected to Compliance exceptions until assignment is closed.",
+      },
+      {
+        key: "stuttgart-deck",
+        title: "Second Officer Relief",
+        current: "Companion rotation already coordinated",
+        eta: "Rotterdam • 18:00",
+        readiness: "89%",
+        status: "ready",
+        statusLabel: "Confirmed",
+        signOff: "Caner Erkin",
+        signOn: "Salih Uçan",
+        detailMode: "summary",
+        expandedDetail: false,
+        requirements: [
+          "Passport",
+          "Valid Medical Certificate",
+          "Valid Seaman Book",
+          "Second Officer CoC",
+          "BP Vetting",
+          "Schengen Eligibility",
+          "Ready Index > 85",
+        ],
+        confirmedCandidate: {
+          name: "Salih Uçan",
+          rank: "Second Officer",
+          readiness: 89,
+          tone: "risk",
+          tags: ["BP Vetting", "Medical Renewal", "Relief Confirmed"],
+          note:
+            "Companion rotation remains confirmed. Medical renewal is already scheduled before join date and the Rotterdam travel pack is reserved.",
+          checks: ["Passport verified", "Medical renewal booked", "Seaman Book verified", "Travel itinerary reserved"],
+        },
+        callout:
+          "Salih Uçan was matched and confirmed for this companion rotation. Ready Index remains 89% and the scheduled medical renewal is already tracked before the join date.",
+        action: "open-secondary-rotation",
+        actionLabel: "Open Full Matching Detail",
+      },
     ],
     candidates: [
       {
         key: "ferdi",
+        profileKey: "ferdi",
         name: "Ferdi Kadıoğlu",
         rank: "Third Engineer",
         readiness: 91,
+        experienceScore: 11,
         tone: "risk",
         tags: ["Promotion Needed", "Engine Watch"],
         note: "Strong long-term option if promotion approval is granted quickly. No document blocker today, but seniority approval remains open.",
@@ -1049,9 +1197,11 @@ const matchingMissions = {
       },
       {
         key: "ozan",
+        profileKey: "ozan",
         name: "Ozan Kabak",
         rank: "Second Engineer",
         readiness: 84,
+        experienceScore: 8,
         tone: "blocked",
         tags: ["Visa Pending", "Travel Risk"],
         note: "Rank match is acceptable but travel documentation remains incomplete for the target embarkation window.",
@@ -1149,19 +1299,1291 @@ const documentNames = {
   "passport-hc": "Passport_HC.pdf",
   "medical-cenk": "Medical_CenkTosun.pdf",
   "seamanbook-emre": "SeamanBook_EmreBelözoğlu.pdf",
+  "visa-ferdi": "USVisa_FerdiKadıoğlu.pdf",
+  "flag-endorsement-nihat": "FlagEndorsement_NihatKahveci.pdf",
   "flag-endorsement-elena": "FlagEndorsement_ElenaRossi.pdf",
+};
+
+const documentCatalog = {
+  "passport-hc": {
+    title: "Medical Certificate",
+    owner: "Hakan Çalhanoğlu",
+    vessel: "MT Scot Bremen",
+    type: "Medical",
+    expiry: "12 Aug 2026",
+    summary: "Validated medical record tied to the preferred Chief Officer assignment for MT Scot Bremen.",
+  },
+  "medical-cenk": {
+    title: "STCW Advanced Fire Fighting",
+    owner: "Cenk Tosun",
+    vessel: "MT Scot Hamburg",
+    type: "Certification",
+    expiry: "02 Aug 2026",
+    summary: "Near-term renewal item that should stay under watch because the current date is Tuesday, July 21, 2026 and the certificate horizon is already tight.",
+  },
+  "seamanbook-emre": {
+    title: "Seaman Book",
+    owner: "Emre Belözoğlu",
+    vessel: "MT Scot Bayern",
+    type: "Identity",
+    expiry: "Renew now",
+    summary: "Missing document pack blocking clean readiness progression for the MT Scot Bayern pathway.",
+  },
+  "visa-ferdi": {
+    title: "USA C1/D Visa",
+    owner: "Ferdi Kadıoğlu",
+    vessel: "MT Scot Stuttgart",
+    type: "Visa",
+    expiry: "Pending approval",
+    summary: "Travel readiness item linked to the still-sensitive MT Scot Stuttgart decision path.",
+  },
+  "flag-endorsement-nihat": {
+    title: "Flag State Endorsement",
+    owner: "Nihat Kahveci",
+    vessel: "MT Scot Bremen",
+    type: "Endorsement",
+    expiry: "31 Aug 2026",
+    summary: "Backup candidate endorsement under review for the MT Scot Bremen coverage plan.",
+  },
+};
+
+const documentFocusAlias = {
+  "flag-endorsement-elena": "flag-endorsement-nihat",
+  "emre-passport": "seamanbook-emre",
+  "cenk-medical": "medical-cenk",
+};
+
+const documentOpsState = {
+  kpis: {
+    verified: 418,
+    verifiedMeta: "+12",
+    expiring: 24,
+    expiringMeta: "+5",
+    missing: 9,
+    missingMeta: "+2",
+    pending: 16,
+    pendingMeta: "Requires action",
+  },
+  rows: {
+    "passport-hc": {
+      verification: { label: "Verified", tone: "ready" },
+      risk: { label: "Low", tone: "ready" },
+      status: { label: "Ready", tone: "ready" },
+      action: { label: "View", action: "view-document", key: "passport-hc" },
+    },
+    "medical-cenk": {
+      verification: { label: "Verified", tone: "ready" },
+      risk: { label: "Medium", tone: "risk" },
+      status: { label: "Expiring", tone: "risk" },
+      action: { label: "Renew", action: "renew-document", key: "medical-cenk" },
+    },
+    "seamanbook-emre": {
+      verification: { label: "Not verified", tone: "blocked" },
+      risk: { label: "High", tone: "blocked" },
+      status: { label: "Blocked", tone: "blocked" },
+      action: { label: "Request", action: "request-document", key: "seamanbook-emre" },
+    },
+    "visa-ferdi": {
+      verification: { label: "In progress", tone: "live" },
+      risk: { label: "Medium", tone: "live" },
+      status: { label: "Pending", tone: "live" },
+      action: { label: "Resolve", action: "open-matching", key: "stuttgart" },
+    },
+    "flag-endorsement-nihat": {
+      verification: { label: "Verified", tone: "ready" },
+      risk: { label: "Medium", tone: "risk" },
+      status: { label: "At Risk", tone: "risk" },
+      action: { label: "Review", action: "review-document", key: "flag-endorsement-elena" },
+    },
+  },
 };
 
 const reportFiles = {
   "weekly-readiness": "Weekly Readiness Report.pdf",
+  "compliance-exceptions": "Compliance Exceptions Report.pdf",
   "expiring-docs": "Expiring Documents Report.pdf",
   "crew-change-risk": "Crew Change Risk Report.pdf",
+  "vessel-readiness-matrix": "Vessel Readiness Matrix.html",
   "daily-brief": "Daily Brief.pdf",
   "weekly-summary": "Weekly Summary.pdf",
   "compliance-pack": "Compliance Exceptions Pack.pdf",
   "crew-plan": "Crew Planning Board.pdf",
   "doc-forecast": "Document Forecast.pdf",
 };
+
+const reportCatalog = {
+  "weekly-readiness": {
+    title: "Weekly Readiness Report",
+    summary: "Fleet, crew and documents summary for executive review.",
+  },
+  "compliance-exceptions": {
+    title: "Compliance Exceptions Report",
+    summary: "Current exception queue across medical, STCW and promotion workflows.",
+  },
+  "crew-change-risk": {
+    title: "Crew Change Risk Report",
+    summary: "Risk concentration across active crew changes and matching gaps.",
+  },
+  "vessel-readiness-matrix": {
+    title: "Vessel Readiness Matrix",
+    summary: "Vessel-by-vessel operational posture drawn from current fleet state.",
+  },
+  "expiring-docs": {
+    title: "Expiring Documents Report",
+    summary: "Documents with the strongest near-term operational impact.",
+  },
+  "daily-brief": {
+    title: "Daily Brief",
+    summary: "Short operational briefing for the current readiness posture.",
+  },
+  "weekly-summary": {
+    title: "Weekly Summary",
+    summary: "Weekly movement across readiness, blockers and exceptions.",
+  },
+  "compliance-pack": {
+    title: "Compliance Exceptions Pack",
+    summary: "Packaged exception review set for leadership review.",
+  },
+  "crew-plan": {
+    title: "Crew Planning Board",
+    summary: "Operational 30-day planning view prepared as a handoff artifact.",
+  },
+  "doc-forecast": {
+    title: "Document Forecast",
+    summary: "Forward-looking pressure points across expiring and missing records.",
+  },
+};
+
+const reportOpsState = {
+  generatedCount: 24,
+  generatedMeta: "MTD",
+  filter: "all",
+  rows: {
+    "weekly-readiness": {
+      status: { label: "Ready", tone: "ready" },
+      lastRun: "Today 09:12",
+      action: { label: "Open", type: "open-report", key: "weekly-readiness" },
+    },
+    "compliance-exceptions": {
+      status: { label: "Requires Review", tone: "blocked" },
+      lastRun: "Today 08:40",
+      action: { label: "Review", type: "nav", key: "documents" },
+    },
+    "crew-change-risk": {
+      status: { label: "At Risk", tone: "risk" },
+      lastRun: "Yesterday 18:00",
+      action: { label: "Generate", type: "generate-report", key: "crew-change-risk" },
+    },
+    "vessel-readiness-matrix": {
+      status: { label: "Ready", tone: "live" },
+      lastRun: "Live stream",
+      action: { label: "View", type: "open-vessel-detail", key: "bremen" },
+    },
+    "expiring-docs": {
+      status: { label: "Warning", tone: "risk" },
+      lastRun: "Today 07:30",
+      action: { label: "Open", type: "open-report", key: "expiring-docs" },
+    },
+  },
+};
+
+const adminOpsState = {
+  notificationMode: "Critical only",
+  userAccess: "8 pilot users",
+  exportPolicy: "PDF and CSV enabled",
+  readyAiMode: "Standard",
+};
+
+function setDocumentRowState(key, updates) {
+  if (!documentOpsState.rows[key]) return;
+  documentOpsState.rows[key] = {
+    ...documentOpsState.rows[key],
+    ...updates,
+  };
+}
+
+function normalizeDocumentFocusKey(key) {
+  return documentFocusAlias[key] || key;
+}
+
+function setDocumentFocus(key, mode = "open") {
+  state.activeDocumentFocus = key ? normalizeDocumentFocusKey(key) : null;
+  state.activeDocumentMode = mode;
+}
+
+function setReportFocus(key, mode = "open") {
+  state.activeReportFocus = key || null;
+  state.activeReportMode = mode;
+}
+
+function setAdminFocus(key = null) {
+  state.activeAdminFocus = key;
+}
+
+function createArtifactUrl(content, mime = "text/plain") {
+  const blob = new Blob([content], { type: mime });
+  return URL.createObjectURL(blob);
+}
+
+function triggerArtifactDownload(filename, content, mime = "text/plain") {
+  const url = createArtifactUrl(content, mime);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+function openArtifactPreview(content, mime = "text/html", title = "Preview") {
+  const url = createArtifactUrl(content, mime);
+  const preview = window.open(url, "_blank", "noopener");
+  if (!preview) {
+    showToast(`${title} preview blocked by the browser.`);
+  }
+  window.setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+function buildDocumentPreview(key) {
+  const normalizedKey = normalizeDocumentFocusKey(key);
+  const item = documentCatalog[normalizedKey];
+  const row = documentOpsState.rows[normalizedKey];
+  if (!item || !row) return null;
+
+  return {
+    filename: `${item.title.replace(/[^a-z0-9]+/gi, "_")}.html`,
+    mime: "text/html;charset=utf-8",
+    title: item.title,
+    content: `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>${item.title}</title>
+    <style>
+      body{font-family:Arial,sans-serif;background:#f4f7fb;color:#0f172a;margin:0;padding:40px}
+      .sheet{max-width:820px;margin:0 auto;background:#fff;border:1px solid #dbe3ec;border-radius:18px;padding:32px;box-shadow:0 20px 45px rgba(15,23,42,.08)}
+      h1{margin:0 0 6px;font-size:28px;color:#002b5b}
+      p{line-height:1.6}
+      .meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:24px 0}
+      .meta div{padding:14px 16px;background:#f8fbff;border-radius:14px;border:1px solid #dbe3ec}
+      .eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#64748b;margin-bottom:6px}
+      .status{display:inline-block;padding:6px 10px;border-radius:999px;background:#e6f2ff;color:#005f8f;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <div class="eyebrow">Ready to Sail document preview</div>
+      <h1>${item.title}</h1>
+      <p>${item.summary}</p>
+      <div class="meta">
+        <div><div class="eyebrow">Owner</div><strong>${item.owner}</strong></div>
+        <div><div class="eyebrow">Vessel</div><strong>${item.vessel}</strong></div>
+        <div><div class="eyebrow">Type</div><strong>${item.type}</strong></div>
+        <div><div class="eyebrow">Expiry</div><strong>${item.expiry}</strong></div>
+        <div><div class="eyebrow">Verification</div><span class="status">${row.verification.label}</span></div>
+        <div><div class="eyebrow">Operational status</div><span class="status">${row.status.label}</span></div>
+      </div>
+      <p>This generated preview is part of the local functional demo and reflects the current frontend state as of Tuesday, July 21, 2026.</p>
+    </div>
+  </body>
+</html>`,
+  };
+}
+
+function buildReportPreview(key) {
+  const item = reportCatalog[key];
+  const row = reportOpsState.rows[key];
+  if (!item) return null;
+
+  const highlights = [
+    `Ready personnel: ${systemDataNotes.readyCount}`,
+    `At risk personnel: ${systemDataNotes.atRiskCount}`,
+    `Blocked personnel: ${systemDataNotes.blockedCount}`,
+    `Open alerts: ${alertsData.length}`,
+  ];
+
+  return {
+    filename: `${item.title.replace(/[^a-z0-9]+/gi, "_")}.html`,
+    mime: "text/html;charset=utf-8",
+    title: item.title,
+    content: `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>${item.title}</title>
+    <style>
+      body{font-family:Arial,sans-serif;background:#f4f7fb;color:#0f172a;margin:0;padding:40px}
+      .sheet{max-width:860px;margin:0 auto;background:#fff;border:1px solid #dbe3ec;border-radius:18px;padding:32px;box-shadow:0 20px 45px rgba(15,23,42,.08)}
+      h1{margin:0 0 6px;font-size:28px;color:#002b5b}
+      p{line-height:1.6}
+      ul{padding-left:20px}
+      .eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#64748b;margin-bottom:6px}
+      .status{display:inline-block;padding:6px 10px;border-radius:999px;background:#e6f2ff;color:#005f8f;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <div class="eyebrow">Ready to Sail report preview</div>
+      <h1>${item.title}</h1>
+      <p>${item.summary}</p>
+      <p><span class="status">${row?.status.label || "Ready"}</span> ${row?.lastRun ? `Last run: ${row.lastRun}` : ""}</p>
+      <ul>
+        ${highlights.map((entry) => `<li>${entry}</li>`).join("")}
+      </ul>
+      <p>This generated preview reflects the current operational demo state on Tuesday, July 21, 2026.</p>
+    </div>
+  </body>
+</html>`,
+  };
+}
+
+function buildCsvArtifact(filename, headers, rows) {
+  const escape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+  const content = [headers.map(escape).join(","), ...rows.map((row) => row.map(escape).join(","))].join("\n");
+  return { filename, mime: "text/csv;charset=utf-8", content };
+}
+
+function buildModuleExportArtifact(key) {
+  if (key === "crew-changes") {
+    return buildCsvArtifact(
+      "Crew_Rotation_Manifest.csv",
+      ["Mission", "Vessel", "Role", "Port", "Embarkation", "Status"],
+      planningMissions.map((mission) => [mission.missionId, mission.vessel, mission.role, mission.port, mission.join, mission.status])
+    );
+  }
+  if (key === "crew") {
+    return buildCsvArtifact(
+      "Crew_Readiness_Manifest.csv",
+      ["Name", "Rank", "Availability", "Mission", "Readiness"],
+      searchableProfileKeys.map((profileKey) => {
+        const profile = profileData[profileKey];
+        return [profile.name, profile.rank, profile.availability, profile.mission, `${profile.readiness}%`];
+      })
+    );
+  }
+  if (key === "documents") {
+    return buildCsvArtifact(
+      "Document_Readiness_Manifest.csv",
+      ["Document", "Owner", "Vessel", "Verification", "Risk", "Status"],
+      Object.entries(documentCatalog).map(([docKey, item]) => {
+        const row = documentOpsState.rows[docKey];
+        return [item.title, item.owner, item.vessel, row.verification.label, row.risk.label, row.status.label];
+      })
+    );
+  }
+  if (key === "fleet") {
+    return buildCsvArtifact(
+      "Fleet_Readiness_Matrix.csv",
+      ["Vessel", "Port", "Crew", "Compliance", "Readiness", "Status"],
+      searchableVesselKeys.map((vesselKey) => {
+        const snapshot = getVesselSnapshot(vesselKey);
+        return [snapshot.name, snapshot.port, snapshot.crewLabel, snapshot.complianceLabel, `${snapshot.readiness}%`, snapshot.statusLabel];
+      })
+    );
+  }
+  if (key === "routes") {
+    return buildCsvArtifact(
+      "Route_Port_Manifest.csv",
+      ["Vessel", "Port", "ETA", "Crew State", "Risk", "Status"],
+      ["bremen", "stuttgart", "frankfurt", "dresden"].map((vesselKey) => {
+        const snapshot = getVesselSnapshot(vesselKey);
+        return [snapshot.name, snapshot.port, snapshot.eta, snapshot.crewLabel, snapshot.routeRisk, snapshot.statusLabel];
+      })
+    );
+  }
+  if (key === "planning") {
+    return {
+      filename: "Crew_Change_Plan_30_Days.html",
+      mime: "text/html;charset=utf-8",
+      content: `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>30-Day Crew Change Plan</title></head><body><h1>30-Day Crew Change Plan</h1><ul>${planningMissions
+        .map((mission) => `<li>${mission.missionId} · ${mission.vessel} · ${mission.join} · ${mission.status}</li>`)
+        .join("")}</ul></body></html>`,
+    };
+  }
+  return null;
+}
+
+function buildBriefExportArtifact(key) {
+  const preview = buildReportPreview(key);
+  if (!preview) return null;
+  return {
+    filename: preview.filename,
+    mime: preview.mime,
+    content: preview.content,
+  };
+}
+
+function buildAssignmentPackArtifact(key) {
+  const mission = matchingMissions[key];
+  if (!mission) return null;
+  const selected = getActionRotation(mission)?.selectedCandidateKey || mission.selectedCandidateKey;
+  const candidate = selected ? findMissionCandidate(mission, selected) : null;
+  return {
+    filename: `${mission.missionId}_Assignment_Pack.html`,
+    mime: "text/html;charset=utf-8",
+    content: `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${mission.missionId} Assignment Pack</title></head><body><h1>${mission.missionId} Assignment Pack</h1><p>Vessel: ${mission.vessel}</p><p>Role: ${mission.role}</p><p>Embarkation: ${mission.embarkation}</p><p>Candidate: ${candidate?.name || "Pending selection"}</p><p>Generated from the Ready to Sail local demo on Tuesday, July 21, 2026.</p></body></html>`,
+  };
+}
+
+function buildReportBuilderArtifact() {
+  return {
+    filename: "Operational_Report_Builder_Template.html",
+    mime: "text/html;charset=utf-8",
+    content: `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Operational Report Builder Template</title></head><body><h1>Operational Report Builder Template</h1><p>Date generated: Tuesday, July 21, 2026.</p><ul><li>Scope</li><li>Operational summary</li><li>Readiness metrics</li><li>Blockers and decisions</li><li>Recommended next actions</li></ul><p>This template is generated from the Ready to Sail MVP frontend.</p></body></html>`,
+  };
+}
+
+function getDocumentFocusContent() {
+  const key = state.activeDocumentFocus;
+  if (!key) return null;
+
+  const label = documentNames[key] || key;
+  const modeLabel =
+    state.activeDocumentMode === "renew"
+      ? "Renewal workflow opened"
+      : state.activeDocumentMode === "request"
+        ? "Document request opened"
+        : state.activeDocumentMode === "review"
+          ? "Review queue opened"
+          : state.activeDocumentMode === "bulk-validate"
+            ? "Bulk validation running"
+            : "Document opened";
+
+  const focusCopy = {
+    "passport-hc": "Hakan Çalhanoğlu remains fully covered. This record stays linked to the MT Scot Bremen assignment pack.",
+    "medical-cenk": "Cenk Tosun's renewal is now the key timeline item for MT Scot Hamburg and should stay under review until the booked exam is cleared.",
+    "seamanbook-emre": "Emre Belözoğlu remains one of the highest-impact document blockers because this file directly affects the MT Scot Bayern readiness path.",
+    "visa-ferdi": "Ferdi Kadıoğlu's visa workflow remains tied to the MT Scot Stuttgart decision path and should be reviewed together with candidate readiness.",
+    "flag-endorsement-nihat": "Nihat Kahveci's endorsement stays visible because it affects backup coverage for the MT Scot Bremen crew change.",
+    "rustu-tanker": "Rüştü Reçber's Advanced Oil Tanker certificate remains a blocked compliance item and still needs direct operational resolution.",
+    "bulk-validate": "Bulk validation is running on the pending queue so Operations can reduce manual review overhead before the next embarkation window.",
+    "compliance-exceptions": "The exceptions workflow is linked to document-driven blockers and remains the fastest way to understand unresolved readiness exposure.",
+  };
+
+  return {
+    title: `${modeLabel} · ${label}`,
+    copy: focusCopy[key] || "This document context is now active inside the operational sample set.",
+  };
+}
+
+function getReportFocusContent() {
+  const key = state.activeReportFocus;
+  if (!key) return null;
+
+  const label =
+    key === "builder"
+      ? "Operational Report Builder"
+      : reportFiles[key] || "Operational report context";
+
+  const modeLabel =
+    state.activeReportMode === "generate"
+      ? "Report generation queued"
+      : state.activeReportMode === "export"
+        ? "Export queued"
+        : state.activeReportMode === "build"
+          ? "Builder session opened"
+          : "Report opened";
+
+  const focusCopy = {
+    builder: "Use this report space to prepare operational summaries without leaving the MVP flow. Generated outputs continue to update the audit and activity panels.",
+    "weekly-readiness": "This report summarizes the current crew, fleet and document posture using the same pilot data visible across the rest of the application.",
+    "compliance-exceptions": "This report should stay aligned with exception approvals, document blockers and audit decisions before final operational sign-off.",
+    "crew-change-risk": "This report is the fastest way to re-evaluate open crew changes after candidate, document or compliance changes.",
+    "expiring-docs": "This report tracks expiring records that can still block assignments even when the crew profile looks otherwise ready.",
+    "daily-brief": "The daily brief export packages the current readiness picture into a lightweight operational summary for stakeholders.",
+    "weekly-summary": "The weekly summary export captures movement across blockers, readiness counts and exception handling in one bundle.",
+    "compliance-pack": "This export groups compliance-sensitive records and exceptions for review outside the live dashboard.",
+    "crew-plan": "This export reflects the active planning board and current mission states shown in Crew Changes and Planning.",
+    "doc-forecast": "This export highlights upcoming document pressure so Operations can act before assignments move into blocked status.",
+  };
+
+  return {
+    title: `${modeLabel} · ${label}`,
+    copy: focusCopy[key] || "This reporting context is now active inside the operational sample set.",
+  };
+}
+
+function syncDocumentsView() {
+  const kpis = documentOpsState.kpis;
+  const kpiMap = {
+    verified: "documents-kpi-verified",
+    verifiedMeta: "documents-kpi-verified-meta",
+    expiring: "documents-kpi-expiring",
+    expiringMeta: "documents-kpi-expiring-meta",
+    missing: "documents-kpi-missing",
+    missingMeta: "documents-kpi-missing-meta",
+    pending: "documents-kpi-pending",
+    pendingMeta: "documents-kpi-pending-meta",
+  };
+
+  Object.entries(kpiMap).forEach(([stateKey, elementId]) => {
+    const el = document.getElementById(elementId);
+    if (el) el.textContent = kpis[stateKey];
+  });
+
+  Object.entries(documentOpsState.rows).forEach(([rowKey, row]) => {
+    const verificationEl = document.getElementById(`document-verification-${rowKey}`);
+    const riskEl = document.getElementById(`document-risk-${rowKey}`);
+    const statusEl = document.getElementById(`document-status-${rowKey}`);
+    const actionEl = document.getElementById(`document-action-${rowKey}`);
+    const rowEl = document.getElementById(`document-row-${rowKey}`);
+
+    if (verificationEl) {
+      verificationEl.className = `badge ${row.verification.tone}`;
+      verificationEl.textContent = row.verification.label;
+    }
+    if (riskEl) {
+      riskEl.className = `badge ${row.risk.tone}`;
+      riskEl.textContent = row.risk.label;
+    }
+    if (statusEl) {
+      statusEl.className = `badge ${row.status.tone}`;
+      statusEl.textContent = row.status.label;
+    }
+    if (actionEl) {
+      actionEl.textContent = row.action.label;
+      actionEl.dataset.action = row.action.action;
+      actionEl.dataset.key = row.action.key;
+    }
+    if (rowEl) rowEl.classList.toggle("focus-row", rowKey === state.activeDocumentFocus);
+  });
+
+  const bannerEl = document.getElementById("documents-context-banner");
+  const titleEl = document.getElementById("documents-context-title");
+  const copyEl = document.getElementById("documents-context-copy");
+  const bannerContent = getDocumentFocusContent();
+
+  if (bannerEl && titleEl && copyEl) {
+    bannerEl.classList.toggle("show", Boolean(bannerContent));
+    if (bannerContent) {
+      titleEl.textContent = bannerContent.title;
+      copyEl.textContent = bannerContent.copy;
+    }
+  }
+}
+
+function syncReportsView() {
+  const bremenFinalized = Boolean(matchingMissions.bremen.finalized);
+  const stuttgartFinalized = Boolean(matchingMissions.stuttgart.finalized);
+  const readyCount = systemDataNotes.readyCount + (bremenFinalized ? 1 : 0) + (stuttgartFinalized ? 1 : 0);
+  const activeBlockers = alertsData.length;
+  const pendingExceptions = complianceExceptions.filter((item) => /Pending approval/i.test(item.status)).length;
+  const fleetReadinessValue = activeBlockers <= 2 ? "90%" : activeBlockers <= 4 ? "88%" : "87%";
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  setText("reports-kpi-fleet", fleetReadinessValue);
+  setText("reports-kpi-fleet-meta", activeBlockers <= 2 ? "+4% wk" : activeBlockers <= 4 ? "+3% wk" : "+1% wk");
+  setText("reports-kpi-crew", String(readyCount));
+  setText("reports-kpi-crew-meta", "Personnel ready to embark");
+  setText("reports-kpi-blockers", String(activeBlockers));
+  setText("reports-kpi-blockers-meta", activeBlockers ? "High priority" : "No active blockers");
+  setText("reports-kpi-generated", String(reportOpsState.generatedCount));
+  setText("reports-kpi-generated-meta", reportOpsState.generatedMeta);
+
+  reportOpsState.rows["compliance-exceptions"].status = pendingExceptions
+    ? { label: "Requires Review", tone: "blocked" }
+    : { label: "Ready", tone: "ready" };
+
+  reportOpsState.rows["crew-change-risk"].status =
+    activeBlockers > 2
+      ? { label: "At Risk", tone: "risk" }
+      : { label: "Ready", tone: "ready" };
+
+  reportOpsState.rows["expiring-docs"].status =
+    documentOpsState.kpis.expiring > 20
+      ? { label: "Warning", tone: "risk" }
+      : { label: "Ready", tone: "ready" };
+
+  const filterMap = {
+    all: () => true,
+    daily: (key) => ["compliance-exceptions", "crew-change-risk", "expiring-docs"].includes(key),
+    weekly: (key) => key === "weekly-readiness",
+    attention: (key) => ["blocked", "risk"].includes(reportOpsState.rows[key]?.status.tone),
+  };
+
+  Object.entries(reportOpsState.rows).forEach(([key, row]) => {
+    const statusEl = document.getElementById(`report-${key}-status`);
+    const lastRunEl = document.getElementById(`report-${key}-last-run`);
+    const actionEl = document.getElementById(`report-${key}-action`);
+    const rowEl = document.getElementById(`report-row-${key}`);
+
+    if (statusEl) {
+      statusEl.className = `badge ${row.status.tone}`;
+      statusEl.textContent = row.status.label;
+    }
+    if (lastRunEl) lastRunEl.textContent = row.lastRun;
+    if (actionEl) {
+      actionEl.textContent = row.action.label;
+      if (row.action.type === "nav") {
+        actionEl.dataset.nav = row.action.key;
+        delete actionEl.dataset.action;
+        delete actionEl.dataset.key;
+      } else {
+        actionEl.dataset.action = row.action.type;
+        actionEl.dataset.key = row.action.key;
+        delete actionEl.dataset.nav;
+      }
+    }
+    if (rowEl) {
+      rowEl.style.display = (filterMap[state.reportsFilter || "all"] || filterMap.all)(key) ? "" : "none";
+      rowEl.classList.toggle("focus-row", key === state.activeReportFocus);
+    }
+  });
+
+  const bannerEl = document.getElementById("reports-context-banner");
+  const titleEl = document.getElementById("reports-context-title");
+  const copyEl = document.getElementById("reports-context-copy");
+  const bannerContent = getReportFocusContent();
+
+  if (bannerEl && titleEl && copyEl) {
+    bannerEl.classList.toggle("show", Boolean(bannerContent));
+    if (bannerContent) {
+      titleEl.textContent = bannerContent.title;
+      copyEl.textContent = bannerContent.copy;
+    }
+  }
+}
+
+function getVesselSnapshot(key) {
+  const vessel = vesselData[key];
+  if (!vessel) return null;
+
+  const cenkRenewalBooked = documentOpsState.rows["medical-cenk"]?.status.label === "Renewal booked";
+  const emrePendingOwner = documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner";
+  const rustuAlertOpen = alertsData.some((item) => item.key === "rustu-tanker");
+  const stuttgartBlocked = alertsData.some((item) => item.key === "stuttgart-candidate");
+  const bremenFinalized = Boolean(matchingMissions.bremen.finalized);
+  const stuttgartFinalized = Boolean(matchingMissions.stuttgart.finalized);
+
+  const snapshot = {
+    ...vessel,
+    crewLabel: "Crew Ready",
+    complianceLabel: "Compliant",
+    readiness: vessel.readiness,
+    statusLabel: vessel.status,
+    tone: vessel.readiness >= 85 ? "ready" : vessel.readiness >= 75 ? "risk" : "blocked",
+    actionLabel: vessel.readiness >= 85 ? "View" : "Review",
+    routeRisk: vessel.readiness >= 85 ? "Low" : vessel.readiness >= 75 ? "Medium" : "Critical",
+    routeTone: vessel.readiness >= 85 ? "ready" : vessel.readiness >= 75 ? "risk" : "blocked",
+    embarkationWindow: vessel.eta,
+  };
+
+  if (key === "bremen") {
+    snapshot.readiness = bremenFinalized ? 94 : 92;
+    snapshot.crewLabel = bremenFinalized ? "Assignment Finalized" : "Crew Ready";
+    snapshot.complianceLabel = "Compliance Ready";
+    snapshot.statusLabel = "Ready";
+    snapshot.tone = "ready";
+    snapshot.actionLabel = bremenFinalized ? "Open" : "View";
+    snapshot.routeRisk = "Low";
+    snapshot.routeTone = "ready";
+    snapshot.embarkationWindow = bremenFinalized ? "Past window completed • next planning open" : "03-05 Aug • Rotterdam";
+  } else if (key === "stuttgart") {
+    snapshot.readiness = stuttgartFinalized ? 91 : stuttgartBlocked ? 70 : 84;
+    snapshot.crewLabel = stuttgartFinalized ? "Engineering Covered" : stuttgartBlocked ? "Crew Pending" : "Candidate In Review";
+    snapshot.complianceLabel = stuttgartFinalized ? "Compliance Ready" : stuttgartBlocked ? "Candidate gap" : "Promotion / visa review";
+    snapshot.statusLabel = stuttgartFinalized ? "Ready" : "At Risk";
+    snapshot.tone = stuttgartFinalized ? "ready" : "risk";
+    snapshot.actionLabel = stuttgartFinalized ? "Open" : "Review";
+    snapshot.routeRisk = stuttgartFinalized ? "Medium" : "High";
+    snapshot.routeTone = stuttgartFinalized ? "risk" : "blocked";
+    snapshot.embarkationWindow = "22-24 Jul • Rotterdam";
+  } else if (key === "hamburg") {
+    snapshot.readiness = cenkRenewalBooked ? 91 : 88;
+    snapshot.crewLabel = cenkRenewalBooked ? "Medical Scheduled" : "Medical Due";
+    snapshot.complianceLabel = cenkRenewalBooked ? "Renewal booked" : "Compliant";
+    snapshot.statusLabel = cenkRenewalBooked ? "In Review" : "At Risk";
+    snapshot.tone = cenkRenewalBooked ? "ready" : "risk";
+    snapshot.actionLabel = cenkRenewalBooked ? "Open" : "Review";
+    snapshot.routeRisk = cenkRenewalBooked ? "Low" : "Medium";
+    snapshot.routeTone = cenkRenewalBooked ? "ready" : "risk";
+    snapshot.embarkationWindow = "03 Sep • Antwerp";
+  } else if (key === "bayern") {
+    snapshot.readiness = emrePendingOwner ? 86 : 82;
+    snapshot.crewLabel = emrePendingOwner ? "Docs In Review" : "Passport Alert";
+    snapshot.complianceLabel = emrePendingOwner ? "Owner response pending" : "1 alert";
+    snapshot.statusLabel = "At Risk";
+    snapshot.tone = "risk";
+    snapshot.actionLabel = "Review";
+    snapshot.routeRisk = emrePendingOwner ? "Medium" : "High";
+    snapshot.routeTone = "risk";
+    snapshot.embarkationWindow = "11 Aug • Algeciras";
+  } else if (key === "frankfurt") {
+    snapshot.readiness = rustuAlertOpen ? 74 : 83;
+    snapshot.crewLabel = rustuAlertOpen ? "Master Risk" : "Renewal Open";
+    snapshot.complianceLabel = rustuAlertOpen ? "Cert expired" : "Renewal workflow";
+    snapshot.statusLabel = rustuAlertOpen ? "Blocked" : "At Risk";
+    snapshot.tone = rustuAlertOpen ? "blocked" : "risk";
+    snapshot.actionLabel = rustuAlertOpen ? "Intervene" : "Review";
+    snapshot.routeRisk = rustuAlertOpen ? "Critical" : "Medium";
+    snapshot.routeTone = rustuAlertOpen ? "blocked" : "risk";
+    snapshot.embarkationWindow = "19-21 Aug • Fos-sur-Mer";
+  }
+
+  return snapshot;
+}
+
+function syncFleetView() {
+  const snapshots = Object.keys(vesselData).map(getVesselSnapshot).filter(Boolean);
+  const readyCount = snapshots.filter((item) => item.tone === "ready").length;
+  const riskCount = snapshots.filter((item) => item.tone === "risk").length;
+  const blockedCount = snapshots.filter((item) => item.tone === "blocked").length;
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  setText("fleet-kpi-total", String(snapshots.length));
+  setText("fleet-kpi-total-meta", "Fleet active");
+  setText("fleet-kpi-ready", String(readyCount));
+  setText("fleet-kpi-ready-meta", readyCount >= 9 ? "Operationally covered" : "Coverage tightening");
+  setText("fleet-kpi-risk", String(riskCount));
+  setText("fleet-kpi-risk-meta", riskCount ? "Requires review" : "No medium risks");
+  setText("fleet-kpi-blocked", String(blockedCount));
+  setText("fleet-kpi-blocked-meta", blockedCount ? "Immediate intervention" : "No hard blockers");
+
+  const filterMap = {
+    all: () => true,
+    ready: (item) => item.tone === "ready",
+    risk: (item) => item.tone === "risk",
+    blocked: (item) => item.tone === "blocked",
+  };
+
+  snapshots.forEach((item) => {
+    const rowEl = document.getElementById(`fleet-row-${item.key}`);
+    if (rowEl) rowEl.style.display = (filterMap[state.fleetFilter || "all"] || filterMap.all)(item) ? "" : "none";
+    setText(`fleet-row-${item.key}-crew`, item.crewLabel);
+    setText(`fleet-row-${item.key}-compliance`, item.complianceLabel);
+    const scoreEl = document.getElementById(`fleet-row-${item.key}-score`);
+    if (scoreEl) {
+      scoreEl.textContent = `${item.readiness}%`;
+      scoreEl.className = item.tone === "blocked" ? "text-blocked" : item.tone === "risk" ? "text-risk" : "text-ready";
+    }
+    const statusEl = document.getElementById(`fleet-row-${item.key}-status`);
+    if (statusEl) {
+      statusEl.className = `badge ${item.tone}`;
+      statusEl.textContent = item.statusLabel;
+    }
+    const actionEl = document.getElementById(`fleet-row-${item.key}-action`);
+    if (actionEl) actionEl.textContent = item.actionLabel;
+  });
+
+  const tankerAverage = Math.round(snapshots.reduce((sum, item) => sum + item.readiness, 0) / snapshots.length);
+  setText("fleet-type-tankers-label", `${tankerAverage}%`);
+  const tankerBar = document.getElementById("fleet-type-tankers-bar");
+  if (tankerBar) tankerBar.style.width = `${tankerAverage}%`;
+
+  const lpgValue = blockedCount ? 68 : 74;
+  const containerValue = readyCount >= 9 ? 89 : 84;
+  const offshoreValue = blockedCount ? 52 : 48;
+  setText("fleet-type-lpg-label", `${lpgValue}%`);
+  setText("fleet-type-container-label", `${containerValue}%`);
+  setText("fleet-type-offshore-label", `${offshoreValue}%`);
+  const lpgBar = document.getElementById("fleet-type-lpg-bar");
+  const containerBar = document.getElementById("fleet-type-container-bar");
+  const offshoreBar = document.getElementById("fleet-type-offshore-bar");
+  if (lpgBar) lpgBar.style.width = `${lpgValue}%`;
+  if (containerBar) containerBar.style.width = `${containerValue}%`;
+  if (offshoreBar) offshoreBar.style.width = `${offshoreValue}%`;
+
+  const readyPct = Math.round((readyCount / snapshots.length) * 100);
+  const riskPct = Math.round((riskCount / snapshots.length) * 100);
+  const blockedPct = Math.max(100 - readyPct - riskPct, 0);
+  setText("fleet-distribution-ready-label", `${readyPct}%`);
+  setText("fleet-distribution-risk-label", `${riskPct}%`);
+  setText("fleet-distribution-blocked-label", `${blockedPct}%`);
+  const readyBar = document.getElementById("fleet-distribution-ready-bar");
+  const riskBar = document.getElementById("fleet-distribution-risk-bar");
+  const blockedBar = document.getElementById("fleet-distribution-blocked-bar");
+  if (readyBar) readyBar.style.width = `${readyPct}%`;
+  if (riskBar) riskBar.style.width = `${riskPct}%`;
+  if (blockedBar) blockedBar.style.width = `${blockedPct}%`;
+
+  const frankfurt = getVesselSnapshot("frankfurt");
+  const stuttgart = getVesselSnapshot("stuttgart");
+  const bayern = getVesselSnapshot("bayern");
+  setText("fleet-watch-frankfurt-meta", frankfurt.complianceLabel === "Renewal workflow" ? "Renewal workflow in progress" : "Master certificate expired");
+  setText("fleet-watch-stuttgart-meta", stuttgart.complianceLabel === "Compliance Ready" ? "Engineering gap resolved" : stuttgart.complianceLabel);
+  setText("fleet-watch-bayern-meta", bayern.complianceLabel);
+  const setBadge = (id, tone, label) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.className = `badge ${tone}`;
+      el.textContent = label;
+    }
+  };
+  setBadge("fleet-watch-frankfurt-status", frankfurt.tone, frankfurt.tone === "blocked" ? "Critical" : "Watch");
+  setBadge("fleet-watch-stuttgart-status", stuttgart.tone, stuttgart.tone === "ready" ? "Resolved" : "Priority: High");
+  setBadge("fleet-watch-bayern-status", bayern.tone === "risk" ? "risk" : "live", bayern.tone === "risk" ? "Medium" : "In Review");
+
+  setText("fleet-insight-rotterdam", stuttgart.tone === "ready" ? "Crew windows stabilized" : "High activity");
+  setText("fleet-insight-gibraltar", getVesselSnapshot("bremen").tone === "ready" ? "Window stable" : "Severe weather warning");
+  setText("fleet-insight-sync", "Just now");
+}
+
+function syncRoutesView() {
+  const trackedKeys = ["bremen", "stuttgart", "frankfurt", "dresden"];
+  const snapshots = trackedKeys.map(getVesselSnapshot).filter(Boolean);
+  const riskWindows = snapshots.filter((item) => item.tone !== "ready").length;
+  const delayedEvents = snapshots.filter((item) => item.tone === "blocked").length + (alertsData.some((item) => item.key === "emre-passport") ? 1 : 0);
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+  const setBadge = (id, tone, label) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.className = `badge ${tone}`;
+      el.textContent = label;
+    }
+  };
+
+  setText("routes-kpi-active", "8");
+  setText("routes-kpi-active-meta", "Fleet moving");
+  setText("routes-kpi-portcalls", "14");
+  setText("routes-kpi-portcalls-meta", riskWindows ? `+${riskWindows} under watch` : "Stable schedule");
+  setText("routes-kpi-risk", String(riskWindows));
+  setText("routes-kpi-risk-meta", riskWindows ? "Action required" : "No risk windows");
+  setText("routes-kpi-delayed", String(delayedEvents));
+  setText("routes-kpi-delayed-meta", delayedEvents ? "Intervention" : "No route delays");
+
+  const filterMap = {
+    all: () => true,
+    active: (item) => item.tone === "ready",
+    risk: (item) => item.tone === "risk",
+    blocked: (item) => item.tone === "blocked",
+  };
+
+  snapshots.forEach((item) => {
+    const rowEl = document.getElementById(`routes-row-${item.key}`);
+    if (rowEl) rowEl.style.display = (filterMap[state.routesFilter || "all"] || filterMap.all)(item) ? "" : "none";
+    setBadge(`routes-row-${item.key}-crew`, item.tone === "ready" ? "ready" : item.tone, item.crewLabel);
+    const riskEl = document.getElementById(`routes-row-${item.key}-risk`);
+    if (riskEl) {
+      riskEl.innerHTML = `<strong>${item.routeRisk}</strong>`;
+      riskEl.className = item.routeTone === "blocked" ? "text-blocked" : item.routeTone === "risk" ? "text-risk" : "text-ready";
+    }
+    setBadge(`routes-row-${item.key}-status`, item.tone === "ready" ? "live" : item.tone, item.statusLabel);
+    const actionEl = document.getElementById(`routes-row-${item.key}-action`);
+    if (actionEl) actionEl.textContent = item.actionLabel;
+  });
+
+  setBadge("routes-watch-rotterdam-status", getVesselSnapshot("stuttgart").tone === "ready" ? "live" : "risk", getVesselSnapshot("stuttgart").tone === "ready" ? "Stable" : "Medium");
+  setText("routes-watch-gibraltar-meta", getVesselSnapshot("bremen").tone === "ready" ? "Crew window stabilized" : "Weather delay");
+  setBadge("routes-watch-gibraltar-status", getVesselSnapshot("bremen").tone === "ready" ? "live" : "blocked", getVesselSnapshot("bremen").tone === "ready" ? "Low" : "High");
+  setText("routes-watch-fos-meta", getVesselSnapshot("frankfurt").tone === "blocked" ? "Certificate-driven intervention" : "Renewal watch");
+  setBadge("routes-watch-fos-status", getVesselSnapshot("frankfurt").tone === "blocked" ? "blocked" : "risk", getVesselSnapshot("frankfurt").tone === "blocked" ? "Critical" : "Medium");
+
+  setText("routes-window-bremen", getVesselSnapshot("bremen").embarkationWindow);
+  setText("routes-window-stuttgart", getVesselSnapshot("stuttgart").embarkationWindow);
+  setText("routes-window-frankfurt", getVesselSnapshot("frankfurt").embarkationWindow);
+
+  const flights = getVesselSnapshot("stuttgart").tone === "ready" ? 88 : 84;
+  const visas = documentOpsState.rows["visa-ferdi"]?.status.label === "Ready" ? 86 : documentOpsState.rows["visa-ferdi"]?.status.label === "Promotion cleared" ? 79 : 71;
+  const portAccess = getVesselSnapshot("frankfurt").tone === "blocked" ? 76 : 88;
+  setText("routes-logistics-flights-label", `${flights}%`);
+  setText("routes-logistics-visas-label", `${visas}%`);
+  setText("routes-logistics-port-label", `${portAccess}%`);
+  const flightsBar = document.getElementById("routes-logistics-flights-bar");
+  const visasBar = document.getElementById("routes-logistics-visas-bar");
+  const portBar = document.getElementById("routes-logistics-port-bar");
+  if (flightsBar) flightsBar.style.width = `${flights}%`;
+  if (visasBar) visasBar.style.width = `${visas}%`;
+  if (portBar) portBar.style.width = `${portAccess}%`;
+}
+
+function syncCrewChangesOverview() {
+  const actionsToday = planningMissions.filter((mission) => mission.open && mission.status !== "Finalized").length;
+  const stuttgartBlocked = alertsData.some((item) => item.key === "stuttgart-candidate");
+  const cenkRenewalBooked = documentOpsState.rows["medical-cenk"]?.status.label === "Renewal booked";
+  const emrePendingOwner = documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner";
+
+  const kpiEmbarking = document.getElementById("crewchanges-kpi-embarking");
+  const kpiRisk = document.getElementById("crewchanges-kpi-risk");
+  const kpiBlocked = document.getElementById("crewchanges-kpi-blocked");
+  const kpiActions = document.getElementById("crewchanges-kpi-actions");
+  const kpiRiskMeta = document.getElementById("crewchanges-kpi-risk-meta");
+  const kpiBlockedMeta = document.getElementById("crewchanges-kpi-blocked-meta");
+  const kpiActionsMeta = document.getElementById("crewchanges-kpi-actions-meta");
+
+  if (kpiEmbarking) kpiEmbarking.textContent = String(systemDataNotes.readyCount);
+  if (kpiRisk) kpiRisk.textContent = String(systemDataNotes.atRiskCount - (cenkRenewalBooked ? 1 : 0));
+  if (kpiBlocked) kpiBlocked.textContent = String(systemDataNotes.blockedCount - (stuttgartBlocked ? 0 : 1) - (emrePendingOwner ? 0 : 1));
+  if (kpiActions) kpiActions.textContent = String(actionsToday);
+  if (kpiRiskMeta) kpiRiskMeta.textContent = cenkRenewalBooked ? "+1 scheduled for closure" : "+2";
+  if (kpiBlockedMeta) kpiBlockedMeta.textContent = stuttgartBlocked ? "-1 in progress" : "-2 reduced";
+  if (kpiActionsMeta) kpiActionsMeta.textContent = actionsToday === 1 ? "Required decision" : "Required decisions";
+
+  const bremenMission = matchingMissions.bremen;
+  const bremenCandidate = findMissionCandidate(bremenMission, bremenMission.selectedCandidateKey || "hakan") || bremenMission.candidates[0];
+  const stuttgartMission = matchingMissions.stuttgart;
+  const stuttgartCandidate = findMissionCandidate(stuttgartMission, stuttgartMission.selectedCandidateKey || "ferdi") || stuttgartMission.candidates[0];
+  const rustuAlertOpen = alertsData.some((item) => item.key === "rustu-tanker");
+  const cenkDocumentState = documentOpsState.rows["medical-cenk"]?.status.label || "Expiring";
+
+  const rowMap = {
+    bremen: {
+      candidateEl: "crewchanges-row-bremen-candidate",
+      readyEl: "crewchanges-row-bremen-ready",
+      statusEl: "crewchanges-row-bremen-status",
+      urgencyEl: "crewchanges-row-bremen-urgency",
+      actionEl: "crewchanges-row-bremen-action",
+      candidate: `${bremenCandidate.name}<div class="muted" style="font-size:10px;">ID: #88401</div>`,
+      readiness: `${bremenCandidate.readiness}%`,
+      readinessClass: bremenCandidate.readiness >= 95 ? "text-ready" : "text-risk",
+      status: bremenMission.finalized ? "Finalized" : planningMissions.find((item) => item.key === "bremen")?.status || "Ready",
+      statusTone: bremenMission.finalized ? "ready" : "ready",
+      urgency: bremenMission.finalized ? "Closed" : "Low",
+      urgencyTone: bremenMission.finalized ? "ready" : "live",
+      actionLabel: bremenMission.finalized ? "Open" : "Open",
+    },
+    stuttgart: {
+      candidateEl: "crewchanges-row-stuttgart-candidate",
+      readyEl: "crewchanges-row-stuttgart-ready",
+      statusEl: "crewchanges-row-stuttgart-status",
+      urgencyEl: "crewchanges-row-stuttgart-urgency",
+      actionEl: "crewchanges-row-stuttgart-action",
+      candidate: `${stuttgartCandidate.name}<div class="muted" style="font-size:10px;">ID: #88409</div>`,
+      readiness: `${stuttgartCandidate.readiness}%`,
+      readinessClass: stuttgartMission.finalized ? "text-ready" : stuttgartCandidate.readiness >= 90 ? "text-risk" : "text-blocked",
+      status: stuttgartMission.finalized ? "Finalized" : planningMissions.find((item) => item.key === "stuttgart")?.status || "At Risk",
+      statusTone: stuttgartMission.finalized ? "ready" : stuttgartBlocked ? "blocked" : "risk",
+      urgency: stuttgartMission.finalized ? "Closed" : stuttgartBlocked ? "High" : "Medium",
+      urgencyTone: stuttgartMission.finalized ? "ready" : stuttgartBlocked ? "blocked" : "risk",
+      actionLabel: stuttgartMission.finalized ? "Open" : "View details",
+    },
+    frankfurt: {
+      candidateEl: "crewchanges-row-frankfurt-candidate",
+      readyEl: "crewchanges-row-frankfurt-ready",
+      statusEl: "crewchanges-row-frankfurt-status",
+      urgencyEl: "crewchanges-row-frankfurt-urgency",
+      candidate: `Rüştü Reçber<div class="muted" style="font-size:10px;">ID: #88405</div>`,
+      readiness: `${profileData.rustu.readiness}%`,
+      readinessClass: rustuAlertOpen ? "text-blocked" : "text-risk",
+      status: rustuAlertOpen ? "Blocked" : "In Review",
+      statusTone: rustuAlertOpen ? "blocked" : "risk",
+      urgency: rustuAlertOpen ? "High" : "Medium",
+      urgencyTone: rustuAlertOpen ? "blocked" : "risk",
+    },
+    hamburg: {
+      candidateEl: "crewchanges-row-hamburg-candidate",
+      readyEl: "crewchanges-row-hamburg-ready",
+      statusEl: "crewchanges-row-hamburg-status",
+      urgencyEl: "crewchanges-row-hamburg-urgency",
+      candidate: `Cenk Tosun<div class="muted" style="font-size:10px;">ID: #88404</div>`,
+      readiness: `${profileData.cenk.readiness}%`,
+      readinessClass: cenkRenewalBooked ? "text-ready" : "text-risk",
+      status: cenkRenewalBooked ? "In Review" : "At Risk",
+      statusTone: cenkRenewalBooked ? "live" : "risk",
+      urgency: cenkRenewalBooked ? "Low" : "Medium",
+      urgencyTone: cenkRenewalBooked ? "live" : "risk",
+    },
+  };
+
+  Object.values(rowMap).forEach((row) => {
+    const candidateEl = document.getElementById(row.candidateEl);
+    const readyEl = document.getElementById(row.readyEl);
+    const statusEl = document.getElementById(row.statusEl);
+    const urgencyEl = document.getElementById(row.urgencyEl);
+    const actionEl = row.actionEl ? document.getElementById(row.actionEl) : null;
+
+    if (candidateEl) candidateEl.innerHTML = row.candidate;
+    if (readyEl) {
+      readyEl.className = row.readinessClass;
+      readyEl.textContent = row.readiness;
+    }
+    if (statusEl) {
+      statusEl.className = `badge ${row.statusTone}`;
+      statusEl.textContent = row.status;
+    }
+    if (urgencyEl) {
+      urgencyEl.className = `badge ${row.urgencyTone}`;
+      urgencyEl.textContent = row.urgency;
+    }
+    if (actionEl && row.actionLabel) {
+      actionEl.textContent = row.actionLabel;
+    }
+  });
+
+  const filterMap = {
+    all: () => true,
+    actionable: (key) => ["bremen", "stuttgart"].includes(key),
+    risk: (key) => ["stuttgart", "hamburg"].includes(key),
+    blocked: (key) => key === "frankfurt",
+  };
+
+  Object.keys(rowMap).forEach((key) => {
+    const rowEl = document.getElementById(`crewchanges-row-${key}-candidate`)?.closest("tr");
+    if (rowEl) rowEl.style.display = filterMap[state.crewChangesFilter || "all"](key) ? "" : "none";
+  });
+
+  const logisticsBremenStatus = document.getElementById("crewchanges-logistics-bremen-status");
+  const logisticsBremenRoute = document.getElementById("crewchanges-logistics-bremen-route");
+  const logisticsStuttgartStatus = document.getElementById("crewchanges-logistics-stuttgart-status");
+  const logisticsStuttgartRoute = document.getElementById("crewchanges-logistics-stuttgart-route");
+  const logisticsStuttgartArrival = document.getElementById("crewchanges-logistics-stuttgart-arrival");
+  const schengenLabel = document.getElementById("crewchanges-visa-schengen-label");
+  const schengenBar = document.getElementById("crewchanges-visa-schengen-bar");
+  const usLabel = document.getElementById("crewchanges-visa-us-label");
+  const usBar = document.getElementById("crewchanges-visa-us-bar");
+
+  if (logisticsBremenStatus) {
+    logisticsBremenStatus.className = `badge ${bremenMission.finalized ? "ready" : "live"}`;
+    logisticsBremenStatus.textContent = bremenMission.finalized ? "Confirmed" : "On Time";
+  }
+  if (logisticsBremenRoute) {
+    logisticsBremenRoute.textContent = `IST → GIB • ${bremenCandidate.name.split(" ").slice(-1)[0]}, ${bremenCandidate.name[0]}.`;
+  }
+  if (logisticsStuttgartStatus) {
+    const stuttgartTone = stuttgartMission.finalized ? "ready" : stuttgartBlocked ? "blocked" : "risk";
+    logisticsStuttgartStatus.className = `badge ${stuttgartTone}`;
+    logisticsStuttgartStatus.textContent = stuttgartMission.finalized ? "Confirmed" : stuttgartBlocked ? "Pending approval" : "In review";
+  }
+  if (logisticsStuttgartRoute) {
+    logisticsStuttgartRoute.textContent = `IST → RTM • ${stuttgartCandidate.name.split(" ").slice(-1)[0]}, ${stuttgartCandidate.name[0]}.`;
+  }
+  if (logisticsStuttgartArrival) {
+    logisticsStuttgartArrival.textContent = stuttgartMission.finalized ? "Arrival: 17:55" : "Arrival: pending clearance";
+  }
+
+  const schengenValue = stuttgartBlocked ? 92 : 97;
+  const usValue =
+    documentOpsState.rows["visa-ferdi"]?.status.label === "Ready"
+      ? 91
+      : documentOpsState.rows["visa-ferdi"]?.status.label === "Promotion cleared"
+        ? 82
+        : 68;
+
+  if (schengenLabel) schengenLabel.textContent = `${schengenValue}%`;
+  if (schengenBar) schengenBar.style.width = `${schengenValue}%`;
+  if (usLabel) usLabel.textContent = `${usValue}%`;
+  if (usBar) {
+    usBar.style.width = `${usValue}%`;
+    usBar.style.background = usValue >= 85 ? "#006591" : usValue >= 75 ? "#fbbf24" : "#ba1a1a";
+  }
+}
+
+function syncCrewView() {
+  const readyEl = document.getElementById("crew-kpi-ready");
+  const riskEl = document.getElementById("crew-kpi-risk");
+  const blockedEl = document.getElementById("crew-kpi-blocked");
+  const availableEl = document.getElementById("crew-kpi-available");
+  const readyMetaEl = document.getElementById("crew-kpi-ready-meta");
+  const riskMetaEl = document.getElementById("crew-kpi-risk-meta");
+  const blockedMetaEl = document.getElementById("crew-kpi-blocked-meta");
+  const availableMetaEl = document.getElementById("crew-kpi-available-meta");
+
+  const cenkRenewalBooked = documentOpsState.rows["medical-cenk"]?.status.label === "Renewal booked";
+  const rustuAlertOpen = alertsData.some((item) => item.key === "rustu-tanker");
+  const ferdiVisaState = documentOpsState.rows["visa-ferdi"]?.status.label;
+  const bremenFinalized = matchingMissions.bremen.finalized;
+  const stuttgartFinalized = matchingMissions.stuttgart.finalized;
+  const readyCount = systemDataNotes.readyCount + (bremenFinalized ? 1 : 0) + (stuttgartFinalized ? 1 : 0);
+  const riskCount = systemDataNotes.atRiskCount - (cenkRenewalBooked ? 1 : 0) - (stuttgartFinalized ? 1 : 0);
+  const blockedCount = systemDataNotes.blockedCount - (rustuAlertOpen ? 0 : 1);
+  const availableCount = 42 - (bremenFinalized ? 1 : 0) - (stuttgartFinalized ? 1 : 0);
+  const totalStatusCount = readyCount + riskCount + blockedCount;
+
+  if (readyEl) readyEl.textContent = String(readyCount);
+  if (riskEl) riskEl.textContent = String(riskCount);
+  if (blockedEl) blockedEl.textContent = String(blockedCount);
+  if (availableEl) availableEl.textContent = String(availableCount);
+  if (readyMetaEl) readyMetaEl.textContent = bremenFinalized || stuttgartFinalized ? "+assignment movement captured" : "+8 vs yesterday";
+  if (riskMetaEl) riskMetaEl.textContent = cenkRenewalBooked ? "+medical review scheduled" : "+2 vs yesterday";
+  if (blockedMetaEl) blockedMetaEl.textContent = rustuAlertOpen ? "Requires action" : "1 blocker reduced";
+  if (availableMetaEl) availableMetaEl.textContent = bremenFinalized || stuttgartFinalized ? "Pool updated after assignments" : "Ready for assignment";
+
+  const hakanMission = matchingMissions.bremen;
+  const ferdiMission = matchingMissions.stuttgart;
+  const ferdiCandidate = findMissionCandidate(ferdiMission, ferdiMission.selectedCandidateKey || "ferdi") || ferdiMission.candidates[0];
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+  const setHtml = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = value;
+  };
+  const setBadge = (id, tone, label) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.className = `badge ${tone}`;
+      el.textContent = label;
+    }
+  };
+  const setStrongClass = (id, className, label) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.className = className;
+      el.textContent = label;
+    }
+  };
+
+  setText("crew-row-hakan-vessel", bremenFinalized ? "MT Scot Bremen" : "Available");
+  setStrongClass("crew-row-hakan-ready", "text-ready", `${profileData.hakan.readiness}%`);
+  setHtml("crew-row-hakan-medical", `<strong>${bremenFinalized ? "Embarkation Locked" : "Ready"}</strong>`);
+  setBadge("crew-row-hakan-status", "ready", bremenFinalized ? "Assigned" : "Ready");
+  const hakanAction = document.getElementById("crew-row-hakan-action");
+  if (hakanAction) {
+    hakanAction.textContent = bremenFinalized ? "Open" : "Assign";
+    hakanAction.dataset.action = "open-matching";
+    hakanAction.dataset.key = "bremen";
+  }
+
+  setHtml("crew-row-emre-travel", `<strong>${documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "Docs Requested" : "Passport Alert"}</strong>`);
+  setBadge("crew-row-emre-status", documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "live" : "risk", documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "In Review" : "At Risk");
+
+  setStrongClass("crew-row-cenk-ready", cenkRenewalBooked ? "text-ready" : "text-risk", `${profileData.cenk.readiness}%`);
+  setHtml("crew-row-cenk-medical", `<strong>${cenkRenewalBooked ? "Renewal booked" : "Medical Due"}</strong>`);
+  setBadge("crew-row-cenk-status", cenkRenewalBooked ? "live" : "risk", cenkRenewalBooked ? "In Review" : "At Risk");
+
+  setStrongClass("crew-row-rustu-ready", rustuAlertOpen ? "text-blocked" : "text-risk", `${profileData.rustu.readiness}%`);
+  setHtml("crew-row-rustu-certs", `<strong>${rustuAlertOpen ? "Cert Expired" : "Renewal open"}</strong>`);
+  setBadge("crew-row-rustu-status", rustuAlertOpen ? "blocked" : "risk", rustuAlertOpen ? "Blocked" : "In Review");
+
+  setText("crew-row-ferdi-vessel", stuttgartFinalized ? "MT Scot Stuttgart" : "Available");
+  setStrongClass("crew-row-ferdi-ready", stuttgartFinalized ? "text-ready" : ferdiCandidate.readiness >= 90 ? "text-risk" : "text-blocked", `${ferdiCandidate.readiness}%`);
+  setHtml(
+    "crew-row-ferdi-travel",
+    `<strong>${
+      ferdiVisaState === "Ready"
+        ? "Travel Ready"
+        : ferdiVisaState === "Promotion cleared"
+          ? "Promotion Cleared"
+          : ferdiVisaState === "In review"
+            ? "Visa In Review"
+            : "Visa Pending"
+    }</strong>`
+  );
+  setBadge("crew-row-ferdi-status", stuttgartFinalized ? "ready" : ferdiVisaState === "Ready" ? "ready" : "risk", stuttgartFinalized ? "Assigned" : ferdiVisaState === "Ready" ? "Ready" : "At Risk");
+  const ferdiAction = document.getElementById("crew-row-ferdi-action");
+  if (ferdiAction) {
+    ferdiAction.textContent = stuttgartFinalized ? "Open" : "Review";
+    ferdiAction.dataset.action = stuttgartFinalized ? "open-matching" : "open-crew-profile";
+    ferdiAction.dataset.key = stuttgartFinalized ? "stuttgart" : "ferdi";
+  }
+
+  const rowStatusMap = {
+    merih: "ready",
+    hakan: "ready",
+    nihat: "risk",
+    emre: documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "risk" : "risk",
+    cenk: cenkRenewalBooked ? "risk" : "risk",
+    rustu: rustuAlertOpen ? "blocked" : "risk",
+    arda: "ready",
+    ozan: "ready",
+    kerem: "ready",
+    ferdi: stuttgartFinalized ? "ready" : ferdiVisaState === "Ready" ? "ready" : "risk",
+  };
+
+  document.querySelectorAll("[data-crew-key]").forEach((row) => {
+    const crewKey = row.getAttribute("data-crew-key");
+    const tone = rowStatusMap[crewKey] || "ready";
+    row.dataset.status = tone;
+    const visible = state.crewFilter === "all" ? true : tone === state.crewFilter;
+    row.style.display = visible ? "" : "none";
+  });
+
+  const setWatch = (prefix, title, meta, tone, status) => {
+    const titleEl = document.getElementById(`crew-watch-${prefix}-title`);
+    const metaEl = document.getElementById(`crew-watch-${prefix}-meta`);
+    const statusEl = document.getElementById(`crew-watch-${prefix}-status`);
+    if (titleEl) titleEl.textContent = title;
+    if (metaEl) metaEl.textContent = meta;
+    if (statusEl) {
+      statusEl.className = `badge ${tone}`;
+      statusEl.textContent = status;
+    }
+  };
+
+  setWatch(
+    "emre",
+    documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "Seaman Book" : "Passport",
+    documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner"
+      ? "Emre Belözoğlu • Owner response pending"
+      : "Emre Belözoğlu • Expires before next assignment",
+    documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "risk" : "blocked",
+    documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner" ? "In Review" : "Critical"
+  );
+  setWatch(
+    "cenk",
+    "Medical Certificate",
+    cenkRenewalBooked ? "Cenk Tosun • Renewal booked before 03 Sep 2026 embarkation" : "Cenk Tosun • Exp: 12 days",
+    cenkRenewalBooked ? "live" : "risk",
+    cenkRenewalBooked ? "Scheduled" : "Expiring"
+  );
+  setWatch(
+    "rustu",
+    "Advanced Oil Tanker",
+    rustuAlertOpen ? "Rüştü Reçber • Expired" : "Rüştü Reçber • Renewal workflow in progress",
+    rustuAlertOpen ? "blocked" : "risk",
+    rustuAlertOpen ? "Blocked" : "In Review"
+  );
+
+  const availabilityMap = {
+    master: { count: rustuAlertOpen ? 12 : 13, width: rustuAlertOpen ? 75 : 82 },
+    chiefeng: { count: stuttgartFinalized ? 7 : 8, width: stuttgartFinalized ? 40 : 45 },
+    deck: { count: bremenFinalized ? 21 : 22, width: bremenFinalized ? 84 : 90 },
+  };
+
+  Object.entries(availabilityMap).forEach(([key, value]) => {
+    const labelEl = document.getElementById(`crew-availability-${key}-label`);
+    const barEl = document.getElementById(`crew-availability-${key}-bar`);
+    if (labelEl) labelEl.textContent = `${value.count} Available`;
+    if (barEl) barEl.style.width = `${value.width}%`;
+  });
+
+  const readyPercent = Math.round((readyCount / totalStatusCount) * 100);
+  const riskPercent = Math.round((riskCount / totalStatusCount) * 100);
+  const blockedPercent = Math.max(100 - readyPercent - riskPercent, 0);
+  const distributionMap = {
+    ready: readyPercent,
+    risk: riskPercent,
+    blocked: blockedPercent,
+  };
+
+  Object.entries(distributionMap).forEach(([key, value]) => {
+    const labelEl = document.getElementById(`crew-distribution-${key}-label`);
+    const barEl = document.getElementById(`crew-distribution-${key}-bar`);
+    if (labelEl) labelEl.textContent = `${value}%`;
+    if (barEl) barEl.style.width = `${value}%`;
+  });
+}
+
+function addProfileTimelineEntry(profileKey, action, who) {
+  const profile = profileData[profileKey];
+  if (!profile) return;
+  profile.timeline.unshift({
+    time: "20 Jul · 14:20",
+    action,
+    who,
+  });
+}
+
+function addProfileNote(profileKey, note) {
+  const profile = profileData[profileKey];
+  if (!profile) return;
+  if (profile.notes.includes(note)) return;
+  profile.notes.unshift(note);
+}
+
+function ensureComplianceException(exception) {
+  const existing = complianceExceptions.find((item) => item.key === exception.key);
+  if (existing) {
+    Object.assign(existing, exception);
+    return existing;
+  }
+  complianceExceptions.unshift(exception);
+  return exception;
+}
 
 const state = {
   activeView: "command-center",
@@ -1171,6 +2593,18 @@ const state = {
   activeProfileTab: "overview",
   activeComplianceTab: "rules",
   activeVessel: "bremen",
+  crewChangesFilter: "all",
+  crewFilter: "all",
+  planningFilter: "all",
+  fleetFilter: "all",
+  routesFilter: "all",
+  reportsFilter: "all",
+  pendingPlanningContext: null,
+  activeDocumentFocus: null,
+  activeDocumentMode: "open",
+  activeReportFocus: null,
+  activeReportMode: "open",
+  activeAdminFocus: null,
   rules: Object.fromEntries(complianceRules.map((rule) => [rule.key, rule.enabled])),
 };
 
@@ -1195,8 +2629,10 @@ const vesselDetailRoot = document.getElementById("vessel-detail-root");
 const alertsViewRoot = document.getElementById("alerts-view-root");
 const complianceViewRoot = document.getElementById("compliance-view-root");
 const adminViewRoot = document.getElementById("admin-view-root");
+const fileUploadInput = document.getElementById("file-upload-input");
 
 let toastTimer;
+let pendingUploadProfileKey = null;
 let chatHistory = [
   {
     role: "ai",
@@ -1217,9 +2653,78 @@ const activityFeed = [
   { time: "20 Jul · 13:18", title: "CC-2026-014 assignment draft updated", meta: "Crew Matching" },
 ];
 
+const STORAGE_KEY = "ready-to-sail-v1-demo-state";
+
+function cloneJson(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function replaceArrayContents(target, source) {
+  if (!Array.isArray(target) || !Array.isArray(source)) return;
+  target.splice(0, target.length, ...source);
+}
+
+function replaceObjectContents(target, source) {
+  if (!target || !source || typeof target !== "object" || typeof source !== "object") return;
+  Object.keys(target).forEach((key) => delete target[key]);
+  Object.assign(target, source);
+}
+
+function collectPersistedState() {
+  return {
+    version: 1,
+    state: cloneJson(state),
+    chatHistory: cloneJson(chatHistory),
+    activityFeed: cloneJson(activityFeed),
+    documentOpsState: cloneJson(documentOpsState),
+    reportOpsState: cloneJson(reportOpsState),
+    adminOpsState: cloneJson(adminOpsState),
+    planningMissions: cloneJson(planningMissions),
+    matchingMissions: cloneJson(matchingMissions),
+    alertsData: cloneJson(alertsData),
+    complianceRules: cloneJson(complianceRules),
+    complianceExceptions: cloneJson(complianceExceptions),
+    complianceAudit: cloneJson(complianceAudit),
+    profileData: cloneJson(profileData),
+  };
+}
+
+function persistAppState() {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(collectPersistedState()));
+  } catch (error) {
+    console.warn("Unable to persist Ready to Sail state locally.", error);
+  }
+}
+
+function restorePersistedState() {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const persisted = JSON.parse(raw);
+    if (!persisted || persisted.version !== 1) return;
+
+    if (persisted.state) Object.assign(state, persisted.state);
+    if (persisted.chatHistory) chatHistory = persisted.chatHistory;
+    if (persisted.activityFeed) replaceArrayContents(activityFeed, persisted.activityFeed);
+    if (persisted.documentOpsState) replaceObjectContents(documentOpsState, persisted.documentOpsState);
+    if (persisted.reportOpsState) replaceObjectContents(reportOpsState, persisted.reportOpsState);
+    if (persisted.adminOpsState) replaceObjectContents(adminOpsState, persisted.adminOpsState);
+    if (persisted.planningMissions) replaceArrayContents(planningMissions, persisted.planningMissions);
+    if (persisted.matchingMissions) replaceObjectContents(matchingMissions, persisted.matchingMissions);
+    if (persisted.alertsData) replaceArrayContents(alertsData, persisted.alertsData);
+    if (persisted.complianceRules) replaceArrayContents(complianceRules, persisted.complianceRules);
+    if (persisted.complianceExceptions) replaceArrayContents(complianceExceptions, persisted.complianceExceptions);
+    if (persisted.complianceAudit) replaceArrayContents(complianceAudit, persisted.complianceAudit);
+    if (persisted.profileData) replaceObjectContents(profileData, persisted.profileData);
+  } catch (error) {
+    console.warn("Unable to restore Ready to Sail state from local storage.", error);
+  }
+}
+
 function recordActivity(title, meta) {
   activityFeed.unshift({
-    time: "20 Jul · 14:20",
+    time: "21 Jul · 14:20",
     title,
     meta,
   });
@@ -1231,16 +2736,200 @@ function updateMissionPlanningState(missionKey, updates) {
   Object.assign(mission, updates);
 }
 
+function getDefaultRotationKey(missionKey) {
+  return matchingMissions[missionKey]?.rotations?.[0]?.key || "";
+}
+
+function getMissionRotation(mission, rotationKey = state.activeRotation) {
+  return mission.rotations.find((rotation) => rotation.key === rotationKey) || mission.rotations[0];
+}
+
+function getActionRotation(mission) {
+  return mission.rotations.find((rotation) => rotation.detailMode !== "summary") || mission.rotations[0];
+}
+
+function getPlanningMissionSnapshot(mission) {
+  const missionContext = matchingMissions[mission.key];
+  const rustuAlertOpen = alertsData.some((item) => item.key === "rustu-tanker");
+  const stuttgartBlocked = alertsData.some((item) => item.key === "stuttgart-candidate");
+  const emrePendingOwner = documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner";
+  const cenkRenewalBooked = documentOpsState.rows["medical-cenk"]?.status.label === "Renewal booked";
+
+  if (!missionContext) {
+    const queuedStatusMap = {
+      hamburg: {
+        status: "Scheduled",
+        tone: "ready",
+        candidate: cenkRenewalBooked ? "Medical renewal booked" : "Relief planning",
+        openAction: "show-future-mission",
+        actionLabel: "Queued",
+      },
+      bayern: {
+        status: emrePendingOwner ? "Passport review" : "Scheduled",
+        tone: emrePendingOwner ? "risk" : "ready",
+        candidate: emrePendingOwner ? "Document pack in review" : "Passport alert",
+        openAction: "show-future-mission",
+        actionLabel: "Queued",
+      },
+      frankfurt: {
+        status: rustuAlertOpen ? "Urgent - cert expired" : "Relief planning",
+        tone: rustuAlertOpen ? "blocked" : "risk",
+        candidate: rustuAlertOpen ? "No compliant candidate yet" : "Renewal workflow open",
+        openAction: "show-future-mission",
+        actionLabel: "Queued",
+      },
+      dresden: {
+        status: "Scheduled",
+        tone: "ready",
+        candidate: "Current master ready",
+        openAction: "show-future-mission",
+        actionLabel: "Queued",
+      },
+    };
+
+    const queuedState = queuedStatusMap[mission.key] || {
+      status: mission.status,
+      tone: "ready",
+      candidate: mission.candidate,
+      openAction: "show-future-mission",
+      actionLabel: "Queued",
+    };
+
+    return {
+      ...mission,
+      ...queuedState,
+      isQueued: true,
+      isRisk: ["risk", "blocked"].includes(queuedState.tone),
+    };
+  }
+
+  const actionRotation = getActionRotation(missionContext);
+  const selectedCandidate = findMissionCandidate(missionContext, actionRotation?.selectedCandidateKey || missionContext.selectedCandidateKey) || missionContext.candidates[0];
+  const isFinalized = Boolean(missionContext.finalized);
+  const status =
+    mission.key === "bremen"
+      ? isFinalized
+        ? "Finalized"
+        : "Ready"
+      : isFinalized
+        ? "Finalized"
+        : stuttgartBlocked
+          ? "Pending action"
+          : "In review";
+  const tone =
+    mission.key === "bremen"
+      ? "ready"
+      : isFinalized
+        ? "ready"
+        : stuttgartBlocked
+          ? "blocked"
+          : "risk";
+
+  return {
+    ...mission,
+    status,
+    tone,
+    candidate: selectedCandidate?.name || mission.candidate,
+    actionLabel: "Open Matching",
+    openAction: "open-matching",
+    isQueued: false,
+    isRisk: tone !== "ready",
+  };
+}
+
+function getPlanningVisibleMissions() {
+  const snapshots = planningMissions.map(getPlanningMissionSnapshot);
+  switch (state.planningFilter) {
+    case "active":
+      return snapshots.filter((mission) => !mission.isQueued);
+    case "risk":
+      return snapshots.filter((mission) => mission.isRisk);
+    case "queued":
+      return snapshots.filter((mission) => mission.isQueued);
+    default:
+      return snapshots;
+  }
+}
+
+function getAvailabilityScore(candidate) {
+  const availability = candidate.profileKey ? profileData[candidate.profileKey]?.availability || "" : "";
+  if (/today/i.test(availability)) return 0;
+  if (/available/i.test(availability)) return 1;
+  if (/assigned/i.test(availability)) return 2;
+  if (/3 days/i.test(availability)) return 3;
+  if (/review/i.test(availability)) return 4;
+  if (/on board/i.test(availability)) return 5;
+  return 6;
+}
+
+function getToneScore(tone) {
+  if (tone === "ready") return 0;
+  if (tone === "risk") return 1;
+  return 2;
+}
+
+function sortCandidatesForFilter(candidates, filterLabel, selectedCandidateKey) {
+  const sorted = [...candidates];
+
+  if (filterLabel === "Highest Ready Index") {
+    return sorted.sort((a, b) => b.readiness - a.readiness);
+  }
+
+  if (filterLabel === "Nearest Availability") {
+    return sorted.sort((a, b) => getAvailabilityScore(a) - getAvailabilityScore(b) || b.readiness - a.readiness);
+  }
+
+  if (filterLabel === "Most Experience") {
+    return sorted.sort((a, b) => (b.experienceScore || 0) - (a.experienceScore || 0) || b.readiness - a.readiness);
+  }
+
+  if (filterLabel === "Lowest Operational Risk") {
+    return sorted.sort((a, b) => getToneScore(a.tone) - getToneScore(b.tone) || b.readiness - a.readiness);
+  }
+
+  return sorted.sort((a, b) => {
+    if (a.key === selectedCandidateKey) return -1;
+    if (b.key === selectedCandidateKey) return 1;
+    return b.readiness - a.readiness;
+  });
+}
+
+function findMissionCandidate(mission, candidateKey) {
+  if (!mission) return null;
+  const missionCandidate = mission.candidates?.find((item) => item.key === candidateKey);
+  if (missionCandidate) return missionCandidate;
+  for (const rotation of mission.rotations) {
+    if (!Array.isArray(rotation.candidates)) continue;
+    const rotationCandidate = rotation.candidates.find((item) => item.key === candidateKey);
+    if (rotationCandidate) return rotationCandidate;
+  }
+  return null;
+}
+
 function updateMissionSelection(missionKey, candidateKey) {
   const mission = matchingMissions[missionKey];
   if (!mission) return null;
+  const rotation = getMissionRotation(mission);
+  const candidateSource = rotation.candidates || mission.candidates;
 
-  const candidate = mission.candidates.find((item) => item.key === candidateKey);
+  const candidate = candidateSource.find((item) => item.key === candidateKey);
   if (!candidate) return null;
 
   mission.selectedCandidateKey = candidateKey;
+  rotation.selectedCandidateKey = candidateKey;
+  rotation.signOn = candidate.name;
+  rotation.statusLabel = mission.finalized ? "Confirmed" : "Candidate selected";
+  rotation.status = candidate.readiness >= 95 ? "ready" : "risk";
+  rotation.readiness = `${candidate.readiness}%`;
   mission.logistics[0] = { ...mission.logistics[0], value: candidate.name };
   mission.summary = `${candidate.name} is now the active recommended relief for ${mission.vessel}. Candidate stack, logistics and planning summary have been updated for review.`;
+  mission.draftSaved = false;
+  mission.finalized = false;
+  mission.owner = mission.key === "bremen" ? "Crew Manager Review" : "Technical Manager Review";
+  mission.alertNote =
+    mission.key === "stuttgart"
+      ? `${candidate.name} is now the working candidate, but promotion / travel dependencies still need review before sign-on is closed.`
+      : "Low operational risk. Candidate selected and assignment pack remains within certificate horizon.";
 
   mission.candidates = mission.candidates.map((item) => ({
     ...item,
@@ -1257,26 +2946,89 @@ function updateMissionSelection(missionKey, candidateKey) {
 
   updateMissionPlanningState(missionKey, {
     candidate: candidate.name,
-    status: mission.finalized ? "Finalized" : "Candidate selected",
+    status: mission.finalized ? "Finalized" : mission.draftSaved ? "Draft saved" : "Candidate selected",
     priority: missionKey === "stuttgart" ? "Medium" : "Low",
   });
+
+  if (candidate.profileKey && profileData[candidate.profileKey]) {
+    profileData[candidate.profileKey].mission = mission.vessel;
+    profileData[candidate.profileKey].availability = mission.finalized ? "Assigned" : "Under Assignment Review";
+    addProfileTimelineEntry(candidate.profileKey, `Selected for ${mission.missionId}`, `${mission.vessel} · Crew Matching`);
+    addProfileNote(candidate.profileKey, `Selected as active candidate for ${mission.missionId}.`);
+  }
+
+  if (missionKey === "stuttgart" && candidate.key === "ferdi") {
+    setDocumentRowState("visa-ferdi", {
+      verification: { label: "Review started", tone: "live" },
+      risk: { label: "Medium", tone: "risk" },
+      status: { label: "In review", tone: "risk" },
+      action: { label: "Review", action: "review-document", key: "visa-ferdi" },
+    });
+    documentOpsState.kpis.pending = 17;
+    documentOpsState.kpis.pendingMeta = "Crew change follow-up";
+  }
 
   recordActivity(`Candidate selected for ${mission.missionId}`, `${candidate.name} · ${mission.vessel}`);
   return candidate;
 }
 
-function finalizeMission(missionKey) {
+function saveMissionDraft(missionKey) {
   const mission = matchingMissions[missionKey];
   if (!mission) return null;
 
+  mission.draftSaved = true;
+  mission.finalized = false;
+  mission.owner = "Draft Saved";
+
+  updateMissionPlanningState(missionKey, {
+    status: mission.selectedCandidateKey ? "Draft saved" : "Pending action",
+    candidate: mission.logistics[0]?.value || "Candidate pending confirmation",
+  });
+
+  recordActivity(`Draft saved for ${mission.missionId}`, `${mission.vessel} · ${mission.logistics[0]?.value || "Selection pending"}`);
+  return mission;
+}
+
+function finalizeMission(missionKey) {
+  const mission = matchingMissions[missionKey];
+  if (!mission) return null;
+  const rotation = getActionRotation(mission);
+  const selectedCandidateKey = rotation.selectedCandidateKey || mission.selectedCandidateKey;
+  const selectedCandidate = selectedCandidateKey ? findMissionCandidate(mission, selectedCandidateKey) : null;
+  if (!selectedCandidate) return null;
+
   mission.finalized = true;
+  mission.draftSaved = true;
   mission.owner = "Assignment Finalized";
   mission.alertNote = "Operational risk reduced. Assignment package prepared and internal handover marked complete.";
+  rotation.statusLabel = "Confirmed";
+  rotation.status = "ready";
+  rotation.signOn = selectedCandidate.name;
+  rotation.readiness = `${selectedCandidate.readiness}%`;
 
   updateMissionPlanningState(missionKey, {
     status: "Finalized",
     priority: "Low",
+    candidate: selectedCandidate.name,
   });
+
+  if (selectedCandidate.profileKey && profileData[selectedCandidate.profileKey]) {
+    profileData[selectedCandidate.profileKey].availability = "Embarkation Confirmed";
+    profileData[selectedCandidate.profileKey].verdict = "Assignment Finalized";
+    addProfileTimelineEntry(selectedCandidate.profileKey, `Assignment finalized for ${mission.missionId}`, `${mission.vessel} · Operations`);
+    addProfileNote(selectedCandidate.profileKey, `Final assignment confirmed for ${mission.vessel}.`);
+  }
+
+  if (missionKey === "stuttgart" && selectedCandidate.key === "ferdi") {
+    setDocumentRowState("visa-ferdi", {
+      verification: { label: "Verified", tone: "ready" },
+      risk: { label: "Low", tone: "ready" },
+      status: { label: "Ready", tone: "ready" },
+      action: { label: "View", action: "view-document", key: "visa-ferdi" },
+    });
+    documentOpsState.kpis.pending = 15;
+    documentOpsState.kpis.pendingMeta = "One blocker cleared";
+  }
 
   recordActivity(`Assignment finalized for ${mission.missionId}`, `${mission.vessel} · ${mission.logistics[0]?.value || "Relief confirmed"}`);
   return mission;
@@ -1439,6 +3191,7 @@ function pushUserQuestion(question) {
   });
 
   renderThreads();
+  persistAppState();
 }
 
 function handleSend(inputId) {
@@ -1453,6 +3206,7 @@ function handleSend(inputId) {
 
   input.value = "";
   pushUserQuestion(value);
+  persistAppState();
 }
 
 function toneClass(tone) {
@@ -1475,12 +3229,32 @@ function getMissionKeyFromProfile(profile) {
 }
 
 function renderPlanningView() {
+  const snapshots = planningMissions.map(getPlanningMissionSnapshot);
+  const visibleMissions = getPlanningVisibleMissions();
+  const bremenMission = snapshots.find((mission) => mission.key === "bremen");
+  const stuttgartMission = snapshots.find((mission) => mission.key === "stuttgart");
+  const hamburgMission = snapshots.find((mission) => mission.key === "hamburg");
+  const bayernMission = snapshots.find((mission) => mission.key === "bayern");
+  const frankfurtMission = snapshots.find((mission) => mission.key === "frankfurt");
+  const dresdenMission = snapshots.find((mission) => mission.key === "dresden");
+  const cenkRenewalBooked = documentOpsState.rows["medical-cenk"]?.status.label === "Renewal booked";
+  const emrePendingOwner = documentOpsState.rows["seamanbook-emre"]?.status.label === "Pending owner";
+  const stuttgartBlocked = alertsData.some((item) => item.key === "stuttgart-candidate");
+  const pendingApprovals = complianceExceptions.filter((item) => /Pending approval/i.test(item.status)).length;
+  const criticalGaps = [stuttgartBlocked, alertsData.some((item) => item.key === "rustu-tanker")].filter(Boolean).length;
+  const filterLabels = {
+    all: "All missions",
+    active: "Active matching",
+    risk: "Risk / blocked",
+    queued: "Queued only",
+  };
+
   planningViewRoot.innerHTML = `
     <div class="kpi-grid">
       <div class="kpi-card"><span class="kpi-label">Open Missions</span><div class="kpi-value">6</div><div class="kpi-meta">30-day horizon</div></div>
       <div class="kpi-card"><span class="kpi-label">Ready Candidates</span><div class="kpi-value text-ready">2</div><div class="kpi-meta text-ready">Immediate matches</div></div>
-      <div class="kpi-card"><span class="kpi-label">Pending Approvals</span><div class="kpi-value text-risk">1</div><div class="kpi-meta text-risk">Promotion review</div></div>
-      <div class="kpi-card"><span class="kpi-label">Critical Gaps</span><div class="kpi-value text-blocked">1</div><div class="kpi-meta text-blocked">No compliant candidate</div></div>
+      <div class="kpi-card"><span class="kpi-label">Pending Approvals</span><div class="kpi-value text-risk">${pendingApprovals}</div><div class="kpi-meta text-risk">${pendingApprovals ? "Promotion / exception review" : "No pending approvals"}</div></div>
+      <div class="kpi-card"><span class="kpi-label">Critical Gaps</span><div class="kpi-value text-blocked">${criticalGaps}</div><div class="kpi-meta text-blocked">${stuttgartBlocked ? "No compliant candidate" : "Gap pressure reduced"}</div></div>
     </div>
 
     <div class="card table-card">
@@ -1490,7 +3264,7 @@ function renderPlanningView() {
           <div class="subcopy">Upcoming sign-off windows and relief decisions from the original MVP flow.</div>
         </div>
         <div style="display:flex; gap:8px;">
-          <button class="btn" data-action="filter-planning">Filter</button>
+          <button class="btn" data-action="filter-planning">Filter: ${filterLabels[state.planningFilter] || filterLabels.all}</button>
           <button class="btn" data-action="export-planning">Export</button>
         </div>
       </div>
@@ -1508,23 +3282,91 @@ function renderPlanningView() {
             </tr>
           </thead>
           <tbody>
-            ${planningMissions
+            ${visibleMissions
               .map(
                 (mission) => `
-                  <tr>
+                  <tr data-action="${mission.openAction}" data-key="${mission.key}" style="cursor:pointer;">
                     <td><strong>${mission.join}</strong></td>
                     <td>${mission.vessel}</td>
                     <td>${mission.port}</td>
                     <td>${mission.role}</td>
                     <td><strong>${mission.missionId}</strong></td>
-                    <td><span class="badge ${mission.priority === "Critical" ? "blocked" : mission.priority === "High" || mission.priority === "Medium" ? "risk" : "ready"}">${mission.status}</span></td>
-                    <td style="text-align:right;"><button class="btn ${mission.open ? "btn-primary" : ""}" data-action="${mission.open ? "open-matching" : "show-future-mission"}" data-key="${mission.key}">${mission.open ? "Open Matching" : "Queued"}</button></td>
+                    <td><span class="badge ${mission.tone}">${mission.status}</span></td>
+                    <td style="text-align:right;"><button class="btn ${mission.openAction === "open-matching" ? "btn-primary" : ""}" data-action="${mission.openAction}" data-key="${mission.key}">${mission.actionLabel}</button></td>
                   </tr>
                 `
               )
               .join("")}
           </tbody>
         </table>
+      </div>
+    </div>
+
+    <div class="card pad-lg planning-gantt-card">
+      <div class="card-header">
+        <div>
+          <div class="headline" style="font-size:18px;">Fleet Timeline View</div>
+          <div class="subcopy">Operational timeline across July to December 2026 with active and queued coverage states.</div>
+        </div>
+      </div>
+      <div class="planning-gantt">
+        <div class="planning-gantt-head">
+          <div>Vessel</div>
+          <div>Jul</div>
+          <div>Aug</div>
+          <div>Sep</div>
+          <div>Oct</div>
+          <div>Nov</div>
+          <div>Dec</div>
+        </div>
+
+        <div class="planning-gantt-row">
+          <div class="planning-gantt-vessel">Scot Bremen</div>
+          <div class="planning-gantt-track">
+            <button class="planning-gantt-bar onboard" data-action="open-matching" data-key="bremen" style="left:0%; width:14%;">Demir, onboard</button>
+            <button class="planning-gantt-bar relief" data-action="open-matching" data-key="bremen" style="left:14%; width:30%;">${bremenMission.status === "Finalized" ? "Çalhanoğlu finalized" : "Çalhanoğlu confirmed"}</button>
+          </div>
+        </div>
+        <div class="planning-gantt-row">
+          <div class="planning-gantt-vessel">Scot Stuttgart</div>
+          <div class="planning-gantt-track">
+            <button class="planning-gantt-bar onboard" data-action="open-matching" data-key="stuttgart" style="left:0%; width:36%;">2nd Eng, onboard</button>
+            <button class="planning-gantt-bar ${stuttgartMission.status === "Finalized" ? "relief" : "gap"}" data-action="open-matching" data-key="stuttgart" style="left:36%; width:18%;">${stuttgartMission.status === "Finalized" ? `${stuttgartMission.candidate} confirmed` : "No candidate yet"}</button>
+          </div>
+        </div>
+        <div class="planning-gantt-row">
+          <div class="planning-gantt-vessel">Scot Hamburg</div>
+          <div class="planning-gantt-track">
+            <button class="planning-gantt-bar onboard" data-action="show-future-mission" data-key="hamburg" style="left:0%; width:60%;">2nd Officer, onboard</button>
+            <button class="planning-gantt-bar relief" data-action="show-future-mission" data-key="hamburg" style="left:60%; width:20%;">${hamburgMission.candidate}</button>
+          </div>
+        </div>
+        <div class="planning-gantt-row">
+          <div class="planning-gantt-vessel">Scot Bayern</div>
+          <div class="planning-gantt-track">
+            <button class="planning-gantt-bar onboard" data-action="show-future-mission" data-key="bayern" style="left:0%; width:24%;">Chief Eng, onboard</button>
+            <button class="planning-gantt-bar ${emrePendingOwner ? "gap" : "relief"}" data-action="show-future-mission" data-key="bayern" style="left:24%; width:10%;">${emrePendingOwner ? "Docs pending" : "Passport risk"}</button>
+          </div>
+        </div>
+        <div class="planning-gantt-row">
+          <div class="planning-gantt-vessel">Scot Frankfurt</div>
+          <div class="planning-gantt-track">
+            <button class="planning-gantt-bar ${frankfurtMission.tone === "blocked" ? "gap" : "relief"}" data-action="show-future-mission" data-key="frankfurt" style="left:0%; width:8%;">${frankfurtMission.tone === "blocked" ? "Master, cert expired" : "Renewal open"}</button>
+            <button class="planning-gantt-bar relief" data-action="show-future-mission" data-key="frankfurt" style="left:8%; width:26%;">Relief planning</button>
+          </div>
+        </div>
+        <div class="planning-gantt-row">
+          <div class="planning-gantt-vessel">Scot Dresden</div>
+          <div class="planning-gantt-track">
+            <button class="planning-gantt-bar onboard" data-action="show-future-mission" data-key="dresden" style="left:0%; width:48%;">${dresdenMission.candidate}</button>
+          </div>
+        </div>
+
+        <div class="planning-legend">
+          <span><i class="planning-legend-swatch onboard"></i> On board, compliant</span>
+          <span><i class="planning-legend-swatch relief"></i> Relief planned or confirmed</span>
+          <span><i class="planning-legend-swatch gap"></i> Gap or at-risk coverage</span>
+        </div>
       </div>
     </div>
 
@@ -1542,8 +3384,8 @@ function renderPlanningView() {
           </div>
         </div>
         <div class="list-stack" style="margin-top:24px;">
-          <div class="list-item"><div><div class="list-title">MT Scot Bremen</div><div class="list-meta">Hakan selected • all docs verified</div></div><button class="btn" data-action="open-matching" data-key="bremen">Review</button></div>
-          <div class="list-item"><div><div class="list-title">MT Scot Stuttgart</div><div class="list-meta">Engineering gap needs decision</div></div><button class="btn" data-action="open-matching" data-key="stuttgart">Resolve</button></div>
+          <div class="list-item"><div><div class="list-title">MT Scot Bremen</div><div class="list-meta">${bremenMission.candidate} • ${bremenMission.status === "Finalized" ? "assignment confirmed" : "all docs verified"}</div></div><button class="btn" data-action="open-matching" data-key="bremen">${bremenMission.status === "Finalized" ? "Open" : "Review"}</button></div>
+          <div class="list-item"><div><div class="list-title">MT Scot Stuttgart</div><div class="list-meta">${stuttgartMission.candidate} • ${stuttgartMission.status === "Finalized" ? "assignment confirmed" : stuttgartBlocked ? "needs decision" : "candidate under review"}</div></div><button class="btn" data-action="open-matching" data-key="stuttgart">${stuttgartMission.status === "Finalized" ? "Open" : "Resolve"}</button></div>
           <div class="list-item"><div><div class="list-title">MT Scot Frankfurt</div><div class="list-meta">Master role exposed by expired tanker certificate</div></div><button class="btn" data-action="show-future-mission" data-key="frankfurt">Queue</button></div>
         </div>
       </div>
@@ -1553,9 +3395,9 @@ function renderPlanningView() {
           <div class="headline" style="font-size:16px;">Planning Watchlist</div>
         </div>
         <div class="list-stack">
-          <div class="list-item"><div><div class="list-title">No compliant engineering backup</div><div class="list-meta">MT Scot Stuttgart • CC-2026-027</div></div><span class="badge blocked">High</span></div>
-          <div class="list-item"><div><div class="list-title">Passport renewal before assignment</div><div class="list-meta">Emre Belözoğlu</div></div><span class="badge blocked">Critical</span></div>
-          <div class="list-item"><div><div class="list-title">Medical horizon tightening</div><div class="list-meta">Nihat Kahveci • 60-day threshold</div></div><span class="badge risk">Watch</span></div>
+          <div class="list-item"><div><div class="list-title">No compliant engineering backup</div><div class="list-meta">MT Scot Stuttgart • CC-2026-027</div></div><span class="badge ${stuttgartBlocked ? "blocked" : "risk"}">${stuttgartBlocked ? "High" : "Watch"}</span></div>
+          <div class="list-item"><div><div class="list-title">Passport renewal before assignment</div><div class="list-meta">Emre Belözoğlu</div></div><span class="badge ${emrePendingOwner ? "risk" : "blocked"}">${emrePendingOwner ? "In Review" : "Critical"}</span></div>
+          <div class="list-item"><div><div class="list-title">Medical horizon tightening</div><div class="list-meta">Cenk Tosun • renewal workflow</div></div><span class="badge ${cenkRenewalBooked ? "live" : "risk"}">${cenkRenewalBooked ? "Scheduled" : "Watch"}</span></div>
         </div>
       </div>
     </div>
@@ -1564,8 +3406,17 @@ function renderPlanningView() {
 
 function renderMatchingView() {
   const mission = matchingMissions[state.activeMission];
-  const selectedRotation = mission.rotations.find((rotation) => rotation.key === state.activeRotation) || mission.rotations[0];
-  const selectedCandidateKey = mission.selectedCandidateKey || (mission.key === "bremen" ? "hakan" : null);
+  const selectedRotation = getMissionRotation(mission);
+  const selectedCandidateKey =
+    selectedRotation.selectedCandidateKey || mission.selectedCandidateKey || (mission.key === "bremen" ? "hakan" : null);
+  const rotationCandidates = sortCandidatesForFilter(
+    selectedRotation.candidates || mission.candidates,
+    selectedRotation.selectedFilter || selectedRotation.filters?.[0] || "Best Match",
+    selectedCandidateKey
+  );
+  const summaryExpanded = selectedRotation.detailMode === "summary" && selectedRotation.expandedDetail;
+  const missionRiskTone = mission.finalized ? "ready" : mission.key === "bremen" ? "ready" : "risk";
+  const missionRiskLabel = mission.finalized ? "Finalized" : mission.key === "bremen" ? "Low Risk" : "Open Risk";
 
   matchingViewRoot.innerHTML = `
     <div class="detail-header">
@@ -1576,6 +3427,7 @@ function renderMatchingView() {
       </div>
       <div class="detail-actions">
         <button class="btn" data-nav="planning">Back to Planning</button>
+        <button class="btn" data-action="save-assignment-draft" data-key="${mission.key}">${mission.draftSaved ? "Draft Saved" : "Save Draft"}</button>
         <button class="btn btn-primary" data-action="finalize-assignment" data-key="${mission.key}">${mission.finalized ? "Assignment Finalized" : "Finalize Assignment"}</button>
       </div>
     </div>
@@ -1613,19 +3465,23 @@ function renderMatchingView() {
             <div class="eyebrow">Rotation Board</div>
             <div class="headline" style="font-size:18px; margin-top:8px;">${mission.positionTag}</div>
           </div>
-          <span class="badge ${selectedRotation.status === "blocked" ? "blocked" : selectedRotation.status === "risk" ? "risk" : "ready"}">${selectedRotation.readiness}</span>
+          <span class="badge ${selectedRotation.status === "blocked" ? "blocked" : selectedRotation.status === "risk" ? "risk" : "ready"}">${selectedRotation.statusLabel || selectedRotation.readiness}</span>
         </div>
         <div class="rotation-list">
           ${mission.rotations
             .map(
               (rotation) => `
                 <div class="rotation-card ${rotation.key === state.activeRotation ? "selected" : ""}" data-action="select-rotation" data-key="${rotation.key}">
-                  <div>
+                  <div style="flex:1; min-width:0;">
                     <div class="list-title">${rotation.title}</div>
                     <div class="list-meta">${rotation.current}</div>
+                    <div class="candidate-tags" style="margin-top:10px;">
+                      <span class="pill">Sign-off: ${rotation.signOff}</span>
+                      <span class="pill">Sign-on: ${rotation.signOn}</span>
+                    </div>
                   </div>
                   <div style="text-align:right;">
-                    <div class="badge ${rotation.status === "risk" ? "risk" : rotation.status === "blocked" ? "blocked" : "live"}">${rotation.eta}</div>
+                    <div class="badge ${rotation.status === "risk" ? "risk" : rotation.status === "blocked" ? "blocked" : "live"}">${rotation.statusLabel}</div>
                     <div class="list-meta" style="margin-top:6px;">Ready ${rotation.readiness}</div>
                   </div>
                 </div>
@@ -1636,7 +3492,7 @@ function renderMatchingView() {
 
         <div class="card kpi-card--soft matching-note-card">
           <div class="eyebrow">Ready AI Recommendation</div>
-          <p class="subcopy" style="margin-top:12px;">${mission.summary}</p>
+          <p class="subcopy" style="margin-top:12px;">${selectedRotation.callout || mission.summary}</p>
         </div>
       </div>
 
@@ -1646,9 +3502,15 @@ function renderMatchingView() {
             <div class="eyebrow">Task Owner</div>
             <div class="headline" style="font-size:18px; margin-top:8px;">${mission.owner}</div>
           </div>
-          <span class="badge ${mission.key === "bremen" ? "ready" : "risk"}">${mission.key === "bremen" ? "Low Risk" : "Open Risk"}</span>
+          <span class="badge ${missionRiskTone}">${missionRiskLabel}</span>
         </div>
         <div class="list-stack">
+          <div class="list-item">
+            <div>
+              <div class="eyebrow" style="letter-spacing:0.12em;">Assignment State</div>
+              <div class="list-title" style="margin-top:8px;">${mission.finalized ? "Finalized" : mission.draftSaved ? "Draft saved" : "In review"}</div>
+            </div>
+          </div>
           ${mission.logistics
             .map(
               (item) => `
@@ -1665,41 +3527,171 @@ function renderMatchingView() {
       </div>
     </div>
 
-    <div class="card pad-lg">
-      <div class="card-header">
-        <div>
-          <div class="eyebrow">Candidate Stack</div>
-          <div class="headline" style="font-size:18px; margin-top:8px;">${selectedRotation.title}</div>
-        </div>
-      </div>
-      <div class="candidate-grid">
-        ${mission.candidates
-          .map(
-            (candidate) => `
-              <div class="candidate-card ${candidate.key === selectedCandidateKey ? "best" : ""}" data-action="toggle-note" data-key="${candidate.key}">
+    ${
+      selectedRotation.detailMode === "summary" && !summaryExpanded
+        ? `
+          <div class="card pad-lg">
+            <div class="card-header">
+              <div>
+                <div class="eyebrow">Rotation Detail</div>
+                <div class="headline" style="font-size:18px; margin-top:8px;">${selectedRotation.title}</div>
+              </div>
+            </div>
+            <div class="card kpi-card--soft matching-note-card">
+              <div class="eyebrow">Confirmed Rotation</div>
+              <p class="subcopy" style="margin-top:12px;">${selectedRotation.callout}</p>
+            </div>
+            <div class="detail-actions" style="margin-top:16px;">
+              <button class="btn" data-action="${selectedRotation.action}" data-key="${selectedRotation.key}">${selectedRotation.actionLabel}</button>
+            </div>
+          </div>
+        `
+        : selectedRotation.detailMode === "summary"
+          ? `
+            <div class="card pad-lg">
+              <div class="card-header">
+                <div>
+                  <div class="eyebrow">Companion Rotation Detail</div>
+                  <div class="headline" style="font-size:18px; margin-top:8px;">${selectedRotation.title}</div>
+                </div>
+                <span class="badge ${selectedRotation.confirmedCandidate?.tone || "ready"}">${selectedRotation.statusLabel}</span>
+              </div>
+              <div class="candidate-tags">
+                ${(selectedRotation.requirements || []).map((item) => `<span class="pill">${item}</span>`).join("")}
+              </div>
+              <div class="card kpi-card--soft matching-note-card">
                 <div class="candidate-head">
                   <div>
-                    <div class="headline" style="font-size:16px;">${candidate.name}</div>
-                    <div class="subcopy">${candidate.rank}</div>
+                    <div class="headline" style="font-size:16px;">${selectedRotation.confirmedCandidate?.name}</div>
+                    <div class="subcopy">${selectedRotation.confirmedCandidate?.rank}</div>
                   </div>
-                  <div class="candidate-score ${toneClass(candidate.tone)}">${candidate.readiness}%</div>
+                  <div class="candidate-score ${toneClass(selectedRotation.confirmedCandidate?.tone)}">${selectedRotation.confirmedCandidate?.readiness}%</div>
                 </div>
-                <div class="candidate-tags">
-                  ${candidate.tags.map((tag) => `<span class="pill">${tag}</span>`).join("")}
+                <div class="candidate-tags" style="margin-top:14px;">
+                  ${(selectedRotation.confirmedCandidate?.tags || []).map((tag) => `<span class="pill">${tag}</span>`).join("")}
                 </div>
-                <div class="cand-ai-note" id="note-${candidate.key}">
-                  ${candidate.note}
-                </div>
-                <div class="detail-actions detail-actions--stack">
-                  <button class="btn btn-primary" data-action="${candidate.action}" data-key="${candidate.key}">${candidate.actionLabel}</button>
-                  <button class="btn" data-action="${candidate.secondary}" data-key="${candidate.key}">${candidate.secondaryLabel}</button>
-                </div>
+                <p class="subcopy" style="margin-top:14px;">${selectedRotation.confirmedCandidate?.note}</p>
               </div>
-            `
-          )
-          .join("")}
-      </div>
-    </div>
+              <div class="list-stack" style="margin-top:16px;">
+                ${(selectedRotation.confirmedCandidate?.checks || [])
+                  .map(
+                    (item) => `
+                      <div class="list-item">
+                        <div>
+                          <div class="list-title">${item}</div>
+                          <div class="list-meta">${selectedRotation.signOn} • ${selectedRotation.eta}</div>
+                        </div>
+                        <span class="badge ready">Verified</span>
+                      </div>
+                    `
+                  )
+                  .join("")}
+              </div>
+              <div class="detail-actions" style="margin-top:16px;">
+                <button class="btn" data-action="${selectedRotation.action}" data-key="${selectedRotation.key}">Collapse Detail</button>
+                <button class="btn btn-primary" data-action="download-assignment-pack" data-key="${mission.key}">Download Pack</button>
+              </div>
+            </div>
+          `
+        : `
+          <div class="card pad-lg">
+            <div class="card-header">
+              <div>
+                <div class="eyebrow">Mission Requirements</div>
+                <div class="headline" style="font-size:18px; margin-top:8px;">${selectedRotation.title}</div>
+              </div>
+            </div>
+            <div class="candidate-tags">
+              ${selectedRotation.requirements.map((item) => `<span class="pill">${item}</span>`).join("")}
+            </div>
+            <div class="candidate-tags" style="margin-top:16px;">
+              ${selectedRotation.filters
+                .map(
+                  (item) => `
+                    <button
+                      class="pill ${item === (selectedRotation.selectedFilter || selectedRotation.filters[0]) ? "pill-strong" : ""}"
+                      data-action="filter-matching"
+                      data-key="${item}"
+                    >
+                      ${item}
+                    </button>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
+
+          <div class="card pad-lg">
+            <div class="card-header">
+              <div>
+                <div class="eyebrow">Candidate Stack</div>
+                <div class="headline" style="font-size:18px; margin-top:8px;">${selectedRotation.title}</div>
+              </div>
+            </div>
+            <div class="candidate-grid">
+              ${rotationCandidates
+                .map(
+                  (candidate) => `
+                    <div class="candidate-card ${candidate.key === selectedCandidateKey ? "best" : ""}" data-action="toggle-note" data-key="${candidate.key}">
+                      <div class="candidate-head">
+                        <div>
+                          <div class="headline" style="font-size:16px;">${candidate.name}</div>
+                          <div class="subcopy">${candidate.rank}</div>
+                        </div>
+                        <div class="candidate-score ${toneClass(candidate.tone)}">${candidate.readiness}%</div>
+                      </div>
+                      <div class="candidate-tags">
+                        ${candidate.tags.map((tag) => `<span class="pill">${tag}</span>`).join("")}
+                      </div>
+                      <div class="cand-ai-note" id="note-${candidate.key}">
+                        ${candidate.note}
+                      </div>
+                      <div class="detail-actions detail-actions--stack">
+                        <button class="btn btn-primary" data-action="${candidate.action}" data-key="${candidate.key}">${candidate.actionLabel}</button>
+                        <button class="btn" data-action="${candidate.secondary}" data-key="${candidate.key}">${candidate.secondaryLabel}</button>
+                      </div>
+                    </div>
+                  `
+                )
+                .join("")}
+            </div>
+          </div>
+
+          ${
+            selectedRotation.comparison
+              ? `
+                <div class="card table-card">
+                  <div class="table-toolbar">
+                    <div class="headline" style="font-size:18px;">Candidate Comparison</div>
+                  </div>
+                  <div class="table-wrap">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Requirement</th>
+                          ${selectedRotation.comparison.headers.map((header) => `<th>${header}</th>`).join("")}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        ${selectedRotation.comparison.rows
+                          .map(
+                            (row) => `
+                              <tr>
+                                <td>${row.label}</td>
+                                ${row.cells.map((cell) => `<td class="text-${cell.tone}"><strong>${cell.value}</strong></td>`).join("")}
+                              </tr>
+                            `
+                          )
+                          .join("")}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              `
+              : ""
+          }
+        `
+    }
 
     <div class="split-grid">
       <div class="card pad-lg">
@@ -2077,6 +4069,11 @@ function renderCrewProfileView() {
 
 function renderVesselDetailView() {
   const vessel = vesselData[state.activeVessel];
+  const snapshot = getVesselSnapshot(state.activeVessel);
+  const openMissionAction = matchingMissions[vessel.key] ? "open-matching" : "show-future-mission";
+  const secondaryAction = snapshot.tone === "blocked" ? "open-document-case" : snapshot.tone === "risk" ? "open-document-case" : "open-vessel-detail";
+  const secondaryKey = snapshot.tone === "blocked" ? "rustu-tanker" : snapshot.tone === "risk" ? "seamanbook-emre" : vessel.key;
+  const planningContextOpen = state.pendingPlanningContext === vessel.key;
 
   vesselDetailRoot.innerHTML = `
     <div class="detail-header">
@@ -2087,12 +4084,31 @@ function renderVesselDetailView() {
       </div>
       <div class="detail-actions">
         <button class="btn" data-nav="fleet">Back to Fleet</button>
-        <button class="btn btn-primary" data-action="${matchingMissions[vessel.key] ? "open-matching" : "show-future-mission"}" data-key="${vessel.key}">${matchingMissions[vessel.key] ? "Open Crew Change" : "Open Planning Context"}</button>
+        <button class="btn" data-nav="routes-ports">Open Route Window</button>
+        <button class="btn btn-primary" data-action="${openMissionAction}" data-key="${vessel.key}">${matchingMissions[vessel.key] ? "Open Crew Change" : "Open Planning Context"}</button>
       </div>
     </div>
 
+    ${
+      planningContextOpen
+        ? `
+          <div class="card pad-lg" style="margin-bottom:20px;">
+            <div class="card-header">
+              <div class="headline" style="font-size:18px;">Queued Planning Context</div>
+              <span class="badge risk">Future Window</span>
+            </div>
+            <p class="subcopy">This vessel does not yet have an active Crew Change mission in the demo. The queued planning context is open so Operations can review route timing, onboard readiness and document exposure before promoting it into Crew Matching.</p>
+            <div class="detail-actions" style="margin-top:16px;">
+              <button class="btn" data-nav="planning">Back to Planning</button>
+              <button class="btn btn-primary" data-nav="routes-ports">Review Port Window</button>
+            </div>
+          </div>
+        `
+        : ""
+    }
+
     <div class="kpi-grid">
-      <div class="kpi-card"><span class="kpi-label">Readiness</span><div class="kpi-value ${vessel.readiness < 70 ? "text-blocked" : vessel.readiness < 85 ? "text-risk" : "text-ready"}">${vessel.readiness}%</div><div class="kpi-meta">${vessel.status}</div></div>
+      <div class="kpi-card"><span class="kpi-label">Readiness</span><div class="kpi-value ${snapshot.tone === "blocked" ? "text-blocked" : snapshot.tone === "risk" ? "text-risk" : "text-ready"}">${snapshot.readiness}%</div><div class="kpi-meta">${snapshot.statusLabel}</div></div>
       <div class="kpi-card"><span class="kpi-label">Current Port</span><div class="kpi-value">${vessel.port}</div><div class="kpi-meta">Target ETA ${vessel.eta}</div></div>
       <div class="kpi-card"><span class="kpi-label">Client</span><div class="kpi-value">${vessel.client}</div><div class="kpi-meta">${vessel.coating}</div></div>
       <div class="kpi-card"><span class="kpi-label">Open Crew Change</span><div class="kpi-value">${vessel.openChange.includes("None") ? "None" : "Active"}</div><div class="kpi-meta">${vessel.openChange}</div></div>
@@ -2115,9 +4131,9 @@ function renderVesselDetailView() {
           <div class="headline" style="font-size:18px;">Operational Watch</div>
         </div>
         <div class="list-stack">
-          <div class="list-item"><div><div class="list-title">Open change</div><div class="list-meta">${vessel.openChange}</div></div></div>
-          <div class="list-item"><div><div class="list-title">Current status</div><div class="list-meta">${vessel.status}</div></div></div>
-          <div class="list-item"><div><div class="list-title">Next port event</div><div class="list-meta">${vessel.port} • ${vessel.eta}</div></div></div>
+          <div class="list-item"><div><div class="list-title">Open change</div><div class="list-meta">${vessel.openChange}</div></div><button class="btn" data-action="${openMissionAction}" data-key="${vessel.key}">${matchingMissions[vessel.key] ? "Open" : "Queue"}</button></div>
+          <div class="list-item"><div><div class="list-title">Current status</div><div class="list-meta">${snapshot.statusLabel} • ${snapshot.complianceLabel}</div></div><button class="btn" data-action="${secondaryAction}" data-key="${secondaryKey}">${snapshot.tone === "blocked" ? "Resolve" : snapshot.tone === "risk" ? "Review" : "Refresh"}</button></div>
+          <div class="list-item"><div><div class="list-title">Next port event</div><div class="list-meta">${snapshot.embarkationWindow}</div></div><button class="btn" data-nav="routes-ports">Ports</button></div>
         </div>
       </div>
     </div>
@@ -2163,12 +4179,14 @@ function renderVesselDetailView() {
 }
 
 function renderAlertsView() {
+  const criticalCount = alertsData.filter((item) => item.severity === "blocked").length;
+  const warningCount = alertsData.filter((item) => item.severity !== "blocked").length;
   alertsViewRoot.innerHTML = `
     <div class="kpi-grid">
-      <div class="kpi-card"><span class="kpi-label">Critical Alerts</span><div class="kpi-value text-blocked">4</div><div class="kpi-meta">Needs action now</div></div>
-      <div class="kpi-card"><span class="kpi-label">Expiring Documents</span><div class="kpi-value text-risk">24</div><div class="kpi-meta">Top blocker source</div></div>
-      <div class="kpi-card"><span class="kpi-label">Blocked Rotations</span><div class="kpi-value text-blocked">6</div><div class="kpi-meta">Across 3 vessels</div></div>
-      <div class="kpi-card"><span class="kpi-label">Actionable Today</span><div class="kpi-value">3</div><div class="kpi-meta text-ready">Can be resolved today</div></div>
+      <div class="kpi-card"><span class="kpi-label">Critical Alerts</span><div class="kpi-value text-blocked">${criticalCount}</div><div class="kpi-meta">Needs action now</div></div>
+      <div class="kpi-card"><span class="kpi-label">Expiring Documents</span><div class="kpi-value text-risk">${documentOpsState.kpis.expiring}</div><div class="kpi-meta">Top blocker source</div></div>
+      <div class="kpi-card"><span class="kpi-label">Blocked Rotations</span><div class="kpi-value text-blocked">${alertsData.filter((item) => item.subject.includes("CC-")).length}</div><div class="kpi-meta">Active assignment exposure</div></div>
+      <div class="kpi-card"><span class="kpi-label">Actionable Today</span><div class="kpi-value">${Math.max(1, criticalCount + warningCount - 1)}</div><div class="kpi-meta text-ready">Can be resolved today</div></div>
     </div>
 
     <div class="card pad-lg">
@@ -2309,15 +4327,15 @@ function renderAdminView() {
     { title: "Workspace Health", value: "Nominal", meta: "All demo modules online" },
     { title: "Connected User", value: "Marina Keskin", meta: "Ops Manager / Admin access" },
     { title: "Latest Audit Event", value: activityFeed[0]?.title || "No events", meta: activityFeed[0]?.meta || "No recent activity" },
-    { title: "Notification Mode", value: "Critical only", meta: `${alertsData.length} alerts in active watch` },
+    { title: "Notification Mode", value: adminOpsState.notificationMode, meta: `${alertsData.length} alerts in active watch` },
   ];
 
   adminViewRoot.innerHTML = `
     <div class="kpi-grid">
       ${adminCardsView
         .map(
-          (card) => `
-            <div class="kpi-card">
+          (card, index) => `
+            <div class="kpi-card ${state.activeAdminFocus === "user" && index === 1 ? "focus-card" : ""}">
               <span class="kpi-label">${card.title}</span>
               <div class="kpi-value">${card.value}</div>
               <div class="kpi-meta">${card.meta}</div>
@@ -2333,9 +4351,10 @@ function renderAdminView() {
           <div class="headline" style="font-size:18px;">Workspace Controls</div>
         </div>
         <div class="list-stack">
-          <div class="list-item"><div><div class="list-title">Notification routing</div><div class="list-meta">Critical only</div></div><button class="btn" data-action="admin-notifications">Manage</button></div>
-          <div class="list-item"><div><div class="list-title">User access</div><div class="list-meta">8 pilot users</div></div><button class="btn" data-action="admin-access">Review</button></div>
-          <div class="list-item"><div><div class="list-title">Export policy</div><div class="list-meta">PDF and CSV enabled</div></div><button class="btn" data-action="admin-exports">Review</button></div>
+          <div class="list-item"><div><div class="list-title">Notification routing</div><div class="list-meta">${adminOpsState.notificationMode}</div></div><button class="btn" data-action="admin-notifications">Manage</button></div>
+          <div class="list-item"><div><div class="list-title">User access</div><div class="list-meta">${adminOpsState.userAccess}</div></div><button class="btn" data-action="admin-access">Review</button></div>
+          <div class="list-item"><div><div class="list-title">Export policy</div><div class="list-meta">${adminOpsState.exportPolicy}</div></div><button class="btn" data-action="admin-exports">Review</button></div>
+          <div class="list-item"><div><div class="list-title">Ready AI mode</div><div class="list-meta">${adminOpsState.readyAiMode}</div></div><button class="btn" data-action="ready-ai-settings">Cycle</button></div>
         </div>
       </div>
 
@@ -2361,6 +4380,12 @@ function renderAdminView() {
       </div>
     </div>
   `;
+
+  syncCrewChangesOverview();
+  syncCrewView();
+  syncReportsView();
+  syncFleetView();
+  syncRoutesView();
 }
 
 function renderDynamicViews() {
@@ -2371,12 +4396,19 @@ function renderDynamicViews() {
   renderAlertsView();
   renderComplianceView();
   renderAdminView();
+  syncDocumentsView();
+  syncCrewChangesOverview();
+  syncCrewView();
+  syncReportsView();
+  syncFleetView();
+  syncRoutesView();
 }
 
 function setView(name) {
   if (!viewMeta[name]) return;
 
   state.activeView = name;
+  if (name !== "admin") state.activeAdminFocus = null;
 
   document.querySelectorAll(".view").forEach((view) => {
     view.classList.toggle("active", view.id === `view-${name}`);
@@ -2409,120 +4441,372 @@ function setView(name) {
   url.searchParams.set("view", name);
   history.replaceState({}, "", url);
   window.scrollTo({ top: 0, behavior: "auto" });
+  persistAppState();
 }
 
 function executeSearch(rawQuery) {
-  const query = rawQuery.trim().toLowerCase();
-  if (!query) {
-    showToast("Type a crew name, vessel, mission or topic to search.");
-    return;
-  }
-
-  const profileMatch = searchableProfileKeys.map((key) => [key, profileData[key]]).find(([, profile]) => {
-    const haystack = `${profile.name} ${profile.rank} ${profile.currentVessel || ""}`.toLowerCase();
-    return query.split(" ").every((term) => haystack.includes(term)) || haystack.includes(query);
-  });
-
-  if (profileMatch) {
-    state.activeProfile = profileMatch[0];
-    state.activeProfileTab = "overview";
-    renderCrewProfileView();
-    setView("crew-profile");
-    return;
-  }
-
-  const vesselMatch = searchableVesselKeys.map((key) => [key, vesselData[key]]).find(([, vessel]) => {
-    const haystack = `${vessel.name} ${vessel.port} ${vessel.flag}`.toLowerCase();
-    return haystack.includes(query);
-  });
-
-  if (vesselMatch) {
-    state.activeVessel = vesselMatch[0];
-    if (matchingMissions[vesselMatch[0]] && (query.includes("mission") || query.includes("crew change"))) {
-      state.activeMission = vesselMatch[0];
-      state.activeRotation = vesselMatch[0] === "stuttgart" ? "stuttgart-second" : "bremen-chief";
-      renderMatchingView();
-      setView("matching");
+  try {
+    const query = rawQuery.trim().toLowerCase();
+    if (!query) {
+      showToast("Type a crew name, vessel, mission or topic to search.");
       return;
     }
 
-    renderVesselDetailView();
-    setView("vessel-detail");
-    return;
-  }
+    const profileMatch = searchableProfileKeys.map((key) => [key, profileData[key]]).find(([, profile]) => {
+      const haystack = `${profile.name} ${profile.rank} ${profile.currentVessel || ""}`.toLowerCase();
+      return query.split(" ").every((term) => haystack.includes(term)) || haystack.includes(query);
+    });
 
-  if (query.includes("alert") || query.includes("expired") || query.includes("risk")) {
-    setView("alerts");
-    return;
-  }
+    if (profileMatch) {
+      state.activeProfile = profileMatch[0];
+      state.activeProfileTab = "overview";
+      renderCrewProfileView();
+      setView("crew-profile");
+      return;
+    }
 
-  if (query.includes("rule") || query.includes("compliance")) {
-    setView("compliance");
-    return;
-  }
+    const vesselMatch = searchableVesselKeys.map((key) => [key, vesselData[key]]).find(([, vessel]) => {
+      const haystack = `${vessel.name} ${vessel.port} ${vessel.flag}`.toLowerCase();
+      return haystack.includes(query);
+    });
 
-  if (query.includes("plan") || query.includes("window")) {
-    setView("planning");
-    return;
-  }
+    if (vesselMatch) {
+      state.activeVessel = vesselMatch[0];
+      if (matchingMissions[vesselMatch[0]] && (query.includes("mission") || query.includes("crew change"))) {
+        state.activeMission = vesselMatch[0];
+        state.activeRotation = getDefaultRotationKey(state.activeMission);
+        renderMatchingView();
+        setView("matching");
+        return;
+      }
 
-  if (query.includes("report") || query.includes("brief")) {
-    setView("reports");
-    return;
-  }
+      renderVesselDetailView();
+      setView("vessel-detail");
+      return;
+    }
 
-  if (query.includes("ai") || query.includes("copilot")) {
-    setView("ready-ai");
-    return;
-  }
+    const missionMatch = planningMissions.find((mission) => mission.missionId.toLowerCase().includes(query));
+    if (missionMatch) {
+      if (matchingMissions[missionMatch.key]) {
+        state.activeMission = missionMatch.key;
+        state.activeRotation = getDefaultRotationKey(state.activeMission);
+        renderMatchingView();
+        setView("matching");
+      } else {
+        state.activeVessel = missionMatch.key;
+        renderVesselDetailView();
+        setView("vessel-detail");
+      }
+      return;
+    }
 
-  showToast(`No exact match for "${rawQuery}" in the pilot dataset yet.`);
+    const documentMatch = Object.entries(documentCatalog).find(([, item]) => {
+      const haystack = `${item.title} ${item.owner} ${item.vessel} ${item.type} ${item.summary}`.toLowerCase();
+      return haystack.includes(query) || query.split(" ").every((term) => haystack.includes(term));
+    });
+
+    if (documentMatch) {
+      setDocumentFocus(documentMatch[0], "open");
+      setView("documents");
+      syncDocumentsView();
+      return;
+    }
+
+    const reportMatch = Object.keys(reportCatalog).find((reportKey) => {
+      const haystack = `${reportCatalog[reportKey].title} ${reportCatalog[reportKey].summary}`.toLowerCase();
+      return haystack.includes(query) || query.split(" ").every((term) => haystack.includes(term));
+    });
+
+    if (reportMatch) {
+      state.reportsFilter = "all";
+      setReportFocus(reportMatch, "open");
+      setView("reports");
+      syncReportsView();
+      return;
+    }
+
+    const alertMatch = alertsData.find((alert) => {
+      const haystack = `${alert.title} ${alert.subject}`.toLowerCase();
+      return haystack.includes(query) || query.split(" ").every((term) => haystack.includes(term));
+    });
+
+    if (alertMatch) {
+      setView("alerts");
+      return;
+    }
+
+    const complianceRuleMatch = complianceRules.find((rule) => {
+      const haystack = `${rule.name} ${rule.scope} ${rule.source} ${rule.note || ""}`.toLowerCase();
+      return haystack.includes(query) || query.split(" ").every((term) => haystack.includes(term));
+    });
+
+    if (complianceRuleMatch) {
+      state.activeComplianceTab = "rules";
+      setView("compliance");
+      renderComplianceView();
+      return;
+    }
+
+    const complianceExceptionMatch = complianceExceptions.find((item) => {
+      const haystack = `${item.title} ${item.meta} ${item.reason}`.toLowerCase();
+      return haystack.includes(query) || query.split(" ").every((term) => haystack.includes(term));
+    });
+
+    if (complianceExceptionMatch) {
+      state.activeComplianceTab = "exceptions";
+      setView("compliance");
+      renderComplianceView();
+      return;
+    }
+
+    if (query.includes("marina") || query.includes("ops manager") || query.includes("workspace") || query.includes("access policy")) {
+      setAdminFocus("user");
+      setView("admin");
+      renderAdminView();
+      return;
+    }
+
+    if (query.includes("route") || query.includes("port") || query.includes("rotterdam") || query.includes("gibraltar")) {
+      setView("routes-ports");
+      return;
+    }
+
+    if (query.includes("report") || query.includes("brief") || query.includes("summary")) {
+      setView("reports");
+      return;
+    }
+
+    if (query.includes("alert") || query.includes("expired") || query.includes("risk")) {
+      setView("alerts");
+      return;
+    }
+
+    if (query.includes("rule") || query.includes("compliance")) {
+      setView("compliance");
+      return;
+    }
+
+    if (query.includes("plan") || query.includes("window")) {
+      setView("planning");
+      return;
+    }
+
+    if (query.includes("ai") || query.includes("copilot")) {
+      setView("ready-ai");
+      return;
+    }
+
+    showToast(`No exact match for "${rawQuery}" in the pilot dataset yet.`);
+  } finally {
+    persistAppState();
+  }
 }
 
 function handleAction(action, key) {
-  switch (action) {
+  try {
+    switch (action) {
+    case "workspace-profile":
+      setAdminFocus("user");
+      setView("admin");
+      renderAdminView();
+      showToast("Workspace profile opened.");
+      recordActivity("Workspace profile opened", "Marina Keskin");
+      return;
     case "help-center":
-      showToast("Help center opened. Ask Ready AI or review Alerts for operational issues.");
-      recordActivity("Help center opened", "Topbar support entry");
+      setView("ready-ai");
+      pushUserQuestion("Show me the fastest workflows available in this module and what I can ask Ready AI.");
+      recordActivity("Help center opened", "Guided help sent to Ready AI");
       renderAdminView();
       return;
     case "voice-input":
-      showToast("Voice capture is queued for the next Ready AI release. Use chat input for this pilot.");
-      recordActivity("Voice input attempted", "Ready AI workspace");
+      {
+        const sourceView = state.activeView;
+        setView("ready-ai");
+        pushUserQuestion(`Summarize the top operational issues for ${viewMeta[sourceView].title}.`);
+      }
+      showToast("Voice shortcut simulated and sent to Ready AI.");
+      recordActivity("Voice shortcut used", "Ready AI");
       renderAdminView();
       return;
     case "ready-ai-settings":
-      showToast("Ready AI options opened: source visibility, tone and prompt presets.");
-      recordActivity("Ready AI settings reviewed", "Operational copilot");
+      {
+        const modes = ["Standard", "Concise", "Detailed"];
+        const nextIndex = (modes.indexOf(adminOpsState.readyAiMode) + 1) % modes.length;
+        adminOpsState.readyAiMode = modes[nextIndex];
+      }
+      showToast(`Ready AI mode set to ${adminOpsState.readyAiMode}.`);
+      recordActivity("Ready AI settings reviewed", adminOpsState.readyAiMode);
       renderAdminView();
       return;
-    case "filter-crew-changes":
-    case "filter-crew":
-    case "filter-fleet":
-    case "filter-routes":
-    case "filter-reports":
-    case "filter-planning":
-      showToast("Filter panel opened for this module.");
+    case "filter-crew-changes": {
+      const filterOrder = ["all", "actionable", "risk", "blocked"];
+      const nextIndex = (filterOrder.indexOf(state.crewChangesFilter || "all") + 1) % filterOrder.length;
+      state.crewChangesFilter = filterOrder[nextIndex];
+      syncCrewChangesOverview();
+      const labelMap = {
+        all: "all active rows",
+        actionable: "actionable rotations",
+        risk: "at-risk rotations",
+        blocked: "blocked rotations",
+      };
+      showToast(`Crew Changes filtered to ${labelMap[state.crewChangesFilter]}.`);
       return;
+    }
+    case "filter-fleet":
+      {
+        const filterOrder = ["all", "ready", "risk", "blocked"];
+        const nextIndex = (filterOrder.indexOf(state.fleetFilter || "all") + 1) % filterOrder.length;
+        state.fleetFilter = filterOrder[nextIndex];
+        syncFleetView();
+        const labelMap = {
+          all: "all vessels",
+          ready: "ready vessels",
+          risk: "at-risk vessels",
+          blocked: "blocked vessels",
+        };
+        showToast(`Fleet filtered to ${labelMap[state.fleetFilter]}.`);
+      }
+      return;
+    case "filter-routes":
+      {
+        const filterOrder = ["all", "active", "risk", "blocked"];
+        const nextIndex = (filterOrder.indexOf(state.routesFilter || "all") + 1) % filterOrder.length;
+        state.routesFilter = filterOrder[nextIndex];
+        syncRoutesView();
+        const labelMap = {
+          all: "all route windows",
+          active: "stable route windows",
+          risk: "at-risk route windows",
+          blocked: "blocked route windows",
+        };
+        showToast(`Routes filtered to ${labelMap[state.routesFilter]}.`);
+      }
+      return;
+      return;
+    case "filter-reports": {
+      const filterOrder = ["all", "daily", "weekly", "attention"];
+      const nextIndex = (filterOrder.indexOf(state.reportsFilter || "all") + 1) % filterOrder.length;
+      state.reportsFilter = filterOrder[nextIndex];
+      syncReportsView();
+      const labelMap = {
+        all: "all reports",
+        daily: "daily reports",
+        weekly: "weekly reports",
+        attention: "reports needing attention",
+      };
+      showToast(`Reports filtered to ${labelMap[state.reportsFilter]}.`);
+      return;
+    }
+    case "filter-crew": {
+      const filterOrder = ["all", "ready", "risk", "blocked"];
+      const nextIndex = (filterOrder.indexOf(state.crewFilter || "all") + 1) % filterOrder.length;
+      state.crewFilter = filterOrder[nextIndex];
+      syncCrewView();
+      const labelMap = {
+        all: "all crew rows",
+        ready: "ready crew",
+        risk: "at-risk crew",
+        blocked: "blocked crew",
+      };
+      showToast(`Crew filtered to ${labelMap[state.crewFilter]}.`);
+      return;
+    }
+    case "filter-planning": {
+      const filterOrder = ["all", "active", "risk", "queued"];
+      const nextIndex = (filterOrder.indexOf(state.planningFilter || "all") + 1) % filterOrder.length;
+      state.planningFilter = filterOrder[nextIndex];
+      renderPlanningView();
+      const labelMap = {
+        all: "all missions",
+        active: "active matching missions",
+        risk: "risk and blocked missions",
+        queued: "queued missions only",
+      };
+      showToast(`Planning filtered to ${labelMap[state.planningFilter]}.`);
+      return;
+    }
+    case "filter-matching": {
+      const mission = matchingMissions[state.activeMission];
+      const rotation = getMissionRotation(mission);
+      rotation.selectedFilter = key;
+      renderMatchingView();
+      showToast(`Candidate stack sorted by ${key}.`);
+      return;
+    }
     case "export-crew-changes":
-      showToast("Exporting Crew Rotation Manifest.csv...");
+      {
+        const artifact = buildModuleExportArtifact("crew-changes");
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Crew change export queued";
+      syncReportsView();
+      showToast("Crew Rotation Manifest.csv downloaded.");
+      recordActivity("Crew Changes export queued", "Crew Rotation Manifest.csv");
+      renderAdminView();
       return;
     case "export-crew":
-      showToast("Exporting Crew Readiness Manifest.csv...");
+      {
+        const artifact = buildModuleExportArtifact("crew");
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Crew export queued";
+      syncReportsView();
+      showToast("Crew Readiness Manifest.csv downloaded.");
+      recordActivity("Crew export queued", "Crew Readiness Manifest.csv");
+      renderAdminView();
       return;
     case "export-documents":
-      showToast("Exporting Document Readiness Manifest.csv...");
+      {
+        const artifact = buildModuleExportArtifact("documents");
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Documents export queued";
+      syncReportsView();
+      showToast("Document Readiness Manifest.csv downloaded.");
+      recordActivity("Documents export queued", "Document Readiness Manifest.csv");
+      renderAdminView();
       return;
     case "export-fleet":
-      showToast("Exporting Fleet Readiness Matrix.csv...");
+      {
+        const artifact = buildModuleExportArtifact("fleet");
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Fleet export queued";
+      syncReportsView();
+      showToast("Fleet Readiness Matrix.csv downloaded.");
+      recordActivity("Fleet export queued", "Fleet Readiness Matrix.csv");
+      renderAdminView();
       return;
     case "export-routes":
-      showToast("Exporting Route & Port Manifest.csv...");
+      {
+        const artifact = buildModuleExportArtifact("routes");
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Route export queued";
+      syncReportsView();
+      showToast("Route & Port Manifest.csv downloaded.");
+      recordActivity("Route export queued", "Route & Port Manifest.csv");
+      renderAdminView();
       return;
     case "export-planning":
-      showToast("Exporting 30-Day Crew Change Plan.pdf...");
+      {
+        const artifact = buildModuleExportArtifact("planning");
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Planning export queued";
+      syncReportsView();
+      showToast("30-Day Crew Change Plan artifact downloaded.");
+      recordActivity("Planning export queued", "30-Day Crew Change Plan.pdf");
+      renderAdminView();
       return;
     case "show-future-mission":
+      state.pendingPlanningContext = key;
       state.activeVessel = vesselData[key] ? key : state.activeVessel;
       renderVesselDetailView();
       setView("vessel-detail");
@@ -2535,13 +4819,13 @@ function handleAction(action, key) {
       return;
     case "open-matching":
       state.activeMission = key || "bremen";
-      state.activeRotation = key === "stuttgart" ? "stuttgart-second" : "bremen-chief";
+      state.activeRotation = getDefaultRotationKey(state.activeMission);
       renderMatchingView();
       setView("matching");
       return;
     case "switch-mission":
       state.activeMission = key;
-      state.activeRotation = key === "stuttgart" ? "stuttgart-second" : "bremen-chief";
+      state.activeRotation = getDefaultRotationKey(state.activeMission);
       renderMatchingView();
       return;
     case "select-rotation":
@@ -2559,41 +4843,132 @@ function handleAction(action, key) {
         renderPlanningView();
         renderMatchingView();
         renderAdminView();
+        syncDocumentsView();
+        if (state.activeView === "crew-profile") renderCrewProfileView();
         showToast(`${candidate.name} assigned to ${matchingMissions[state.activeMission].missionId} — Ready Check triggered.`);
       }
       return;
     }
-    case "request-docs":
+    case "save-assignment-draft": {
+      const mission = saveMissionDraft(key);
+      if (mission) {
+        renderPlanningView();
+        renderMatchingView();
+        renderAdminView();
+        showToast(`${mission.missionId} saved as draft.`);
+      }
+      return;
+    }
+    case "request-docs": {
+      const mission = matchingMissions[state.activeMission];
+      const candidate = findMissionCandidate(mission, key);
+      if (candidate) {
+        candidate.action = candidate.action === "request-docs" ? "open-crew-profile" : candidate.action;
+        candidate.actionLabel = candidate.actionLabel === "Request Docs" ? "Docs Requested" : candidate.actionLabel;
+        candidate.secondaryLabel = candidate.secondaryLabel === "Request Docs" ? "Docs Requested" : candidate.secondaryLabel;
+        candidate.note = `${candidate.note} Document request sent to close the missing file pack.`;
+
+        if (candidate.profileKey) {
+          addProfileTimelineEntry(candidate.profileKey, "Document pack requested", `${mission.missionId} · Crew Matching`);
+          addProfileNote(candidate.profileKey, `Document request sent during ${mission.missionId} review.`);
+        }
+
+        if (candidate.profileKey === "nihat") {
+          setDocumentRowState("flag-endorsement-nihat", {
+            verification: { label: "Queued", tone: "live" },
+            risk: { label: "Medium", tone: "risk" },
+            status: { label: "Pending review", tone: "live" },
+            action: { label: "Open", action: "review-document", key: "flag-endorsement-elena" },
+          });
+        }
+
+        if (candidate.profileKey === "emre") {
+          setDocumentRowState("seamanbook-emre", {
+            verification: { label: "Requested", tone: "risk" },
+            risk: { label: "Medium", tone: "risk" },
+            status: { label: "Pending owner", tone: "risk" },
+            action: { label: "Review", action: "review-document", key: "seamanbook-emre" },
+          });
+        }
+      }
       showToast("Missing documents requested from candidate.");
-      recordActivity("Candidate documents requested", `${key} · Crew Matching`);
+      recordActivity("Candidate documents requested", `${candidate?.name || key} · Crew Matching`);
+      renderMatchingView();
       renderAdminView();
+      syncDocumentsView();
+      if (state.activeView === "crew-profile") renderCrewProfileView();
       return;
-    case "request-promotion":
+    }
+    case "request-promotion": {
+      const mission = matchingMissions[state.activeMission];
+      const candidate = findMissionCandidate(mission, key);
+      if (candidate) {
+        candidate.action = "open-crew-profile";
+        candidate.actionLabel = "Promotion Requested";
+        candidate.note = `${candidate.note} Promotion approval request has been sent to the Technical Manager and remains open.`;
+        if (candidate.profileKey) {
+          addProfileTimelineEntry(candidate.profileKey, "Promotion approval requested", `${mission.missionId} · Technical Manager`);
+          addProfileNote(candidate.profileKey, `Promotion approval opened from ${mission.missionId}.`);
+        }
+        ensureComplianceException({
+          key: `${candidate.profileKey || candidate.key}-promotion`,
+          title: `Promotion review — ${candidate.name}`,
+          status: "Pending approval",
+          tone: "risk",
+          meta: `Requested by: Marina Keskin · Mission: ${mission.missionId} — ${mission.vessel}`,
+          reason: `Temporary promotion approval is being reviewed so ${candidate.name} can remain in the active candidate set for ${mission.role}.`,
+          primaryAction: "approve-exception",
+          primaryLabel: "Approve",
+          secondaryAction: "decline-exception",
+          secondaryLabel: "Decline",
+        });
+      }
+      mission.draftSaved = false;
       showToast("Promotion approval request sent to Technical Manager.");
-      recordActivity("Promotion approval requested", `${key} · Technical review`);
+      recordActivity("Promotion approval requested", `${candidate?.name || key} · Technical review`);
+      renderMatchingView();
+      renderComplianceView();
       renderAdminView();
       return;
+    }
     case "run-ready-check": {
       const profile = profileData[key];
       if (profile) {
+        addProfileTimelineEntry(key, "Ready Check re-run", "Crew Profile");
+        addProfileNote(key, "Ready Check executed with no new blockers detected.");
+        reportOpsState.rows["weekly-readiness"].lastRun = "Today 14:20";
+        reportOpsState.rows["weekly-readiness"].status = { label: "Ready", tone: "ready" };
+        syncReportsView();
         showToast(`Ready Check re-run for ${profile.name}.`);
         recordActivity("Ready Check re-run", profile.name);
         renderAdminView();
+        if (state.activeView === "crew-profile") renderCrewProfileView();
       }
       return;
     }
     case "upload-document": {
       const profile = profileData[key];
       if (profile) {
-        showToast(`Upload drawer opened for ${profile.name}.`);
-        recordActivity("Document upload initiated", profile.name);
-        renderAdminView();
+        pendingUploadProfileKey = key;
+        if (fileUploadInput) {
+          fileUploadInput.value = "";
+          fileUploadInput.click();
+        } else {
+          showToast("Upload control is not available in this browser.");
+        }
       }
       return;
     }
     case "generate-compliance-report": {
       const profile = profileData[key];
       if (profile) {
+        state.reportsFilter = "all";
+        setReportFocus("compliance-exceptions", "generate");
+        setView("reports");
+        reportOpsState.generatedCount += 1;
+        reportOpsState.generatedMeta = "Compliance export queued";
+        reportOpsState.rows["compliance-exceptions"].lastRun = "Today 14:20";
+        syncReportsView();
         showToast(`Generating compliance report for ${profile.name}...`);
         recordActivity("Compliance report generated", profile.name);
         renderAdminView();
@@ -2601,8 +4976,8 @@ function handleAction(action, key) {
       return;
     }
     case "open-crew-profile":
-      if (profileData[key]) {
-        state.activeProfile = key;
+      if (profileData[key] || findMissionCandidate(matchingMissions[state.activeMission], key)?.profileKey) {
+        state.activeProfile = profileData[key] ? key : findMissionCandidate(matchingMissions[state.activeMission], key).profileKey;
         state.activeProfileTab = "overview";
         renderCrewProfileView();
         setView("crew-profile");
@@ -2618,49 +4993,126 @@ function handleAction(action, key) {
       return;
     case "open-vessel-detail":
       if (vesselData[key]) {
+        state.pendingPlanningContext = null;
         state.activeVessel = key;
         renderVesselDetailView();
         setView("vessel-detail");
       }
       return;
     case "view-document":
-      showToast(`Opening ${documentNames[key] || key}...`);
+      setDocumentFocus(key, "open");
+      setView("documents");
+      syncDocumentsView();
+      {
+        const preview = buildDocumentPreview(key);
+        if (preview) openArtifactPreview(preview.content, preview.mime, preview.title);
+      }
+      showToast(`${documentNames[key] || key} preview opened.`);
       recordActivity("Document opened", documentNames[key] || key);
       renderAdminView();
       return;
     case "renew-document":
+      if (key === "medical-cenk") {
+        setDocumentRowState("medical-cenk", {
+          verification: { label: "Scheduled", tone: "live" },
+          risk: { label: "Low", tone: "ready" },
+          status: { label: "Renewal booked", tone: "live" },
+          action: { label: "Review", action: "review-document", key: "medical-cenk" },
+        });
+        addProfileTimelineEntry("cenk", "Medical renewal booked", "Documents module");
+      }
+      setDocumentFocus(key, "renew");
+      setView("documents");
       showToast(`Renewal task created for ${documentNames[key] || key}.`);
       recordActivity("Renewal task created", documentNames[key] || key);
+      syncDocumentsView();
       renderAdminView();
       return;
     case "request-document":
+      if (key === "seamanbook-emre") {
+        setDocumentRowState("seamanbook-emre", {
+          verification: { label: "Requested", tone: "risk" },
+          risk: { label: "Medium", tone: "risk" },
+          status: { label: "Pending owner", tone: "risk" },
+          action: { label: "Review", action: "review-document", key: "seamanbook-emre" },
+        });
+        addProfileTimelineEntry("emre", "Seaman Book requested", "Documents module");
+      }
+      setDocumentFocus(key, "request");
+      setView("documents");
       showToast(`Document request sent for ${documentNames[key] || key}.`);
       recordActivity("Document request sent", documentNames[key] || key);
+      syncDocumentsView();
       renderAdminView();
       return;
     case "review-document":
+      if (key === "flag-endorsement-elena") {
+        setDocumentRowState("flag-endorsement-nihat", {
+          verification: { label: "Reviewed", tone: "ready" },
+          risk: { label: "Low", tone: "ready" },
+          status: { label: "Cleared", tone: "ready" },
+          action: { label: "View", action: "view-document", key: "flag-endorsement-elena" },
+        });
+        addProfileTimelineEntry("nihat", "Flag endorsement reviewed", "Documents module");
+      }
+      if (key === "visa-ferdi") {
+        setDocumentRowState("visa-ferdi", {
+          verification: { label: "Reviewed", tone: "live" },
+          risk: { label: "Medium", tone: "risk" },
+          status: { label: "Awaiting clearance", tone: "risk" },
+          action: { label: "Resolve", action: "open-matching", key: "stuttgart" },
+        });
+        addProfileTimelineEntry("ferdi", "Visa pack reviewed", "Documents module");
+      }
+      setDocumentFocus(key, "review");
+      setView("documents");
       showToast(`Review task opened for ${documentNames[key] || key}.`);
       recordActivity("Document review opened", documentNames[key] || key);
+      syncDocumentsView();
       renderAdminView();
       return;
     case "open-document-case":
+      setDocumentFocus(key, "review");
       setView("documents");
+      syncDocumentsView();
       showToast("Opened linked document blocker in Documents.");
       recordActivity("Document blocker opened", key);
       renderAdminView();
       return;
     case "bulk-validate":
+      setDocumentFocus("bulk-validate", "bulk-validate");
+      setView("documents");
       showToast("Bulk validation started for 16 pending records.");
       recordActivity("Bulk validation started", "16 pending records");
+      documentOpsState.kpis.pending = 14;
+      documentOpsState.kpis.pendingMeta = "Validation running";
+      syncDocumentsView();
       renderAdminView();
       return;
     case "show-roster-scope":
-      showToast("Crew roster expanded to include the original operational sample set.");
+      state.crewFilter = "all";
+      setView("crew");
+      syncCrewView();
+      showToast("Crew roster opened on the original operational sample set.");
+      recordActivity("Crew roster scope opened", "Crew module");
+      renderAdminView();
       return;
     case "show-document-scope":
-      showToast("Documents view shows the operational sample set from the original MVP.");
+      setDocumentFocus(null);
+      setView("documents");
+      syncDocumentsView();
+      showToast("Documents opened on the operational sample set.");
+      recordActivity("Document scope opened", "Documents module");
+      renderAdminView();
       return;
     case "finalize-assignment": {
+      const missionContext = matchingMissions[key];
+      const actionRotation = missionContext ? getActionRotation(missionContext) : null;
+      const selectedCandidateKey = actionRotation?.selectedCandidateKey || missionContext?.selectedCandidateKey;
+      if (!missionContext || !selectedCandidateKey) {
+        showToast("Select a candidate before finalizing this assignment.");
+        return;
+      }
       const mission = finalizeMission(key);
       if (mission) {
         resolveAlert(`${key}-candidate`, `Alert resolved for ${mission.missionId}`, "Candidate gap closed");
@@ -2668,36 +5120,84 @@ function handleAction(action, key) {
         renderMatchingView();
         renderAlertsView();
         renderAdminView();
+        syncDocumentsView();
+        if (state.activeView === "crew-profile") renderCrewProfileView();
         showToast(`${mission.missionId} finalized and operational handover pack queued.`);
       }
       return;
     }
+    case "open-secondary-rotation":
+      {
+        const mission = matchingMissions[state.activeMission];
+        const rotation = mission?.rotations.find((item) => item.key === key);
+        if (!rotation) return;
+        state.activeRotation = key;
+        rotation.expandedDetail = !rotation.expandedDetail;
+        renderMatchingView();
+        showToast(rotation.expandedDetail ? "Companion rotation detail opened." : "Companion rotation detail collapsed.");
+        recordActivity("Companion rotation reviewed", `${state.activeMission} · ${key}`);
+      }
+      renderAdminView();
+      return;
     case "download-assignment-pack": {
       const mission = matchingMissions[key];
       if (mission) {
-        showToast(`Downloading ${mission.missionId} assignment pack...`);
+        const artifact = buildAssignmentPackArtifact(key);
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+        showToast(`${mission.missionId} assignment pack downloaded.`);
         recordActivity("Assignment pack downloaded", mission.missionId);
         renderAdminView();
       }
       return;
     }
     case "renew-alert":
+      if (key === "emre-passport") {
+        setDocumentRowState("seamanbook-emre", {
+          verification: { label: "Requested", tone: "risk" },
+          risk: { label: "Medium", tone: "risk" },
+          status: { label: "Pending owner", tone: "risk" },
+          action: { label: "Review", action: "review-document", key: "seamanbook-emre" },
+        });
+        addProfileTimelineEntry("emre", "Travel document renewal opened", "Alerts module");
+        addProfileNote("emre", "Travel renewal task opened from Alerts.");
+      }
+      if (key === "rustu-tanker") {
+        addProfileTimelineEntry("rustu", "Advanced Oil Tanker renewal opened", "Alerts module");
+        addProfileNote("rustu", "Renewal task opened from Alerts.");
+      }
+      setDocumentFocus(key, "renew");
       if (resolveAlert(key, "Renewal task created from Alerts", key)) {
         renderAlertsView();
         renderAdminView();
+        syncDocumentsView();
+        syncCrewView();
+        syncReportsView();
       }
       showToast("Renewal task created from Alerts.");
       return;
     case "schedule-alert":
+      if (key === "cenk-medical") {
+        setDocumentRowState("medical-cenk", {
+          verification: { label: "Scheduled", tone: "live" },
+          risk: { label: "Low", tone: "ready" },
+          status: { label: "Renewal booked", tone: "live" },
+          action: { label: "Review", action: "review-document", key: "medical-cenk" },
+        });
+        addProfileTimelineEntry("cenk", "Medical renewal booked", "Alerts module");
+      }
+      setDocumentFocus(key, "renew");
       if (resolveAlert(key, "Medical exam scheduled from Alerts", key)) {
         renderAlertsView();
         renderAdminView();
+        syncDocumentsView();
+        syncCrewView();
+        syncReportsView();
       }
       showToast("Medical exam scheduled from Alerts.");
       return;
     case "find-alert":
       state.activeMission = "stuttgart";
-      state.activeRotation = "stuttgart-second";
+      state.activeRotation = getDefaultRotationKey(state.activeMission);
       renderMatchingView();
       setView("matching");
       return;
@@ -2714,73 +5214,198 @@ function handleAction(action, key) {
       showToast(state.rules[key] ? "Rule enabled." : "Rule disabled.");
       return;
     case "approve-exception":
-      if (updateComplianceException("nihat-medical", "Approved", "ready", "Approved by: Marina Keskin · 20 Jul 2026")) {
+      if (updateComplianceException(key, "Approved", "ready", "Approved by: Marina Keskin · 20 Jul 2026")) {
+        const exception = complianceExceptions.find((item) => item.key === key);
         complianceAudit.unshift({
           time: "20 Jul · 14:20",
-          action: "Medical validity exception approved",
-          who: "Nihat Kahveci · Marina Keskin",
+          action: `${exception?.title || key} approved`,
+          who: "Marina Keskin · Compliance",
         });
-        recordActivity("Compliance exception approved", "Nihat Kahveci");
+        recordActivity("Compliance exception approved", exception?.title || key);
+        if (key === "ferdi-promotion") {
+          const mission = matchingMissions.stuttgart;
+          const candidate = mission.candidates.find((item) => item.profileKey === "ferdi");
+          if (candidate) {
+            candidate.note = `${candidate.note} Promotion approval is now cleared by Compliance.`;
+            candidate.action = "select-candidate";
+            candidate.actionLabel = "Select Candidate";
+            candidate.tone = "ready";
+            candidate.readiness = 93;
+          }
+          addProfileTimelineEntry("ferdi", "Promotion approved", "Compliance");
+          addProfileNote("ferdi", "Promotion approval cleared by Compliance.");
+          setDocumentRowState("visa-ferdi", {
+            verification: { label: "Reviewed", tone: "live" },
+            risk: { label: "Low", tone: "ready" },
+            status: { label: "Promotion cleared", tone: "live" },
+            action: { label: "Resolve", action: "open-matching", key: "stuttgart" },
+          });
+          renderMatchingView();
+          syncDocumentsView();
+        }
+        if (key === "nihat-medical") {
+          const candidate = matchingMissions.bremen.candidates.find((item) => item.profileKey === "nihat");
+          if (candidate) {
+            candidate.note = `${candidate.note} Medical exception approval recorded in Compliance.`;
+            candidate.tone = "ready";
+            candidate.readiness = Math.max(candidate.readiness, 96);
+          }
+          addProfileTimelineEntry("nihat", "Medical exception approved", "Compliance");
+          addProfileNote("nihat", "Medical exception approved for assignment review.");
+          renderMatchingView();
+        }
         renderComplianceView();
         renderAdminView();
+        syncCrewView();
+        syncReportsView();
       }
-      showToast("Exception approved — Ready Check re-run for Nihat Kahveci.");
+      showToast("Exception approved — Ready Check re-run queued.");
       return;
     case "decline-exception":
-      if (updateComplianceException("nihat-medical", "Declined", "blocked", "Declined by: Marina Keskin · 20 Jul 2026")) {
+      if (updateComplianceException(key, "Declined", "blocked", "Declined by: Marina Keskin · 20 Jul 2026")) {
+        const exception = complianceExceptions.find((item) => item.key === key);
         complianceAudit.unshift({
           time: "20 Jul · 14:20",
-          action: "Medical validity exception declined",
-          who: "Nihat Kahveci · Marina Keskin",
+          action: `${exception?.title || key} declined`,
+          who: "Marina Keskin · Compliance",
         });
-        recordActivity("Compliance exception declined", "Nihat Kahveci");
+        recordActivity("Compliance exception declined", exception?.title || key);
+        if (key === "ferdi-promotion") {
+          addProfileTimelineEntry("ferdi", "Promotion declined", "Compliance");
+          addProfileNote("ferdi", "Promotion approval was declined.");
+          renderMatchingView();
+        }
+        if (key === "nihat-medical") {
+          addProfileTimelineEntry("nihat", "Medical exception declined", "Compliance");
+          addProfileNote("nihat", "Medical exception declined; backup remains under review.");
+          renderMatchingView();
+        }
         renderComplianceView();
         renderAdminView();
+        syncReportsView();
       }
       showToast("Exception declined — backup candidate remains under watch.");
       return;
     case "new-rule":
-      showToast("Rule builder opened.");
-      recordActivity("Rule builder opened", "Compliance");
+      if (!complianceRules.find((rule) => rule.key === "temporary-visa-horizon")) {
+        complianceRules.unshift({
+          key: "temporary-visa-horizon",
+          name: "Visa validity must cover embarkation window + 14 days",
+          scope: "Travel readiness",
+          source: "Pilot policy draft",
+          updated: "21 Jul 2026",
+          enabled: false,
+          note: "Draft rule created from Administration for pilot review.",
+        });
+        state.rules["temporary-visa-horizon"] = false;
+      }
+      renderComplianceView();
+      showToast("Draft rule created in Compliance.");
+      recordActivity("Draft rule created", "Visa validity horizon");
       renderAdminView();
       return;
     case "new-report":
-      showToast("Report builder opened.");
+      state.reportsFilter = "all";
+      setReportFocus("builder", "build");
+      setView("reports");
+      {
+        const artifact = buildReportBuilderArtifact();
+        triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Builder session opened";
+      syncReportsView();
+      showToast("Report builder template downloaded.");
       recordActivity("Report builder opened", "Reports");
       renderAdminView();
       return;
     case "open-report":
-      showToast(`Opening ${reportFiles[key] || "selected report"}...`);
+      state.reportsFilter = "all";
+      setReportFocus(key, "open");
+      setView("reports");
+      if (reportOpsState.rows[key]) {
+        reportOpsState.rows[key].lastRun = "Today 14:20";
+        reportOpsState.rows[key].status = { label: "Ready", tone: "ready" };
+        reportOpsState.rows[key].action = { label: "Open", type: "open-report", key };
+        syncReportsView();
+      }
+      {
+        const preview = buildReportPreview(key);
+        if (preview) openArtifactPreview(preview.content, preview.mime, preview.title);
+      }
+      showToast(`${reportFiles[key] || "selected report"} preview opened.`);
       recordActivity("Report opened", reportFiles[key] || "selected report");
       renderAdminView();
       return;
     case "generate-report":
-      showToast(`Generating ${reportFiles[key] || "selected report"}...`);
+      state.reportsFilter = "all";
+      setReportFocus(key, "generate");
+      setView("reports");
+      if (reportOpsState.rows[key]) {
+        reportOpsState.rows[key].lastRun = "Today 14:20";
+        reportOpsState.rows[key].status = { label: "Ready", tone: "ready" };
+        reportOpsState.rows[key].action = { label: "Open", type: "open-report", key };
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = "Updated just now";
+      syncReportsView();
+      {
+        const preview = buildReportPreview(key);
+        if (preview) triggerArtifactDownload(preview.filename, preview.content, preview.mime);
+      }
+      showToast(`${reportFiles[key] || "selected report"} generated and downloaded.`);
       recordActivity("Report generated", reportFiles[key] || "selected report");
       renderAdminView();
       return;
     case "export-brief":
-      showToast(`Exporting ${reportFiles[key] || "brief"}...`);
+      state.reportsFilter = "all";
+      setReportFocus(key, "export");
+      {
+        const artifact = buildBriefExportArtifact(key);
+        if (artifact) triggerArtifactDownload(artifact.filename, artifact.content, artifact.mime);
+      }
+      reportOpsState.generatedCount += 1;
+      reportOpsState.generatedMeta = `Last export: ${reportFiles[key] || "brief"}`;
+      syncReportsView();
+      showToast(`${reportFiles[key] || "brief"} downloaded.`);
       recordActivity("Brief exported", reportFiles[key] || "brief");
       renderAdminView();
       return;
     case "admin-notifications":
-      showToast("Notification routing panel opened.");
-      recordActivity("Notification routing reviewed", "Administration");
+      {
+        const modes = ["Critical only", "Priority and critical", "All operational updates"];
+        const nextIndex = (modes.indexOf(adminOpsState.notificationMode) + 1) % modes.length;
+        adminOpsState.notificationMode = modes[nextIndex];
+      }
+      showToast(`Notification mode updated to ${adminOpsState.notificationMode}.`);
+      recordActivity("Notification routing reviewed", adminOpsState.notificationMode);
       renderAdminView();
       return;
     case "admin-access":
-      showToast("User access review opened.");
-      recordActivity("User access reviewed", "Administration");
+      {
+        const states = ["8 pilot users", "8 reviewed / 1 pending", "9 pilot users"];
+        const nextIndex = (states.indexOf(adminOpsState.userAccess) + 1) % states.length;
+        adminOpsState.userAccess = states[nextIndex];
+      }
+      showToast(`User access updated to ${adminOpsState.userAccess}.`);
+      recordActivity("User access reviewed", adminOpsState.userAccess);
       renderAdminView();
       return;
     case "admin-exports":
-      showToast("Export policy review opened.");
-      recordActivity("Export policy reviewed", "Administration");
+      {
+        const policies = ["PDF and CSV enabled", "PDF only", "Restricted exports"];
+        const nextIndex = (policies.indexOf(adminOpsState.exportPolicy) + 1) % policies.length;
+        adminOpsState.exportPolicy = policies[nextIndex];
+      }
+      showToast(`Export policy updated to ${adminOpsState.exportPolicy}.`);
+      recordActivity("Export policy reviewed", adminOpsState.exportPolicy);
       renderAdminView();
       return;
-    default:
-      return;
+      default:
+        return;
+    }
+  } finally {
+    persistAppState();
   }
 }
 
@@ -2797,7 +5422,12 @@ document.addEventListener("click", (event) => {
 
   const navTrigger = event.target.closest("[data-nav]");
   if (navTrigger) {
+    if (navTrigger.id === "report-compliance-exceptions-action") {
+      setDocumentFocus("compliance-exceptions", "review");
+    }
     setView(navTrigger.dataset.nav);
+    if (navTrigger.dataset.nav === "documents") syncDocumentsView();
+    if (navTrigger.dataset.nav === "reports") syncReportsView();
     return;
   }
 
@@ -2828,6 +5458,37 @@ document.querySelectorAll("#copilot-chat-input, #ready-ai-main-input").forEach((
   });
 });
 
+if (fileUploadInput) {
+  fileUploadInput.addEventListener("change", () => {
+    const selectedFile = fileUploadInput.files?.[0];
+    const profileKey = pendingUploadProfileKey;
+    pendingUploadProfileKey = null;
+    if (!selectedFile || !profileKey || !profileData[profileKey]) return;
+
+    const profile = profileData[profileKey];
+    const uploadedName = selectedFile.name || `Upload_${profile.name.replace(/[^a-z0-9]+/gi, "_")}.pdf`;
+
+    documentOpsState.kpis.pending += 1;
+    documentOpsState.kpis.pendingMeta = "New upload pending validation";
+    profile.documents.unshift({
+      name: uploadedName,
+      meta: "Pending validation",
+      status: "Watch",
+    });
+
+    addProfileTimelineEntry(profileKey, `Document uploaded: ${uploadedName}`, "Crew Profile");
+    addProfileNote(profileKey, `${uploadedName} uploaded on Tuesday, July 21, 2026 and queued for validation.`);
+    setDocumentFocus("bulk-validate", "request");
+    setView("documents");
+    syncDocumentsView();
+    renderAdminView();
+    renderCrewProfileView();
+    showToast(`${uploadedName} uploaded and queued for validation.`);
+    recordActivity("Document uploaded", `${profile.name} · ${uploadedName}`);
+    persistAppState();
+  });
+}
+
 topbarSearch.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -2843,8 +5504,9 @@ topbarSearch.addEventListener("blur", () => {
   topbarSearch.parentElement.style.boxShadow = "";
 });
 
+restorePersistedState();
 renderDynamicViews();
 renderThreads();
 
 const initialView = new URLSearchParams(window.location.search).get("view");
-setView(initialView && viewMeta[initialView] ? initialView : "command-center");
+setView(initialView && viewMeta[initialView] ? initialView : state.activeView || "command-center");
